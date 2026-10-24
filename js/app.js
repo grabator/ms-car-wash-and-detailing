@@ -4,7 +4,6 @@
   var PHONE = '38762568565';
   var $ = function (s) { return document.querySelector(s); };
   var all = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('js');
 
   // traka sa dijelovima: označi dio koji je trenutno na ekranu
@@ -22,20 +21,17 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
     tabs.forEach(function (a) { var s = $(a.getAttribute('href')); if (s) io.observe(s); });
 
-    // dijelovi se lagano pojave; kartica vjernosti "dobije" pečate
+    // dijelovi se lagano pojave
     var rv = new IntersectionObserver(function (en) {
       en.forEach(function (e) {
         if (!e.isIntersecting) return;
         e.target.classList.add('in');
-        var l = e.target.querySelector('.loyal');
-        if (l) setTimeout(function () { l.classList.add('go'); }, reduce ? 0 : 350);
         rv.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -12% 0px' });
     all('.rv').forEach(function (s) { rv.observe(s); });
   } else {
     all('.rv').forEach(function (s) { s.classList.add('in'); });
-    $('.loyal').classList.add('go');
   }
 
   // upit: dodir na stavku (data-s) je doda ili ukloni

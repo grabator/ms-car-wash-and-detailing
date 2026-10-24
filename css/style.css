@@ -123,27 +123,6 @@ main { width: min(720px, 100% - 32px); margin: 0 auto; }
 .sheen { position: absolute !important; inset: 0; z-index: 2 !important; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.16) 48%, transparent 62%); transform: translateX(-130%); }
 .gold .sheen { animation: shine 5s var(--ease) 1.2s infinite; }
 
-/* vjernost */
-.loyal { position: relative; overflow: hidden; padding: 24px 20px 26px; border-radius: 26px; text-align: center; background: radial-gradient(90% 80% at 100% 0%, rgba(143, 211, 255, 0.35), transparent 60%), radial-gradient(60% 60% at 0% 100%, rgba(11, 15, 21, 0.45), transparent 70%), linear-gradient(135deg, #1a4fc0, var(--blue2)); box-shadow: 0 30px 60px -30px rgba(29, 90, 214, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
-.loyal::after { content: ''; position: absolute; right: -40px; bottom: -50px; width: 200px; height: 220px; background: url(../assets/img/logo-dark.svg) center / contain no-repeat; opacity: 0.08; transform: rotate(-12deg); }
-.loyal-top { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #dcebff; }
-.loyal-top img { width: 30px; height: auto; }
-.loyal h2 { margin-top: 10px; font-weight: 800; font-size: 26px; line-height: 1.15; letter-spacing: 0.01em; }
-.loyal h2 em { font-style: normal; color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, 0.5); text-underline-offset: 6px; text-decoration-thickness: 3px; }
-.stamps { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 20px auto 16px; max-width: 400px; }
-.stamps li { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.55); color: #fff; transition: background-color 0.4s, border-color 0.4s; }
-.stamps li svg { width: 55%; height: 55%; stroke-width: 2.6; opacity: 0; transform: scale(0.3) rotate(-30deg); transition: opacity 0.35s, transform 0.5s var(--ease); }
-.loyal.go .stamps li:not(.free) { border-style: solid; border-color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.16); }
-.loyal.go .stamps li svg { opacity: 1; transform: none; }
-.stamps li:nth-child(2), .stamps li:nth-child(2) svg { transition-delay: 0.15s; }
-.stamps li:nth-child(3), .stamps li:nth-child(3) svg { transition-delay: 0.3s; }
-.stamps li:nth-child(4), .stamps li:nth-child(4) svg { transition-delay: 0.45s; }
-.stamps li:nth-child(5), .stamps li:nth-child(5) svg { transition-delay: 0.6s; }
-.stamps li.free { border: 0; background: #fff; color: var(--blue); font-size: 9px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; align-content: center; transition: transform 0.5s var(--ease) 0.8s; box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2); }
-.stamps li.free b { display: block; font-size: 16px; letter-spacing: 0; }
-.loyal.go .stamps li.free { transform: scale(1.12); }
-.loyal p { position: relative; z-index: 1; color: #e6f0ff; font-size: 15px; max-width: 34ch; margin: 0 auto; }
-
 /* upit */
 .ask { padding: 22px 18px; border-radius: 26px; background: linear-gradient(180deg, var(--card2), var(--card)); border: 1px solid var(--line); }
 .picked { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
@@ -204,7 +183,6 @@ main { width: min(720px, 100% - 32px); margin: 0 auto; }
   .pkc { height: 100%; grid-template-rows: auto 1fr auto; }
   .pk-tier { font-size: 24px; }
   .pk-badge { font-size: 9px; padding: 4px 8px; }
-  .loyal { padding: 34px; }
   .ask { padding: 28px; }
 }
 @media (prefers-reduced-motion: reduce) {

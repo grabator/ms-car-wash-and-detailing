@@ -11,211 +11,304 @@
 @font-face { font-family: M; font-weight: 700; src: url(f/montserrat-latin-700-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
 @font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-ext-800-normal.woff2); unicode-range: U+0100-024F; }
 @font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-800-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
-:root { --navy: #0f131a; --navy2: #161d29; --ink: #141a23; --blue: #1d5ad6; --blue2: #3b82f0; --sky: #8fd3ff; --mut: #8b97a8; --line: rgba(143, 211, 255, .18); }
+:root {
+  --navy: #0a0e14; --navy2: #121925; --ink: #121821; --blue: #1d5ad6; --blue2: #3b82f0; --sky: #8fd3ff; --mut: #8693a5; --soft: #c4cfdd;
+  --line: rgba(143, 211, 255, .16);
+  --gold: linear-gradient(115deg, #b8862a, #f6dc8d 42%, #c99a2e 62%, #fbe7a6);
+  --silver: linear-gradient(115deg, #8d99a9, #f1f5fa 42%, #a9b4c2 62%, #e6edf5);
+  --bronze: linear-gradient(115deg, #9c5f36, #f0bb90 42%, #b8794a 62%, #e9b48a);
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 @page { margin: 0; }
 html, body { background: transparent; }
 body { font-family: M, sans-serif; -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-.page { position: relative; overflow: hidden; }
-.dark { background: radial-gradient(90% 70% at 50% 35%, #1a2230 0%, var(--navy) 62%, #0b0e14 100%); color: #fff; }
-.light { background: #fff; color: var(--ink); }
-.mono { display: block; }
-.kick { font-weight: 700; letter-spacing: .42em; text-transform: uppercase; color: var(--blue2); }
-.title { font-weight: 800; letter-spacing: .04em; text-transform: uppercase; line-height: 1; }
-/* tanki "vodeni" luk kao potpis dizajna */
-.arc { position: absolute; border-radius: 50%; border: 1px solid var(--line); pointer-events: none; }
-.km { font-weight: 600; font-size: .55em; letter-spacing: .06em; color: var(--mut); margin-left: .25em; }
+.page { position: relative; overflow: hidden; color: #fff; background: var(--navy); }
+.page > * { position: relative; z-index: 1; }
+.page > .bg { position: absolute; z-index: 0; inset: 0; }
+canvas.beads { position: absolute; z-index: 0; left: 0; top: 0; display: block; }
+canvas.beads.soft { opacity: .55; -webkit-mask: radial-gradient(60% 85% at 100% 40%, #000 25%, transparent 80%); mask: radial-gradient(60% 85% at 100% 40%, #000 25%, transparent 80%); }
+svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.km { font-weight: 600; font-size: .36em; letter-spacing: .08em; color: var(--mut); margin-left: .22em; }
+.metal { background: var(--m); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gold { --tc: #f2d07e; } .silver { --tc: #e3e9f1; } .bronze { --tc: #e8ac80; }
+/* PDF: Chromium loše štampa tekst sa gradijentom, pa ide puna boja */
+.pdf body { background: #0a0e14; }
+.pdf .metal { background: none; color: var(--tc); }
+.word b { display: block; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; line-height: 1; }
+.word small { display: block; font-weight: 700; text-transform: uppercase; color: var(--blue2); }
 
-/* ---------------- vizit karta 85x55 + 3 mm (910x610, 10 px = 1 mm) ---------------- */
+/* ============ vizit karta 85x55 + 3 mm prepust (910x610; 10 px = 1 mm; sigurna zona 70 px) ============ */
 .card { width: 910px; height: 610px; }
-.cf { display: grid; place-items: center; align-content: center; gap: 0; }
-.cf .mono { width: 210px; }
-.cf .title { margin-top: 36px; font-size: 56px; letter-spacing: .06em; }
-.cf .kick { margin-top: 16px; font-size: 21px; letter-spacing: .62em; padding-left: .62em; }
-.cf .tagl { margin-top: 26px; font-size: 15px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--mut); }
-.cf .glow { position: absolute; left: 50%; top: 36%; width: 520px; height: 420px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(59,130,240,.28), transparent); }
-.cf .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
-.cf .mono, .cf p { position: relative; }
-.cb { padding: 64px 70px 80px; display: grid; grid-template-columns: 1fr 236px; gap: 36px; align-items: center; }
-.cb .big { display: flex; align-items: center; gap: 14px; margin-top: 40px; font-size: 38px; font-weight: 800; letter-spacing: .01em; color: var(--ink); }
-.cb .big svg { width: 34px; height: 34px; color: var(--blue); }
-.cb .name { display: flex; align-items: center; gap: 18px; }
-.cb .name img { width: 64px; }
-.cb .name b { display: block; font-weight: 800; font-size: 29px; letter-spacing: .03em; }
-.cb .name small { display: block; font-weight: 700; font-size: 13px; letter-spacing: .38em; color: var(--blue); margin-top: 4px; }
-.cb ul { list-style: none; margin-top: 22px; display: grid; gap: 14px; }
-.cb li { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 500; color: #2a3340; }
-.cb li svg { width: 26px; height: 26px; flex: none; color: var(--blue); }
-.qrbox { text-align: center; }
-.qrbox .q { width: 236px; height: 236px; padding: 18px; border-radius: 24px; border: 2.5px solid var(--blue2); }
-.qrbox .q img { width: 100%; height: 100%; display: block; }
-.qrbox p { margin-top: 12px; font-size: 17px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--blue); line-height: 1.3; }
-.qrbox p span { font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--mut); }
-.cb .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
+.cf { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.cf .bg { background: radial-gradient(60% 75% at 50% 42%, #16243c 0%, #0d1522 55%, #080b11 100%); }
+.cf .halo { position: absolute; left: 50%; top: 40%; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; background: radial-gradient(closest-side, rgba(59, 130, 240, .3), rgba(59, 130, 240, 0) 70%); }
+.cf .logo { width: 176px; filter: drop-shadow(0 16px 26px rgba(0, 0, 0, .55)); }
+.cf .word { margin-top: 32px; }
+.cf .word b { font-size: 50px; letter-spacing: .1em; padding-left: .1em; }
+.cf .word small { margin-top: 14px; font-size: 20px; letter-spacing: .72em; padding-left: .72em; }
+.cf .rule { width: 64px; height: 2px; margin-top: 30px; background: linear-gradient(90deg, transparent, var(--sky), transparent); }
+.cf .tagl { margin-top: 18px; font-size: 16px; font-weight: 600; letter-spacing: .34em; padding-left: .34em; text-transform: uppercase; color: var(--soft); opacity: .8; }
 
-/* ---------------- kartica vjernosti ---------------- */
-.lf { display: grid; grid-template-columns: 250px 1fr; gap: 50px; align-items: center; padding: 0 90px; }
-.lf .mono { width: 250px; }
-.lf .kick { font-size: 17px; letter-spacing: .4em; }
-.lf .title { margin-top: 16px; font-size: 50px; line-height: 1.05; }
-.lf p.sub { margin-top: 18px; font-size: 19px; color: #c9d4e3; font-weight: 500; line-height: 1.45; }
-.lb { padding: 64px 72px 0; }
+.cb { padding: 70px 76px 84px 82px; display: grid; grid-template-columns: 1fr 250px; gap: 0 40px; align-items: center; }
+.cb .bg { background: linear-gradient(160deg, #111a28 0%, #0a0e14 70%); }
+.cb .bg::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, #163f9e, var(--blue2) 55%, var(--sky)); }
+.cb .head { display: flex; align-items: center; gap: 16px; }
+.cb .head img { width: 56px; }
+.cb .head .word b { font-size: 27px; letter-spacing: .06em; }
+.cb .head .word small { margin-top: 7px; font-size: 14px; letter-spacing: .5em; }
+.cb .lbl { margin-top: 38px; font-size: 15px; font-weight: 700; letter-spacing: .34em; text-transform: uppercase; color: var(--sky); }
+.cb .tel { margin-top: 8px; font-size: 45px; font-weight: 800; letter-spacing: .01em; white-space: nowrap; }
+.cb .apps { margin-top: 14px; display: flex; gap: 10px; }
+.cb .apps span { display: inline-flex; align-items: center; gap: 7px; padding: 7px 15px 7px 10px; border-radius: 99px; border: 1.5px solid rgba(143, 211, 255, .3); font-size: 17px; font-weight: 600; color: var(--soft); }
+.cb .apps svg { width: 21px; height: 21px; }
+.cb .igh { display: flex; align-items: center; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1.5px solid var(--line); font-size: 22px; font-weight: 600; color: #fff; }
+.cb .igh svg { width: 26px; height: 26px; color: var(--sky); }
+.qr { text-align: center; }
+.qr .q { position: relative; width: 250px; height: 250px; padding: 18px; border-radius: 22px; background: #fff; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .9), 0 0 0 6px rgba(143, 211, 255, .1); }
+.qr .q img { display: block; width: 100%; height: 100%; }
+.qr p { margin-top: 16px; font-size: 16px; font-weight: 800; letter-spacing: .3em; padding-left: .3em; text-transform: uppercase; color: #fff; line-height: 1.5; }
+.qr p span { display: block; margin-top: 2px; font-size: 13px; font-weight: 600; letter-spacing: .14em; color: var(--mut); }
+
+/* ============ cjenovnik za zid 70x100 cm (1400x2000; 2 px = 1 mm) ============ */
+.ban { width: 1400px; height: 2000px; padding: 0 100px 80px; display: flex; flex-direction: column; }
+.ban > * { flex: none; }
+.ban .bg { background: linear-gradient(180deg, #0c121c 0%, #0a0e14 40%, #0b1019 100%); }
+.ban .hero { position: relative; margin: 0 -100px; height: 430px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+.ban .hero .hbg { position: absolute; inset: 0; background: radial-gradient(70% 90% at 50% 35%, #183058 0%, #0f1a2e 55%, #0b111b 100%); }
+.ban .hero canvas { inset: 0; -webkit-mask: linear-gradient(180deg, #000 55%, transparent); mask: linear-gradient(180deg, #000 55%, transparent); }
+.ban .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 180px; background: linear-gradient(rgba(11, 16, 25, 0), #0b1019 90%); }
+.ban .hero > :not(.hbg):not(canvas):not(.shade) { position: relative; z-index: 1; }
+.ban .hero .shade { position: absolute; z-index: 0; inset: 0; background: radial-gradient(42% 46% at 50% 54%, rgba(9, 14, 24, .88) 0%, rgba(9, 14, 24, .5) 60%, rgba(9, 14, 24, 0) 100%); }
+.ban .hero .logo { width: 150px; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .6)); }
+.ban .hero .word { margin-top: 26px; }
+.ban .hero .word b { font-size: 88px; letter-spacing: .07em; padding-left: .07em; }
+.ban .hero .word small { margin-top: 16px; font-size: 28px; letter-spacing: .7em; padding-left: .7em; }
+.ban .intro { display: flex; justify-content: center; gap: 22px; align-items: center; margin-top: -4px; font-size: 24px; font-weight: 700; letter-spacing: .36em; text-transform: uppercase; color: var(--soft); }
+.ban .intro i { width: 90px; height: 2px; background: linear-gradient(90deg, transparent, var(--sky)); }
+.ban .intro i:last-child { transform: scaleX(-1); }
+.bs { margin-top: 42px; }
+.bs h2 { display: flex; align-items: center; gap: 20px; font-size: 40px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.bs h2 span { color: var(--sky); }
+.bs h2::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--line), transparent); }
+.tiles { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-top: 22px; }
+.tile { display: flex; align-items: center; gap: 20px; padding: 28px 34px 28px 36px; border-radius: 28px; background: linear-gradient(170deg, #182131, #111824); border: 1.5px solid rgba(143, 211, 255, .14); }
+.tile .ic { width: 84px; height: 84px; flex: none; display: grid; place-items: center; border-radius: 22px; background: rgba(59, 130, 240, .14); color: var(--sky); }
+.tile .ic svg { width: 46px; height: 46px; stroke-width: 1.6; }
+.tile .nm { flex: 1; min-width: 0; }
+.tile .nm b { display: block; font-size: 40px; font-weight: 800; line-height: 1.1; white-space: nowrap; }
+.tile .nm small { display: block; margin-top: 6px; font-size: 22px; font-weight: 500; color: var(--mut); }
+.tile .pr { font-size: 84px; font-weight: 800; line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.pks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 22px; }
+.pkc { position: relative; padding: 40px 34px 34px; border-radius: 28px; overflow: hidden; background: #121924; border: 1.5px solid rgba(255, 255, 255, .1); }
+.pkc::before { content: ''; position: absolute; inset: 0; background: var(--m); opacity: .13; }
+.pkc::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 7px; background: var(--m); }
+.pkc > * { position: relative; }
+.pkc > div { position: static; }
+.pkc .t { font-size: 46px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; line-height: 1; }
+.pkc .d { margin-top: 12px; font-size: 22px; font-weight: 500; color: var(--soft); }
+.pkc .p { margin-top: 26px; font-size: 84px; font-weight: 800; line-height: 1; letter-spacing: -.01em; }
+.pkc .badge { z-index: 2; position: absolute; right: 0; top: 7px; padding: 9px 16px 9px 18px; border-radius: 0 0 0 16px; background: var(--m); color: #2b1d02; font-size: 14px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.pkc.gold { border-color: rgba(246, 217, 138, .45); box-shadow: 0 30px 60px -30px rgba(246, 217, 138, .45); }
+.pkc.gold::before { opacity: .2; }
+.ban .note { margin-top: 20px; text-align: center; font-size: 22px; font-weight: 500; color: var(--mut); }
+.ban .foot { margin-top: auto !important; display: grid; grid-template-columns: auto 1fr; gap: 54px; align-items: center; padding: 38px 48px 38px 38px; border-radius: 34px; background: linear-gradient(120deg, #1546b8 0%, var(--blue2) 60%, #5aa8ff 100%); box-shadow: 0 40px 80px -40px rgba(29, 90, 214, .9); }
+.ban .foot .q { width: 250px; height: 250px; padding: 20px; border-radius: 26px; background: #fff; }
+.ban .foot .q img { display: block; width: 100%; height: 100%; }
+.ban .foot .k { font-size: 22px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: #dcebff; }
+.ban .foot .t { margin-top: 10px; font-size: 42px; font-weight: 800; line-height: 1.12; }
+.ban .foot .tel { display: flex; align-items: center; gap: 18px; margin-top: 22px; padding-top: 22px; border-top: 2px solid rgba(255, 255, 255, .25); font-size: 60px; font-weight: 800; white-space: nowrap; }
+.ban .foot .tel svg { width: 52px; height: 52px; stroke-width: 2; }
+.ban .foot .sm { display: flex; gap: 28px; margin-top: 12px; font-size: 26px; font-weight: 600; color: #e6f0ff; }
+.ban .foot .sm span { display: inline-flex; align-items: center; gap: 10px; }
+.ban .foot .sm svg { width: 30px; height: 30px; }
+
+/* ============ Instagram 1080x1350 ============ */
+.ig { width: 1080px; height: 1350px; padding: 80px 80px 70px; display: flex; flex-direction: column; }
+.ig .bg { background: radial-gradient(90% 60% at 80% 0%, #15233a 0%, #0c121c 55%, #0a0e14 100%); }
+.ig canvas.beads { -webkit-mask: radial-gradient(70% 60% at 100% 0%, #000 30%, transparent 75%); mask: radial-gradient(70% 60% at 100% 0%, #000 30%, transparent 75%); }
+.ig .top { display: flex; justify-content: space-between; align-items: center; }
+.ig .brand { display: flex; align-items: center; gap: 16px; }
+.ig .brand img { width: 64px; }
+.ig .brand .word b { font-size: 24px; }
+.ig .brand .word small { margin-top: 6px; font-size: 12px; letter-spacing: .5em; }
+.ig .tag { padding: 12px 22px; border-radius: 99px; border: 1.5px solid rgba(143, 211, 255, .3); background: rgba(10, 14, 20, .5); font-size: 17px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--sky); }
+.ig .body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.ig h1 { font-size: 104px; font-weight: 800; line-height: .98; letter-spacing: .01em; text-transform: uppercase; }
+.ig h1 span { display: block; background: linear-gradient(90deg, var(--sky), var(--blue2) 70%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ig .sub { margin-top: 24px; max-width: 28ch; font-size: 28px; font-weight: 500; line-height: 1.45; color: var(--soft); }
+.ig .list { list-style: none; margin-top: 54px; display: grid; gap: 16px; }
+.ig .list li { display: flex; align-items: center; gap: 24px; padding: 24px 30px 24px 24px; border-radius: 26px; background: linear-gradient(170deg, #182131, #111824); border: 1.5px solid rgba(143, 211, 255, .13); }
+.ig .list .ic { width: 72px; height: 72px; flex: none; display: grid; place-items: center; border-radius: 20px; background: rgba(59, 130, 240, .14); color: var(--sky); }
+.ig .list .ic svg { width: 40px; height: 40px; stroke-width: 1.6; }
+.ig .list .nm { flex: 1; }
+.ig .list b { display: block; font-size: 36px; font-weight: 800; line-height: 1.1; }
+.ig .list small { display: block; margin-top: 4px; font-size: 21px; font-weight: 500; color: var(--mut); }
+.ig .list .pr { font-size: 70px; font-weight: 800; line-height: 1; white-space: nowrap; }
+.ig .list.big li { padding: 40px 36px 40px 30px; }
+.ig .list.big .ic { width: 92px; height: 92px; }
+.ig .list.big .ic svg { width: 50px; height: 50px; }
+.ig .list.big b { font-size: 44px; }
+.ig .list.big .pr { font-size: 92px; }
+.ig .pks { grid-template-columns: 1fr; gap: 18px; margin-top: 54px; }
+.ig .pkc { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 34px 40px; }
+.ig .pkc .t { font-size: 46px; }
+.ig .pkc .d { margin-top: 10px; font-size: 22px; }
+.ig .pkc .p { margin-top: 0; font-size: 84px; }
+.ig .pkc .badge { position: static; display: inline-block; margin-left: 16px; vertical-align: 10px; font-size: 13px; padding: 7px 14px; border-radius: 99px; }
+.ig .bottom { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1.5px solid var(--line); font-size: 22px; font-weight: 600; color: var(--mut); letter-spacing: .04em; }
+.ig .bottom b { color: #fff; font-weight: 700; }
+.ig .bottom span { display: inline-flex; align-items: center; gap: 10px; }
+.ig .bottom svg { width: 26px; height: 26px; color: var(--sky); }
+/* uvodna objava */
+.ig.hero-ig { padding: 0; }
+.ig.hero-ig canvas.beads { inset: 0; -webkit-mask: none; mask: none; }
+.ig.hero-ig .shade { position: absolute; inset: 0; z-index: 0; background: radial-gradient(55% 40% at 50% 46%, rgba(8, 12, 18, .9) 0%, rgba(8, 12, 18, .55) 55%, rgba(8, 12, 18, .15) 100%), linear-gradient(180deg, rgba(8, 12, 18, 0) 60%, rgba(8, 12, 18, .9)); }
+.ig.hero-ig .center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 80px; }
+.ig.hero-ig .logo { width: 230px; filter: drop-shadow(0 26px 40px rgba(0, 0, 0, .7)); }
+.ig.hero-ig .word { margin-top: 38px; }
+.ig.hero-ig .word b { font-size: 76px; letter-spacing: .08em; padding-left: .08em; }
+.ig.hero-ig .word small { margin-top: 16px; font-size: 26px; letter-spacing: .7em; padding-left: .7em; }
+.ig.hero-ig .claim { margin-top: 46px; font-size: 40px; font-weight: 700; line-height: 1.25; }
+.ig.hero-ig .claim span { color: var(--sky); }
+.ig.hero-ig .row3 { display: flex; justify-content: center; gap: 14px; padding: 0 80px 76px; }
+.ig.hero-ig .row3 span { padding: 14px 24px; border-radius: 99px; background: rgba(10, 14, 20, .6); border: 1.5px solid rgba(143, 211, 255, .3); font-size: 21px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #e3ecf7; }
+/* kontakt objava */
+.ig .call { margin-top: 54px; padding: 46px 46px 44px; border-radius: 34px; background: linear-gradient(120deg, #1546b8 0%, var(--blue2) 60%, #5aa8ff 100%); box-shadow: 0 40px 80px -40px rgba(29, 90, 214, .9); }
+.ig .call .k { font-size: 20px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: #dcebff; }
+.ig .call .tel { display: flex; align-items: center; gap: 18px; margin-top: 14px; font-size: 70px; font-weight: 800; white-space: nowrap; }
+.ig .call .tel svg { width: 58px; height: 58px; stroke-width: 2; }
+.ig .call .apps { display: flex; gap: 12px; margin-top: 26px; }
+.ig .call .apps span { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px 12px 16px; border-radius: 99px; background: rgba(255, 255, 255, .16); font-size: 24px; font-weight: 700; }
+.ig .call .apps svg { width: 30px; height: 30px; }
+.ig .igline { display: flex; align-items: center; gap: 16px; margin-top: 22px; padding: 30px 36px; border-radius: 26px; background: linear-gradient(170deg, #182131, #111824); border: 1.5px solid rgba(143, 211, 255, .13); font-size: 36px; font-weight: 700; }
+.ig .igline svg { width: 44px; height: 44px; color: #ff8db5; }
+
+/* ============ kartica vjernosti (za kasnije) ============ */
+.lf { display: grid; grid-template-columns: 230px 1fr; gap: 50px; align-items: center; padding: 0 90px; }
+.lf .bg { background: radial-gradient(70% 90% at 30% 50%, #16243c 0%, #0d1522 55%, #080b11 100%); }
+.lf img { width: 230px; }
+.lf .k { font-size: 16px; font-weight: 700; letter-spacing: .4em; text-transform: uppercase; color: var(--sky); }
+.lf .t { margin-top: 16px; font-size: 50px; font-weight: 800; line-height: 1.05; text-transform: uppercase; }
+.lf .s { margin-top: 18px; font-size: 19px; color: var(--soft); font-weight: 500; line-height: 1.45; }
+.lb { padding: 70px 76px 0; color: var(--ink) !important; background: #fff !important; }
 .lb .top { display: flex; justify-content: space-between; align-items: flex-end; }
-.lb .top .title { font-size: 40px; }
-.lb .top .title span { color: var(--blue); }
+.lb .top b { font-size: 38px; font-weight: 800; text-transform: uppercase; }
+.lb .top b span { color: var(--blue); }
 .lb .top small { font-size: 15px; font-weight: 600; color: var(--mut); }
 .stamps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin-top: 44px; }
 .stamp { aspect-ratio: 1; border-radius: 50%; border: 2.5px dashed #c3cfde; display: grid; place-items: center; font-weight: 700; font-size: 22px; color: #c3cfde; }
-.stamp.free { border: 0; background: linear-gradient(160deg, var(--sky), var(--blue2) 45%, var(--blue)); color: #fff; font-size: 15px; letter-spacing: .12em; flex-direction: column; box-shadow: 0 10px 22px -10px rgba(29, 90, 214, .7); }
+.stamp.free { border: 0; background: linear-gradient(160deg, var(--sky), var(--blue2) 45%, var(--blue)); color: #fff; font-size: 15px; letter-spacing: .12em; align-content: center; }
 .stamp.free b { display: block; font-size: 28px; letter-spacing: 0; line-height: 1; }
 .lb .name { display: flex; gap: 16px; align-items: flex-end; margin-top: 44px; font-size: 17px; font-weight: 600; color: #5d6876; }
 .lb .name i { flex: 1; border-bottom: 2px solid #dfe5ee; height: 22px; }
-.lb .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
-
-/* ---------------- cjenovnik za zid 70x100 cm (1400x2000, 2 px = 1 mm) ---------------- */
-.ban { width: 1400px; height: 2000px; padding: 90px 110px 70px; display: flex; flex-direction: column; }
-.ban .head { display: flex; align-items: center; gap: 44px; }
-.ban .head .mono { width: 190px; }
-.ban .head .title { font-size: 86px; }
-.ban .head .kick { margin-top: 18px; font-size: 26px; letter-spacing: .62em; }
-.ban .lead { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 24px; color: #c9d4e3; font-weight: 500; letter-spacing: .04em; }
-.ban .lead b { color: #fff; font-weight: 700; }
-.sec { margin-top: 36px; }
-.sec h2 { display: flex; align-items: center; gap: 22px; font-weight: 800; font-size: 44px; color: var(--sky); letter-spacing: .12em; text-transform: uppercase; }
-.sec h2 i { width: 54px; height: 54px; border-radius: 16px; background: rgba(59, 130, 240, .14); border: 1px solid rgba(143, 211, 255, .3); display: grid; place-items: center; color: var(--sky); }
-.sec h2 i svg { width: 30px; height: 30px; }
-.sec h2 small { margin-left: auto; font-size: 20px; font-weight: 600; letter-spacing: .2em; color: var(--mut); }
-.rows { list-style: none; margin-top: 18px; display: grid; gap: 0; }
-.rows li { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; font-size: 42px; font-weight: 700; }
-.rows li em { flex: 1; border-bottom: 3px dotted rgba(143, 211, 255, .45); transform: translateY(-11px); }
-.rows li span { font-weight: 500; font-size: 24px; color: #a9b7c9; margin-left: 6px; }
-.rows li b { font-weight: 800; font-size: 56px; color: #fff; }
-.rows li b .km { font-size: 24px; }
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 70px; }
-.pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 28px; }
-.pkc { position: relative; padding: 40px 34px 36px; border-radius: 30px; background: linear-gradient(170deg, #1b2433, #121822); border: 1px solid rgba(143, 211, 255, .16); overflow: hidden; }
-.pkc::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--tier); }
-.pkc .tn { font-size: 20px; font-weight: 700; letter-spacing: .38em; text-transform: uppercase; color: var(--tierc); }
-.pkc .tt { margin-top: 12px; font-size: 44px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
-.pkc .tp { margin-top: 22px; font-size: 84px; font-weight: 800; line-height: 1; }
-.pkc .tp .km { font-size: 28px; }
-.pkc .td { margin-top: 14px; font-size: 22px; color: #a9b7c9; font-weight: 500; line-height: 1.45; }
-.pkc.gold { background: linear-gradient(170deg, #22304a, #141c2a); border-color: rgba(143, 211, 255, .4); box-shadow: 0 30px 60px -30px rgba(29, 90, 214, .7); }
-.pkc .star { position: absolute; right: 26px; top: 30px; padding: 7px 14px; border-radius: 99px; background: var(--blue2); font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.ban .foot { margin-top: auto; flex: none; display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: center; padding: 32px 46px; border-radius: 34px; background: linear-gradient(120deg, var(--blue) 0%, var(--blue2) 55%, #5aa8ff 100%); }
-.ban .foot .t { font-size: 46px; font-weight: 800; letter-spacing: .02em; line-height: 1.1; }
-.ban .foot .s { margin-top: 10px; font-size: 24px; font-weight: 500; color: #e6f1ff; }
-.ban .foot .dots { display: flex; gap: 14px; margin-top: 22px; }
-.ban .foot .dots i { width: 40px; height: 40px; border-radius: 50%; border: 2.5px dashed rgba(255, 255, 255, .7); }
-.ban .foot .dots i.g { border: 0; background: #fff; }
-.ban .foot .q { width: 190px; height: 190px; padding: 18px; border-radius: 26px; background: #fff; }
-.ban .foot .q img { width: 100%; height: 100%; display: block; }
-.ban .contact { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; font-size: 30px; color: #c9d4e3; font-weight: 700; letter-spacing: .02em; }
-.ban .contact .ph { display: inline-flex; align-items: center; gap: 12px; color: #fff; }
-.ban .contact svg { width: 32px; height: 32px; color: var(--sky); }
-
-/* ---------------- Instagram 1080x1350 ---------------- */
-.ig { width: 1080px; height: 1350px; padding: 84px 84px 70px; display: flex; flex-direction: column; }
-.ig .wm { position: absolute; right: -150px; bottom: -120px; width: 640px; opacity: .035; pointer-events: none; }
-.ig .body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-.ig .top { display: flex; justify-content: space-between; align-items: center; }
-.ig .top .mono { width: 92px; }
-.ig .top .tag { padding: 12px 22px; border-radius: 99px; border: 1px solid rgba(143, 211, 255, .35); font-size: 19px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--sky); }
-.ig h1 { margin-top: 0; font-size: 108px; font-weight: 800; line-height: .98; text-transform: uppercase; letter-spacing: .01em; }
-.ig h1 span { color: var(--blue2); }
-.ig .sub { margin-top: 22px; font-size: 27px; color: #c9d4e3; font-weight: 500; line-height: 1.45; max-width: 30ch; }
-.ig .rows { margin-top: 44px; }
-.ig .rows li { font-size: 42px; padding: 26px 0; }
-.ig .rows li b { font-size: 56px; }
-.ig .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid var(--line); font-size: 22px; font-weight: 600; color: var(--mut); letter-spacing: .06em; }
-.ig .bottom b { color: #fff; }
-.ig .pk { grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
-.ig .pkc { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 40px 40px 40px 46px; border-radius: 28px; }
-.ig .pkc::before { left: 0; top: 0; bottom: 0; right: auto; width: 7px; height: auto; }
-.ig .pkc .tt { margin-top: 6px; font-size: 40px; }
-.ig .pkc .tp { margin-top: 0; font-size: 70px; }
-.ig .pkc .star { position: static; display: inline-block; margin-left: 14px; vertical-align: middle; font-size: 13px; padding: 6px 12px; }
-.ig .big { margin-top: 56px; display: grid; gap: 22px; }
-.ig .bigc { padding: 52px 46px; border-radius: 28px; background: linear-gradient(170deg, #1b2433, #121822); border: 1px solid rgba(143, 211, 255, .18); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; }
-.ig .bigc b.n { display: block; font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; }
-.ig .bigc small { display: block; margin-top: 10px; font-size: 22px; color: var(--mut); font-weight: 500; }
-.ig .bigc .p { font-size: 84px; font-weight: 800; line-height: 1; }
-.ig .bigc .p .km { font-size: 30px; }
-.ig .bigc .p small { display: block; margin: 0 0 8px; text-align: right; font-size: 18px; font-weight: 700; letter-spacing: .2em; color: var(--sky); }
-.ig .stamps { gap: 22px; margin-top: 70px; }
-.ig .stamp { border-color: rgba(143, 211, 255, .45); color: rgba(143, 211, 255, .6); font-size: 30px; }
-.ig .stamp.free { font-size: 18px; }
-.ig .stamp.free b { font-size: 38px; }
-.ig .steps { list-style: none; margin-top: 70px; display: grid; gap: 30px; counter-reset: s; }
-.ig .steps li { display: flex; gap: 24px; align-items: center; font-size: 32px; font-weight: 600; }
-.ig .steps li::before { counter-increment: s; content: counter(s); width: 52px; height: 52px; flex: none; border-radius: 15px; display: grid; place-items: center; background: rgba(59, 130, 240, .16); border: 1px solid rgba(143, 211, 255, .3); color: var(--sky); font-weight: 800; font-size: 24px; }
+.lb::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, #163f9e, var(--blue2) 55%, var(--sky)); }
 </style></head>
 <body>
 <div id="root"></div>
 <script>
-// ---- podaci (cijene od klijenta; kontakt i link su PRIVREMENI) ----
-const KONTAKT = { tel: '+387 62 568 565', ig: '@ms_wash_detailing', web: 'Online cjenovnik' };
-const PRAONICA = [['Malo auto', 'kompletno pranje', 15], ['SUV', 'kompletno pranje', 20], ['Vanjsko pranje', '', 10], ['Usisavanje', '', 10]];
-const DETALJNO = [['Detaljno pranje eksterijera', 50], ['Detaljno pranje enterijera', 150]];
-const PAKETI = [
-  ['bronze', 'Bronze', 500, 'Osnovna njega vozila', 'linear-gradient(90deg,#b8794a,#e0a57a)', '#e0a57a'],
-  ['silver', 'Silver', 700, 'Napredna njega vozila', 'linear-gradient(90deg,#9aa6b6,#e6edf5)', '#d5dde8'],
-  ['gold', 'Gold', 1300, 'Kompletna njega vozila', 'linear-gradient(90deg,#c99a2e,#f3d27a)', '#f3d27a']
-];
+// ---- podaci (cijene od klijenta) ----
+const KONTAKT = { tel: '+387 62 568 565', ig: '@ms_wash_detailing' };
+const PRAONICA = [['car', 'Malo auto', 'Kompletno pranje', 15], ['suv', 'SUV', 'Kompletno pranje', 20], ['spray', 'Vanjsko pranje', 'Karoserija i felge', 10], ['vac', 'Usisavanje', 'Unutrašnjost vozila', 10]];
+const DETALJNO = [['spark', 'Eksterijer', 'Vanjski dio vozila', 50], ['seat', 'Enterijer', 'Unutrašnjost vozila', 150]];
+const PAKETI = [['gold', 'Gold', 'Kompletna njega vozila', 1300], ['silver', 'Silver', 'Napredna njega vozila', 700], ['bronze', 'Bronze', 'Osnovna njega vozila', 500]];
 
 const ic = {
   tel: '<path d="M6.5 3.5l3 3-2 2.5a12 12 0 0 0 7.5 7.5l2.5-2 3 3-2 2.5C11 20 4 13 4 5.5z"/>',
-  pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
-  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   ig: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>',
-  drop: '<path d="M12 3c3 4 6 7.2 6 11a6 6 0 0 1-12 0c0-3.8 3-7 6-11z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.4 2.4"/>',
+  wa: '<path d="M4 20l1.2-4A8 8 0 1 1 8 18.8z"/><path d="M9.2 8.4c.2-.5.7-.5.9 0l.5 1.1c.1.3 0 .5-.2.7l-.3.4c.5 1 1.3 1.8 2.3 2.3l.4-.3c.2-.2.4-.3.7-.2l1.1.5c.5.2.5.7 0 .9-.7.4-1.5.5-2.2.1a7.4 7.4 0 0 1-3.3-3.3c-.4-.7-.3-1.5.1-2.2z"/>',
+  vb: '<path d="M12 3c4.9 0 8 2.6 8 7.4 0 4.6-3 7.2-7.6 7.2-.8 0-1.6-.1-2.3-.3L7 19.5V16.6C4.9 15.4 4 13.3 4 10.4 4 5.6 7.1 3 12 3z"/><path d="M12.5 7.5a3 3 0 0 1 3 3M12.5 5.5a5 5 0 0 1 5 5"/>',
+  car: '<path d="M4 16v-3l2-5h12l2 5v3"/><path d="M3 16h18v2.5H3z"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/><path d="M6.5 12h11"/>',
+  suv: '<path d="M3 16v-4l2-5h11l3 4h2v5"/><path d="M2.5 16h19v2.5h-19z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/><path d="M5 11h14M10 7v4"/>',
+  spray: '<path d="M8 10h6v11H8z"/><path d="M9 10V7h4v3M13 7h3l2-2M17 8.5h3M17 11l2.5 1M17 6l2.5-1.5"/>',
+  vac: '<path d="M5 20h9a3 3 0 0 0 0-6H9"/><path d="M9 14V5a2 2 0 0 1 4 0v3"/><circle cx="17" cy="17" r="3"/><path d="M3 20h2"/>',
   spark: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>',
-  crown: '<path d="M4 18h16l1-10-5 4-4-6-4 6-5-4z"/>',
-  chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>'
+  seat: '<path d="M8 4h5a2 2 0 0 1 2 2v7H9z"/><path d="M6 13h12l-1 4H7z"/><path d="M8 17l-1 4M16 17l1 4"/>'
 };
-const svg = (k) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ic[k] + '</svg>';
+const svg = (k) => '<svg viewBox="0 0 24 24">' + ic[k] + '</svg>';
 const km = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '<span class="km">KM</span>';
-const arcs = (list) => list.map(([l, t, s]) => `<i class="arc" style="left:${l}px;top:${t}px;width:${s}px;height:${s}px"></i>`).join('');
-const rows = (list) => '<ul class="rows">' + list.map(([n, d, p]) => `<li>${n}${d ? `<span>${d}</span>` : ''}<em></em><b>${km(p)}</b></li>`).join('') + '</ul>';
-const pkg = (p, star) => `<div class="pkc ${p[0]}" style="--tier:${p[4]};--tierc:${p[5]}"><div><p class="tn">Paket${p[0] === 'gold' && star ? '<span class="star">Najbolji izbor</span>' : ''}</p><p class="tt">${p[1]}</p>${star === 'long' ? `<p class="td">${p[3]}</p>` : ''}</div><p class="tp">${km(p[2])}</p></div>`;
+const word = (a, b) => `<div class="word"><b>${a}</b><small>${b}</small></div>`;
+const tile = ([i, n, d, p]) => `<div class="tile"><span class="nm"><b>${n}</b><small>${d}</small></span><span class="pr">${km(p)}</span></div>`;
+const item = ([i, n, d, p]) => `<li><span class="ic">${svg(i)}</span><span class="nm"><b>${n}</b><small>${d}</small></span><span class="pr">${km(p)}</span></li>`;
+const pkg = ([k, n, d, p], inline) => `<div class="pkc ${k}" style="--m:var(--${k})"><div><p class="t"><span class="metal">${n}</span>${k === 'gold' ? '<span class="badge">Najbolji izbor</span>' : ''}</p><p class="d">${d}</p></div><p class="p">${km(p)}</p></div>`;
+const igTop = (tag) => `<div class="top"><div class="brand"><img src="mono-dark.svg">${word('M&amp;S Car Wash', '&amp; Detailing')}</div><span class="tag">${tag}</span></div>`;
+const igBottom = (left) => `<p class="bottom"><span>${left}</span><span>${svg('ig')}<b>${KONTAKT.ig}</b></span></p>`;
+const beads = (cls, w, h, o) => `<canvas class="beads ${cls}" data-w="${w}" data-h="${h}" data-o='${JSON.stringify(o)}' style="width:${w}px;height:${h}px"></canvas>`;
 
 const P = {
-  'kartica-prednja': () => `<div class="page card dark cf">${arcs([[-260, -330, 760], [520, 300, 620]])}<i class="glow"></i><img class="mono" src="mono-dark.svg"><p class="title">Car Wash</p><p class="kick">&amp; Detailing</p><p class="tagl">Pranje · Detailing · Paketi njege</p><i class="bar"></i></div>`,
-  'kartica-zadnja': () => `<div class="page card light cb"><div><div class="name"><img src="mono-light.svg"><div><b>M&amp;S CAR WASH</b><small>&amp; DETAILING</small></div></div>
-    <p class="big">${svg('tel')}<span>${KONTAKT.tel}</span></p>
-    <ul><li>${svg('chat')}Pozovite ili pišite na Viber i WhatsApp</li><li>${svg('ig')}${KONTAKT.ig}</li></ul></div>
-    <div class="qrbox"><div class="q"><img src="qr.svg"></div><p>Skeniraj<br><span>cjenovnik i upit</span></p></div><i class="bar"></i></div>`,
-  'vjernost-prednja': () => `<div class="page card dark lf">${arcs([[-200, -300, 700], [600, 260, 600]])}<img class="mono" src="mono-dark.svg"><div><p class="kick">Kartica vjernosti</p><p class="title">Svako 6.<br>pranje gratis</p><p class="sub">Za svako pranje dobijate pečat.<br>Pet pečata i šesto je na nas.</p></div></div>`,
-  'vjernost-zadnja': () => `<div class="page card light lb"><div class="top"><p class="title">Šesto pranje <span>gratis</span></p><small>M&amp;S Car Wash</small></div>
+  'kartica-prednja': () => `<div class="page card cf"><i class="bg"></i>${beads('', 910, 610, { seed: 7, n: 620, rmax: 24, fade: 'edge' })}<i class="halo"></i>
+    <img class="logo" src="mono-dark.svg">${word('M&amp;S Car Wash', '&amp; Detailing')}<i class="rule"></i><p class="tagl">Pranje · Detailing · Njega</p></div>`,
+  'kartica-zadnja': () => `<div class="page card cb"><i class="bg"></i>${beads('soft', 910, 610, { seed: 21, n: 380, rmax: 20, fade: 'none' })}<div>
+    <div class="head"><img src="mono-dark.svg">${word('M&amp;S Car Wash', '&amp; Detailing')}</div>
+    <p class="lbl">Termini i informacije</p><p class="tel">${KONTAKT.tel}</p>
+    <p class="apps"><span>${svg('wa')}WhatsApp</span><span>${svg('vb')}Viber</span></p>
+    <p class="igh">${svg('ig')}${KONTAKT.ig}</p></div>
+    <div class="qr"><div class="q"><img src="qr.svg"></div><p>Cjenovnik<span>skenirajte kamerom</span></p></div></div>`,
+  'cjenovnik-zid': () => `<div class="page ban"><i class="bg"></i>
+    <div class="hero"><i class="hbg"></i>${beads('', 1400, 430, { seed: 3, n: 1300, rmax: 40, fade: 'none' })}<i class="shade"></i><img class="logo" src="mono-dark.svg">${word('M&amp;S Car Wash', '&amp; Detailing')}</div>
+    <p class="intro"><i></i>Cjenovnik usluga<i></i></p>
+    <section class="bs"><h2>Auto <span>praonica</span></h2><div class="tiles">${PRAONICA.map(tile).join('')}</div></section>
+    <section class="bs"><h2>Detaljno <span>pranje</span></h2><div class="tiles">${DETALJNO.map(tile).join('')}</div></section>
+    <section class="bs"><h2>Paketi <span>njege</span></h2><div class="pks">${PAKETI.map((p) => pkg(p)).join('')}</div><p class="note">Pitajte nas šta tačno uključuje svaki paket.</p></section>
+    <div class="foot"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte kamerom</p><p class="t">Online cjenovnik i upit za termin</p>
+      <p class="tel">${svg('tel')}${KONTAKT.tel}</p><p class="sm"><span>${svg('wa')}WhatsApp</span><span>${svg('vb')}Viber</span><span>${svg('ig')}${KONTAKT.ig}</span></p></div></div></div>`,
+  'ig-1-uvod': () => `<div class="page ig hero-ig"><i class="bg"></i>${beads('', 1080, 1350, { seed: 11, n: 2600, rmax: 40, fade: 'none' })}<i class="shade"></i>
+    <div class="center"><img class="logo" src="mono-dark.svg">${word('M&amp;S Car Wash', '&amp; Detailing')}<p class="claim">Vaš auto,<br><span>sjajan kao nov.</span></p></div>
+    <p class="row3"><span>Pranje</span><span>Detailing</span><span>Paketi njege</span></p></div>`,
+  'ig-2-praonica': () => `<div class="page ig"><i class="bg"></i>${beads('', 1080, 1350, { seed: 5, n: 1400, rmax: 30, fade: 'none' })}${igTop('Cjenovnik')}
+    <div class="body"><h1>Auto<span>praonica</span></h1><p class="sub">Ručno pranje, brzo i pažljivo.</p><ul class="list">${PRAONICA.map(item).join('')}</ul></div>${igBottom('Cijene u KM')}</div>`,
+  'ig-3-detaljno': () => `<div class="page ig"><i class="bg"></i>${beads('', 1080, 1350, { seed: 9, n: 1400, rmax: 30, fade: 'none' })}${igTop('Detailing')}
+    <div class="body"><h1>Detaljno<span>pranje</span></h1><p class="sub">Svaki detalj, iznutra i spolja.</p><ul class="list big">${DETALJNO.map(item).join('')}</ul></div>${igBottom('Cijene u KM')}</div>`,
+  'ig-4-paketi': () => `<div class="page ig"><i class="bg"></i>${beads('', 1080, 1350, { seed: 13, n: 1400, rmax: 30, fade: 'none' })}${igTop('Detailing studio')}
+    <div class="body"><h1>Paketi<span>njege</span></h1><p class="sub">Tri nivoa njege za vaše vozilo.</p><div class="pks">${PAKETI.map((p) => pkg(p, true)).join('')}</div></div>${igBottom('Pitajte šta uključuje paket')}</div>`,
+  'ig-5-kontakt': () => `<div class="page ig"><i class="bg"></i>${beads('', 1080, 1350, { seed: 17, n: 1400, rmax: 30, fade: 'none' })}${igTop('Termini')}
+    <div class="body"><h1>Zakažite<span>termin</span></h1><p class="sub">Pozovite ili pošaljite poruku na WhatsApp ili Viber.</p>
+    <div class="call"><p class="k">Pozovite ili pišite</p><p class="tel">${svg('tel')}${KONTAKT.tel}</p><p class="apps"><span>${svg('wa')}WhatsApp</span><span>${svg('vb')}Viber</span></p></div>
+    <p class="igline">${svg('ig')}${KONTAKT.ig}</p></div>${igBottom('M&amp;S <b>Car Wash</b> &amp; Detailing')}</div>`,
+  'vjernost-prednja': () => `<div class="page card lf"><i class="bg"></i><img src="mono-dark.svg"><div><p class="k">Kartica vjernosti</p><p class="t">Svako 6.<br>pranje gratis</p><p class="s">Za svako pranje dobijate pečat.<br>Pet pečata i šesto je na nas.</p></div></div>`,
+  'vjernost-zadnja': () => `<div class="page card lb"><div class="top"><b>Šesto pranje <span>gratis</span></b><small>M&amp;S Car Wash</small></div>
     <div class="stamps">${[1, 2, 3, 4, 5].map((n) => `<div class="stamp">${n}</div>`).join('')}<div class="stamp free"><b>6.</b>GRATIS</div></div>
-    <p class="name">Ime<i></i>Tel.<i></i></p><i class="bar"></i></div>`,
-  'cjenovnik-zid': () => `<div class="page ban dark">${arcs([[-500, -400, 1300], [700, 1300, 1400]])}
-    <div class="head"><img class="mono" src="mono-dark.svg"><div><p class="title">M&amp;S Car Wash</p><p class="kick">&amp; Detailing</p></div></div>
-    <p class="lead"><span>Cjenovnik usluga</span><span><b>Ručno pranje</b> · detailing · paketi njege</span></p>
-    <div class="sec"><h2><i>${svg('drop')}</i>Auto praonica</h2>${rows(PRAONICA)}</div>
-    <div class="sec"><h2><i>${svg('spark')}</i>Detaljno pranje</h2>${rows(DETALJNO.map(([n, p]) => [n, '', p]))}</div>
-    <div class="sec"><h2><i>${svg('crown')}</i>Detailing studio<small>Paketi njege</small></h2><div class="pk">${PAKETI.map((p) => pkg(p, 'long')).join('')}</div></div>
-    <div class="foot"><div><p class="t">Svako 6. pranje je gratis</p><p class="s">Pitajte za karticu vjernosti. Skenirajte QR za online cjenovnik.</p><p class="dots">${'<i></i>'.repeat(5)}<i class="g"></i></p></div><div class="q"><img src="qr.svg"></div></div>
-    <p class="contact"><span class="ph">${svg('tel')}${KONTAKT.tel}</span><span>Viber · WhatsApp</span><span class="ph">${svg('ig')}${KONTAKT.ig}</span></p></div>`,
-  'ig-1-praonica': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Cjenovnik</span></div>
-    <div class="body"><h1>Auto<br><span>praonica</span></h1><p class="sub">Ručno pranje, brzo i pažljivo. Bez čekanja, uz kafu.</p>${rows(PRAONICA)}
-    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`,
-  'ig-2-paketi': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Detailing studio</span></div>
-    <div class="body"><h1>Paketi<br><span>njege</span></h1><p class="sub">Tri nivoa njege vašeg vozila, od osvježenja do kompletnog tretmana.</p>
-    <div class="pk">${PAKETI.slice().reverse().map((p) => pkg(p, 'short')).join('')}</div>
-    </div><p class="bottom"><span>Pitajte nas šta uključuje svaki paket</span><span>${KONTAKT.ig}</span></p></div>`,
-  'ig-3-detaljno': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Detailing</span></div>
-    <div class="body"><h1>Detaljno<br><span>pranje</span></h1><p class="sub">Kad običan šampon nije dovoljan. Svaki detalj, iznutra i spolja.</p>
-    <div class="big"><div class="bigc"><div><b class="n">Eksterijer</b><small>Detaljno pranje vanjskog dijela</small></div><p class="p">${km(50)}</p></div>
-    <div class="bigc"><div><b class="n">Enterijer</b><small>Detaljno pranje unutrašnjosti</small></div><p class="p">${km(150)}</p></div></div>
-    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`,
-  'ig-4-vjernost': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Kartica vjernosti</span></div>
-    <div class="body"><h1>Svako 6.<br><span>pranje gratis</span></h1>
-    <div class="stamps">${[1, 2, 3, 4, 5].map((n) => `<div class="stamp">${n}</div>`).join('')}<div class="stamp free"><b>6.</b>GRATIS</div></div>
-    <ol class="steps"><li>Uzmite karticu na prvom pranju</li><li>Za svako pranje dobijate pečat</li><li>Pet pečata i šesto pranje je na nas</li></ol>
-    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`
+    <p class="name">Ime<i></i>Tel.<i></i></p></div>`
 };
+
+// kapljice vode na lakiranoj površini (kao nakon zaštitnog premaza)
+function rnd(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+function drawBeads(c) {
+  const w = +c.dataset.w, h = +c.dataset.h, o = JSON.parse(c.dataset.o), S = 4;
+  c.width = w * S; c.height = h * S;
+  const x = c.getContext('2d'); x.scale(S, S);
+  const r = rnd(o.seed), placed = [];
+  // odsjaj na laku: široka dijagonalna traka
+  const g = x.createLinearGradient(0, 0, w, h);
+  g.addColorStop(0, 'rgba(90,150,255,0)'); g.addColorStop(.42, 'rgba(90,150,255,.10)'); g.addColorStop(.5, 'rgba(160,205,255,.16)'); g.addColorStop(.58, 'rgba(90,150,255,.08)'); g.addColorStop(1, 'rgba(90,150,255,0)');
+  x.fillStyle = g; x.fillRect(0, 0, w, h);
+  for (let t = 0; t < o.n * 6 && placed.length < o.n; t++) {
+    const k = Math.pow(r(), 2.6), R = 1.6 + k * o.rmax;
+    const cx = r() * w, cy = r() * h;
+    if (o.fade === 'edge') { const dx = (cx - w / 2) / (w / 2), dy = (cy - h * .48) / (h / 2); if (Math.hypot(dx * .95, dy * .8) < .66 + r() * .3) continue; }
+    if (placed.some((p) => Math.hypot(p[0] - cx, p[1] - cy) < p[2] + R + 1.5)) continue;
+    placed.push([cx, cy, R]);
+  }
+  for (const [cx, cy, R] of placed) {
+    const ry = R * (0.86 + 0.1 * Math.sin(cx));
+    // sjena ispod kapi
+    let s = x.createRadialGradient(cx + R * .18, cy + R * .3, R * .4, cx + R * .18, cy + R * .3, R * 1.25);
+    s.addColorStop(0, 'rgba(0,0,0,.42)'); s.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = s; x.beginPath(); x.ellipse(cx + R * .18, cy + R * .3, R * 1.25, ry * 1.25, 0, 0, 7); x.fill();
+    // tijelo kapi: tamniji rub, svjetlija sredina pri dnu (prelamanje)
+    s = x.createRadialGradient(cx - R * .1, cy + R * .35, R * .1, cx, cy, R);
+    s.addColorStop(0, 'rgba(150,200,255,.34)'); s.addColorStop(.55, 'rgba(70,120,210,.14)'); s.addColorStop(.88, 'rgba(5,10,20,.35)'); s.addColorStop(1, 'rgba(160,210,255,.22)');
+    x.fillStyle = s; x.beginPath(); x.ellipse(cx, cy, R, ry, 0, 0, 7); x.fill();
+    // svijetli luk na donjem rubu
+    x.strokeStyle = 'rgba(170,215,255,.35)'; x.lineWidth = Math.max(.5, R * .07);
+    x.beginPath(); x.ellipse(cx, cy, R * .82, ry * .82, 0, .35, 2.6); x.stroke();
+    // odsjaj svjetla gore lijevo
+    s = x.createRadialGradient(cx - R * .38, cy - R * .4, 0, cx - R * .38, cy - R * .4, R * .32);
+    s.addColorStop(0, 'rgba(255,255,255,.95)'); s.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = s; x.beginPath(); x.ellipse(cx - R * .38, cy - R * .4, R * .32, R * .24, -.6, 0, 7); x.fill();
+  }
+}
 const name = new URLSearchParams(location.search).get('p');
 document.getElementById('root').innerHTML = P[name]();
+document.querySelectorAll('canvas.beads').forEach(drawBeads);
 </script>
 </body></html>
