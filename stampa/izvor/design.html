@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="bs"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: M; font-weight: 400; src: url(f/montserrat-latin-ext-400-normal.woff2); unicode-range: U+0100-024F; }
+@font-face { font-family: M; font-weight: 400; src: url(f/montserrat-latin-400-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: M; font-weight: 500; src: url(f/montserrat-latin-ext-500-normal.woff2); unicode-range: U+0100-024F; }
+@font-face { font-family: M; font-weight: 500; src: url(f/montserrat-latin-500-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: M; font-weight: 600; src: url(f/montserrat-latin-ext-600-normal.woff2); unicode-range: U+0100-024F; }
+@font-face { font-family: M; font-weight: 600; src: url(f/montserrat-latin-600-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: M; font-weight: 700; src: url(f/montserrat-latin-ext-700-normal.woff2); unicode-range: U+0100-024F; }
+@font-face { font-family: M; font-weight: 700; src: url(f/montserrat-latin-700-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-ext-800-normal.woff2); unicode-range: U+0100-024F; }
+@font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-800-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+:root { --navy: #0f131a; --navy2: #161d29; --ink: #141a23; --blue: #1d5ad6; --blue2: #3b82f0; --sky: #8fd3ff; --mut: #8b97a8; --line: rgba(143, 211, 255, .18); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+@page { margin: 0; }
+html, body { background: transparent; }
+body { font-family: M, sans-serif; -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { position: relative; overflow: hidden; }
+.dark { background: radial-gradient(90% 70% at 50% 35%, #1a2230 0%, var(--navy) 62%, #0b0e14 100%); color: #fff; }
+.light { background: #fff; color: var(--ink); }
+.mono { display: block; }
+.kick { font-weight: 700; letter-spacing: .42em; text-transform: uppercase; color: var(--blue2); }
+.title { font-weight: 800; letter-spacing: .04em; text-transform: uppercase; line-height: 1; }
+/* tanki "vodeni" luk kao potpis dizajna */
+.arc { position: absolute; border-radius: 50%; border: 1px solid var(--line); pointer-events: none; }
+.km { font-weight: 600; font-size: .55em; letter-spacing: .06em; color: var(--mut); margin-left: .25em; }
+
+/* ---------------- vizit karta 85x55 + 3 mm (910x610, 10 px = 1 mm) ---------------- */
+.card { width: 910px; height: 610px; }
+.cf { display: grid; place-items: center; align-content: center; gap: 0; }
+.cf .mono { width: 210px; }
+.cf .title { margin-top: 36px; font-size: 56px; letter-spacing: .06em; }
+.cf .kick { margin-top: 16px; font-size: 21px; letter-spacing: .62em; padding-left: .62em; }
+.cf .tagl { margin-top: 26px; font-size: 15px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--mut); }
+.cf .glow { position: absolute; left: 50%; top: 36%; width: 520px; height: 420px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(59,130,240,.28), transparent); }
+.cf .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
+.cf .mono, .cf p { position: relative; }
+.cb { padding: 64px 70px 80px; display: grid; grid-template-columns: 1fr 236px; gap: 36px; align-items: center; }
+.cb .big { display: flex; align-items: center; gap: 14px; margin-top: 40px; font-size: 38px; font-weight: 800; letter-spacing: .01em; color: var(--ink); }
+.cb .big svg { width: 34px; height: 34px; color: var(--blue); }
+.cb .name { display: flex; align-items: center; gap: 18px; }
+.cb .name img { width: 64px; }
+.cb .name b { display: block; font-weight: 800; font-size: 29px; letter-spacing: .03em; }
+.cb .name small { display: block; font-weight: 700; font-size: 13px; letter-spacing: .38em; color: var(--blue); margin-top: 4px; }
+.cb ul { list-style: none; margin-top: 22px; display: grid; gap: 14px; }
+.cb li { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 500; color: #2a3340; }
+.cb li svg { width: 26px; height: 26px; flex: none; color: var(--blue); }
+.qrbox { text-align: center; }
+.qrbox .q { width: 236px; height: 236px; padding: 18px; border-radius: 24px; border: 2.5px solid var(--blue2); }
+.qrbox .q img { width: 100%; height: 100%; display: block; }
+.qrbox p { margin-top: 12px; font-size: 17px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--blue); line-height: 1.3; }
+.qrbox p span { font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--mut); }
+.cb .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
+
+/* ---------------- kartica vjernosti ---------------- */
+.lf { display: grid; grid-template-columns: 250px 1fr; gap: 50px; align-items: center; padding: 0 90px; }
+.lf .mono { width: 250px; }
+.lf .kick { font-size: 17px; letter-spacing: .4em; }
+.lf .title { margin-top: 16px; font-size: 50px; line-height: 1.05; }
+.lf p.sub { margin-top: 18px; font-size: 19px; color: #c9d4e3; font-weight: 500; line-height: 1.45; }
+.lb { padding: 64px 72px 0; }
+.lb .top { display: flex; justify-content: space-between; align-items: flex-end; }
+.lb .top .title { font-size: 40px; }
+.lb .top .title span { color: var(--blue); }
+.lb .top small { font-size: 15px; font-weight: 600; color: var(--mut); }
+.stamps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin-top: 44px; }
+.stamp { aspect-ratio: 1; border-radius: 50%; border: 2.5px dashed #c3cfde; display: grid; place-items: center; font-weight: 700; font-size: 22px; color: #c3cfde; }
+.stamp.free { border: 0; background: linear-gradient(160deg, var(--sky), var(--blue2) 45%, var(--blue)); color: #fff; font-size: 15px; letter-spacing: .12em; flex-direction: column; box-shadow: 0 10px 22px -10px rgba(29, 90, 214, .7); }
+.stamp.free b { display: block; font-size: 28px; letter-spacing: 0; line-height: 1; }
+.lb .name { display: flex; gap: 16px; align-items: flex-end; margin-top: 44px; font-size: 17px; font-weight: 600; color: #5d6876; }
+.lb .name i { flex: 1; border-bottom: 2px solid #dfe5ee; height: 22px; }
+.lb .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(90deg, var(--blue), var(--blue2) 60%, var(--sky)); }
+
+/* ---------------- cjenovnik za zid 70x100 cm (1400x2000, 2 px = 1 mm) ---------------- */
+.ban { width: 1400px; height: 2000px; padding: 90px 110px 70px; display: flex; flex-direction: column; }
+.ban .head { display: flex; align-items: center; gap: 44px; }
+.ban .head .mono { width: 190px; }
+.ban .head .title { font-size: 86px; }
+.ban .head .kick { margin-top: 18px; font-size: 26px; letter-spacing: .62em; }
+.ban .lead { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 24px; color: #c9d4e3; font-weight: 500; letter-spacing: .04em; }
+.ban .lead b { color: #fff; font-weight: 700; }
+.sec { margin-top: 36px; }
+.sec h2 { display: flex; align-items: center; gap: 22px; font-weight: 800; font-size: 44px; color: var(--sky); letter-spacing: .12em; text-transform: uppercase; }
+.sec h2 i { width: 54px; height: 54px; border-radius: 16px; background: rgba(59, 130, 240, .14); border: 1px solid rgba(143, 211, 255, .3); display: grid; place-items: center; color: var(--sky); }
+.sec h2 i svg { width: 30px; height: 30px; }
+.sec h2 small { margin-left: auto; font-size: 20px; font-weight: 600; letter-spacing: .2em; color: var(--mut); }
+.rows { list-style: none; margin-top: 18px; display: grid; gap: 0; }
+.rows li { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; font-size: 42px; font-weight: 700; }
+.rows li em { flex: 1; border-bottom: 3px dotted rgba(143, 211, 255, .45); transform: translateY(-11px); }
+.rows li span { font-weight: 500; font-size: 24px; color: #a9b7c9; margin-left: 6px; }
+.rows li b { font-weight: 800; font-size: 56px; color: #fff; }
+.rows li b .km { font-size: 24px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 70px; }
+.pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 28px; }
+.pkc { position: relative; padding: 40px 34px 36px; border-radius: 30px; background: linear-gradient(170deg, #1b2433, #121822); border: 1px solid rgba(143, 211, 255, .16); overflow: hidden; }
+.pkc::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--tier); }
+.pkc .tn { font-size: 20px; font-weight: 700; letter-spacing: .38em; text-transform: uppercase; color: var(--tierc); }
+.pkc .tt { margin-top: 12px; font-size: 44px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.pkc .tp { margin-top: 22px; font-size: 84px; font-weight: 800; line-height: 1; }
+.pkc .tp .km { font-size: 28px; }
+.pkc .td { margin-top: 14px; font-size: 22px; color: #a9b7c9; font-weight: 500; line-height: 1.45; }
+.pkc.gold { background: linear-gradient(170deg, #22304a, #141c2a); border-color: rgba(143, 211, 255, .4); box-shadow: 0 30px 60px -30px rgba(29, 90, 214, .7); }
+.pkc .star { position: absolute; right: 26px; top: 30px; padding: 7px 14px; border-radius: 99px; background: var(--blue2); font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.ban .foot { margin-top: auto; flex: none; display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: center; padding: 32px 46px; border-radius: 34px; background: linear-gradient(120deg, var(--blue) 0%, var(--blue2) 55%, #5aa8ff 100%); }
+.ban .foot .t { font-size: 46px; font-weight: 800; letter-spacing: .02em; line-height: 1.1; }
+.ban .foot .s { margin-top: 10px; font-size: 24px; font-weight: 500; color: #e6f1ff; }
+.ban .foot .dots { display: flex; gap: 14px; margin-top: 22px; }
+.ban .foot .dots i { width: 40px; height: 40px; border-radius: 50%; border: 2.5px dashed rgba(255, 255, 255, .7); }
+.ban .foot .dots i.g { border: 0; background: #fff; }
+.ban .foot .q { width: 190px; height: 190px; padding: 18px; border-radius: 26px; background: #fff; }
+.ban .foot .q img { width: 100%; height: 100%; display: block; }
+.ban .contact { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; font-size: 30px; color: #c9d4e3; font-weight: 700; letter-spacing: .02em; }
+.ban .contact .ph { display: inline-flex; align-items: center; gap: 12px; color: #fff; }
+.ban .contact svg { width: 32px; height: 32px; color: var(--sky); }
+
+/* ---------------- Instagram 1080x1350 ---------------- */
+.ig { width: 1080px; height: 1350px; padding: 84px 84px 70px; display: flex; flex-direction: column; }
+.ig .wm { position: absolute; right: -150px; bottom: -120px; width: 640px; opacity: .035; pointer-events: none; }
+.ig .body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.ig .top { display: flex; justify-content: space-between; align-items: center; }
+.ig .top .mono { width: 92px; }
+.ig .top .tag { padding: 12px 22px; border-radius: 99px; border: 1px solid rgba(143, 211, 255, .35); font-size: 19px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--sky); }
+.ig h1 { margin-top: 0; font-size: 108px; font-weight: 800; line-height: .98; text-transform: uppercase; letter-spacing: .01em; }
+.ig h1 span { color: var(--blue2); }
+.ig .sub { margin-top: 22px; font-size: 27px; color: #c9d4e3; font-weight: 500; line-height: 1.45; max-width: 30ch; }
+.ig .rows { margin-top: 44px; }
+.ig .rows li { font-size: 42px; padding: 26px 0; }
+.ig .rows li b { font-size: 56px; }
+.ig .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid var(--line); font-size: 22px; font-weight: 600; color: var(--mut); letter-spacing: .06em; }
+.ig .bottom b { color: #fff; }
+.ig .pk { grid-template-columns: 1fr; gap: 22px; margin-top: 56px; }
+.ig .pkc { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 40px 40px 40px 46px; border-radius: 28px; }
+.ig .pkc::before { left: 0; top: 0; bottom: 0; right: auto; width: 7px; height: auto; }
+.ig .pkc .tt { margin-top: 6px; font-size: 40px; }
+.ig .pkc .tp { margin-top: 0; font-size: 70px; }
+.ig .pkc .star { position: static; display: inline-block; margin-left: 14px; vertical-align: middle; font-size: 13px; padding: 6px 12px; }
+.ig .big { margin-top: 56px; display: grid; gap: 22px; }
+.ig .bigc { padding: 52px 46px; border-radius: 28px; background: linear-gradient(170deg, #1b2433, #121822); border: 1px solid rgba(143, 211, 255, .18); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; }
+.ig .bigc b.n { display: block; font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; }
+.ig .bigc small { display: block; margin-top: 10px; font-size: 22px; color: var(--mut); font-weight: 500; }
+.ig .bigc .p { font-size: 84px; font-weight: 800; line-height: 1; }
+.ig .bigc .p .km { font-size: 30px; }
+.ig .bigc .p small { display: block; margin: 0 0 8px; text-align: right; font-size: 18px; font-weight: 700; letter-spacing: .2em; color: var(--sky); }
+.ig .stamps { gap: 22px; margin-top: 70px; }
+.ig .stamp { border-color: rgba(143, 211, 255, .45); color: rgba(143, 211, 255, .6); font-size: 30px; }
+.ig .stamp.free { font-size: 18px; }
+.ig .stamp.free b { font-size: 38px; }
+.ig .steps { list-style: none; margin-top: 70px; display: grid; gap: 30px; counter-reset: s; }
+.ig .steps li { display: flex; gap: 24px; align-items: center; font-size: 32px; font-weight: 600; }
+.ig .steps li::before { counter-increment: s; content: counter(s); width: 52px; height: 52px; flex: none; border-radius: 15px; display: grid; place-items: center; background: rgba(59, 130, 240, .16); border: 1px solid rgba(143, 211, 255, .3); color: var(--sky); font-weight: 800; font-size: 24px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+// ---- podaci (cijene od klijenta; kontakt i link su PRIVREMENI) ----
+const KONTAKT = { tel: '+387 62 568 565', ig: '@ms_wash_detailing', web: 'Online cjenovnik' };
+const PRAONICA = [['Malo auto', 'kompletno pranje', 15], ['SUV', 'kompletno pranje', 20], ['Vanjsko pranje', '', 10], ['Usisavanje', '', 10]];
+const DETALJNO = [['Detaljno pranje eksterijera', 50], ['Detaljno pranje enterijera', 150]];
+const PAKETI = [
+  ['bronze', 'Bronze', 500, 'Osnovna njega vozila', 'linear-gradient(90deg,#b8794a,#e0a57a)', '#e0a57a'],
+  ['silver', 'Silver', 700, 'Napredna njega vozila', 'linear-gradient(90deg,#9aa6b6,#e6edf5)', '#d5dde8'],
+  ['gold', 'Gold', 1300, 'Kompletna njega vozila', 'linear-gradient(90deg,#c99a2e,#f3d27a)', '#f3d27a']
+];
+
+const ic = {
+  tel: '<path d="M6.5 3.5l3 3-2 2.5a12 12 0 0 0 7.5 7.5l2.5-2 3 3-2 2.5C11 20 4 13 4 5.5z"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  ig: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>',
+  drop: '<path d="M12 3c3 4 6 7.2 6 11a6 6 0 0 1-12 0c0-3.8 3-7 6-11z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.4 2.4"/>',
+  spark: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>',
+  crown: '<path d="M4 18h16l1-10-5 4-4-6-4 6-5-4z"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>'
+};
+const svg = (k) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + ic[k] + '</svg>';
+const km = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '<span class="km">KM</span>';
+const arcs = (list) => list.map(([l, t, s]) => `<i class="arc" style="left:${l}px;top:${t}px;width:${s}px;height:${s}px"></i>`).join('');
+const rows = (list) => '<ul class="rows">' + list.map(([n, d, p]) => `<li>${n}${d ? `<span>${d}</span>` : ''}<em></em><b>${km(p)}</b></li>`).join('') + '</ul>';
+const pkg = (p, star) => `<div class="pkc ${p[0]}" style="--tier:${p[4]};--tierc:${p[5]}"><div><p class="tn">Paket${p[0] === 'gold' && star ? '<span class="star">Najbolji izbor</span>' : ''}</p><p class="tt">${p[1]}</p>${star === 'long' ? `<p class="td">${p[3]}</p>` : ''}</div><p class="tp">${km(p[2])}</p></div>`;
+
+const P = {
+  'kartica-prednja': () => `<div class="page card dark cf">${arcs([[-260, -330, 760], [520, 300, 620]])}<i class="glow"></i><img class="mono" src="mono-dark.svg"><p class="title">Car Wash</p><p class="kick">&amp; Detailing</p><p class="tagl">Pranje · Detailing · Paketi njege</p><i class="bar"></i></div>`,
+  'kartica-zadnja': () => `<div class="page card light cb"><div><div class="name"><img src="mono-light.svg"><div><b>M&amp;S CAR WASH</b><small>&amp; DETAILING</small></div></div>
+    <p class="big">${svg('tel')}<span>${KONTAKT.tel}</span></p>
+    <ul><li>${svg('chat')}Pozovite ili pišite na Viber i WhatsApp</li><li>${svg('ig')}${KONTAKT.ig}</li></ul></div>
+    <div class="qrbox"><div class="q"><img src="qr.svg"></div><p>Skeniraj<br><span>cjenovnik i upit</span></p></div><i class="bar"></i></div>`,
+  'vjernost-prednja': () => `<div class="page card dark lf">${arcs([[-200, -300, 700], [600, 260, 600]])}<img class="mono" src="mono-dark.svg"><div><p class="kick">Kartica vjernosti</p><p class="title">Svako 6.<br>pranje gratis</p><p class="sub">Za svako pranje dobijate pečat.<br>Pet pečata i šesto je na nas.</p></div></div>`,
+  'vjernost-zadnja': () => `<div class="page card light lb"><div class="top"><p class="title">Šesto pranje <span>gratis</span></p><small>M&amp;S Car Wash</small></div>
+    <div class="stamps">${[1, 2, 3, 4, 5].map((n) => `<div class="stamp">${n}</div>`).join('')}<div class="stamp free"><b>6.</b>GRATIS</div></div>
+    <p class="name">Ime<i></i>Tel.<i></i></p><i class="bar"></i></div>`,
+  'cjenovnik-zid': () => `<div class="page ban dark">${arcs([[-500, -400, 1300], [700, 1300, 1400]])}
+    <div class="head"><img class="mono" src="mono-dark.svg"><div><p class="title">M&amp;S Car Wash</p><p class="kick">&amp; Detailing</p></div></div>
+    <p class="lead"><span>Cjenovnik usluga</span><span><b>Ručno pranje</b> · detailing · paketi njege</span></p>
+    <div class="sec"><h2><i>${svg('drop')}</i>Auto praonica</h2>${rows(PRAONICA)}</div>
+    <div class="sec"><h2><i>${svg('spark')}</i>Detaljno pranje</h2>${rows(DETALJNO.map(([n, p]) => [n, '', p]))}</div>
+    <div class="sec"><h2><i>${svg('crown')}</i>Detailing studio<small>Paketi njege</small></h2><div class="pk">${PAKETI.map((p) => pkg(p, 'long')).join('')}</div></div>
+    <div class="foot"><div><p class="t">Svako 6. pranje je gratis</p><p class="s">Pitajte za karticu vjernosti. Skenirajte QR za online cjenovnik.</p><p class="dots">${'<i></i>'.repeat(5)}<i class="g"></i></p></div><div class="q"><img src="qr.svg"></div></div>
+    <p class="contact"><span class="ph">${svg('tel')}${KONTAKT.tel}</span><span>Viber · WhatsApp</span><span class="ph">${svg('ig')}${KONTAKT.ig}</span></p></div>`,
+  'ig-1-praonica': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Cjenovnik</span></div>
+    <div class="body"><h1>Auto<br><span>praonica</span></h1><p class="sub">Ručno pranje, brzo i pažljivo. Bez čekanja, uz kafu.</p>${rows(PRAONICA)}
+    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`,
+  'ig-2-paketi': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Detailing studio</span></div>
+    <div class="body"><h1>Paketi<br><span>njege</span></h1><p class="sub">Tri nivoa njege vašeg vozila, od osvježenja do kompletnog tretmana.</p>
+    <div class="pk">${PAKETI.slice().reverse().map((p) => pkg(p, 'short')).join('')}</div>
+    </div><p class="bottom"><span>Pitajte nas šta uključuje svaki paket</span><span>${KONTAKT.ig}</span></p></div>`,
+  'ig-3-detaljno': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Detailing</span></div>
+    <div class="body"><h1>Detaljno<br><span>pranje</span></h1><p class="sub">Kad običan šampon nije dovoljan. Svaki detalj, iznutra i spolja.</p>
+    <div class="big"><div class="bigc"><div><b class="n">Eksterijer</b><small>Detaljno pranje vanjskog dijela</small></div><p class="p">${km(50)}</p></div>
+    <div class="bigc"><div><b class="n">Enterijer</b><small>Detaljno pranje unutrašnjosti</small></div><p class="p">${km(150)}</p></div></div>
+    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`,
+  'ig-4-vjernost': () => `<div class="page ig dark">${arcs([[-300, -300, 900], [500, 900, 900]])}<img class="wm" src="mono-dark.svg"><div class="top"><img class="mono" src="mono-dark.svg"><span class="tag">Kartica vjernosti</span></div>
+    <div class="body"><h1>Svako 6.<br><span>pranje gratis</span></h1>
+    <div class="stamps">${[1, 2, 3, 4, 5].map((n) => `<div class="stamp">${n}</div>`).join('')}<div class="stamp free"><b>6.</b>GRATIS</div></div>
+    <ol class="steps"><li>Uzmite karticu na prvom pranju</li><li>Za svako pranje dobijate pečat</li><li>Pet pečata i šesto pranje je na nas</li></ol>
+    </div><p class="bottom"><span>M&amp;S <b>Car Wash</b> &amp; Detailing</span><span>${KONTAKT.ig}</span></p></div>`
+};
+const name = new URLSearchParams(location.search).get('p');
+document.getElementById('root').innerHTML = P[name]();
+</script>
+</body></html>
