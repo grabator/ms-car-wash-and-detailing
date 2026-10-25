@@ -81,6 +81,7 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
 [data-fx='hero'] .c-sweep, [data-fx='clean'] .c-sweep, .c-ext .c-sweep { animation: csweep 6s ease-in-out 2.2s infinite; }
 @keyframes csweep { 0% { transform: translateX(-200px); } 40%, 100% { transform: translateX(1500px); } }
 [data-fx='beads'] .c-beads, [data-fx='clean'] .c-beads { opacity: 1; }
+[data-fx='foam'] .c-foam { opacity: 0.9; } [data-fx='foam'] .c-beads { opacity: 1; }
 [data-fx='dirty'] .c-dirt { opacity: 1; }
 [data-fx='dirty'] svg.car { filter: saturate(0.35) brightness(0.72) sepia(0.25); }
 [data-fx='proc'] .c-foam { opacity: var(--foam, 0); } [data-fx='proc'] .c-water { opacity: var(--water, 0); } [data-fx='proc'] .c-beads { opacity: var(--beads, 0); } [data-fx='proc'] .c-dirt { opacity: var(--dirt, 0); }
@@ -127,11 +128,13 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
 
 /* izbor vozila */
 .pick { display: grid; gap: 18px; margin-top: 24px; padding: 20px; border-radius: var(--r); border: 1px solid var(--line); background: radial-gradient(70% 80% at 70% 0%, rgba(59, 130, 240, 0.18), transparent 60%), linear-gradient(180deg, var(--card2), var(--card)); }
-.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 5px; border-radius: 16px; background: #0b111b; border: 1px solid var(--line); }
-.seg button { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; border-radius: 12px; font-weight: 700; font-size: 15px; color: var(--mut); transition: color 0.3s; }
+.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 5px; border-radius: 16px; background: #0b111b; border: 1px solid var(--line); }
+.seg button { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; border-radius: 12px; font-weight: 700; font-size: 14px; color: var(--mut); transition: color 0.3s; }
 .seg button[aria-selected='true'] { color: #fff; }
-.seg-i { position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc(50% - 5px); border-radius: 12px; background: linear-gradient(135deg, var(--blue2), var(--blue)); box-shadow: 0 10px 24px -10px rgba(59, 130, 240, 0.9); transition: transform 0.45s var(--ease); }
-.pick.is-suv .seg-i { transform: translateX(100%); }
+.seg-i { position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc((100% - 10px) / 3); border-radius: 12px; background: linear-gradient(135deg, var(--blue2), var(--blue)); box-shadow: 0 10px 24px -10px rgba(59, 130, 240, 0.9); transition: transform 0.45s var(--ease); }
+@media (max-width: 459px) { .seg button svg { display: none; } }
+.seg button { white-space: nowrap; }
+.pick.is-suv .seg-i { transform: translateX(100%); } .pick.is-van .seg-i { transform: translateX(200%); }
 .pick-car { position: relative; aspect-ratio: 1000 / 380; }
 .pc { position: absolute; inset: 0; opacity: 0; transform: translateX(-24px) scale(0.96); transition: opacity 0.5s var(--ease), transform 0.6s var(--ease); }
 .pc.on { opacity: 1; transform: none; }
@@ -181,6 +184,8 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
 .card-t b { display: block; font-size: 20px; font-weight: 800; }
 .card-t small { display: block; margin-top: 3px; color: var(--mut); font-size: 13px; }
 .card .pr { font-size: 32px; }
+.sub-h { margin-top: 30px; font-size: 13px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sky); }
+.list-x { margin-top: 12px; }
 .card-add { display: inline-flex; align-items: center; gap: 8px; margin: 10px 18px 18px; justify-self: start; padding: 8px 14px 8px 8px; border-radius: 99px; border: 1px solid var(--line2); color: var(--sky); font-size: 14px; font-weight: 700; transition: background-color 0.25s, color 0.25s; }
 .card-add svg { width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: rgba(59, 130, 240, 0.18); stroke-width: 2.4; transition: transform 0.35s var(--ease); }
 .card-add em { font-style: normal; }
@@ -219,7 +224,7 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
 .pkc::before { content: ''; position: absolute; inset: 0; background: var(--m); opacity: 0.1; pointer-events: none; }
 .pkc::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--m); }
 .pkc > * { position: relative; }
-.bronze { --m: var(--bronze); } .silver { --m: var(--silver); } .gold { --m: var(--gold); order: -1; border-color: rgba(246, 217, 138, 0.45); box-shadow: 0 30px 60px -30px rgba(246, 217, 138, 0.45); }
+.bronze { --m: var(--bronze); order: 2; } .silver { --m: var(--silver); order: 1; } .gold { --m: var(--gold); order: -1; border-color: rgba(246, 217, 138, 0.45); box-shadow: 0 30px 60px -30px rgba(246, 217, 138, 0.45); }
 .gold::before { opacity: 0.16; }
 .pk-badge { position: absolute !important; top: 4px; right: 0; padding: 7px 14px 7px 16px; border-radius: 0 0 0 14px; background: var(--m); color: #2b1d02; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 .pk-n { font-size: 30px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; background: var(--m); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -297,7 +302,8 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
   .ba { aspect-ratio: 1000 / 440; }
   .ba-after, .ba-before { left: 4%; right: 4%; bottom: 0; }
   .list { grid-template-columns: 1fr 1fr; }
-  .cards { grid-template-columns: 1fr 1fr; }
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .list-x { grid-template-columns: repeat(3, 1fr); }
   .card-art { height: 260px; }
   .pick { grid-template-columns: 0.9fr 1.3fr; grid-template-areas: "seg car" "price car"; align-items: center; padding: 30px; }
   .seg { grid-area: seg; align-self: end; } .pick-car { grid-area: car; } .pick-p { grid-area: price; align-self: start; }
@@ -307,7 +313,8 @@ main { width: min(1180px, 100% - 40px); margin: 0 auto; }
   .steps li span { grid-row: auto; margin-bottom: 6px; }
   .steps li small { font-size: 13px; }
   .pk { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
-  .gold { order: 0; transform: translateY(-14px); }
+  .bronze, .silver, .gold { order: 0; }
+  .gold { transform: translateY(-14px); }
   .why ul { grid-template-columns: repeat(3, 1fr); }
   .ask-btns { grid-template-columns: 1fr 1fr; }
   .foot-in { grid-template-columns: auto 1fr; align-items: center; }

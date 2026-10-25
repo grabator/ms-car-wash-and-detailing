@@ -76,13 +76,13 @@
   // izbor vozila: Malo auto / SUV
   var pick = $('.pick');
   if (pick) {
-    var PR = { sedan: ['Malo auto', '15'], suv: ['SUV', '20'] }, pv = $('#pick-v');
+    var PR = { sedan: ['Malo auto', '15'], suv: ['SUV', '20'], van: ['Kombi', '25'] }, pv = $('#pick-v');
     pick.querySelector('.seg').addEventListener('click', function (e) {
       var b = e.target.closest('button[data-v]');
       if (!b) return;
       var v = b.getAttribute('data-v');
       pick.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
-      pick.classList.toggle('is-suv', v === 'suv');
+      pick.classList.toggle('is-suv', v === 'suv'); pick.classList.toggle('is-van', v === 'van');
       pick.querySelectorAll('.pc').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-car') === v); });
       $('#pick-n').textContent = PR[v][0]; pv.textContent = PR[v][1];
       pv.classList.remove('bump'); void pv.offsetWidth; pv.classList.add('bump');
