@@ -19,14 +19,18 @@ Fotografije su u `assets/img/foto/` (iz odobrenog primjera dizajna). Kad stignu 
 - **Cijene i sadržaj paketa:** u `index.html` (tražite "KM"). Usluga u upitu se uzima iz `data-s` atributa iste stavke.
 - **Telefon:** `index.html` i `PHONE` u `js/app.js`.
 
-## Štampa (`stampa/`)
+## Štampa i Instagram (`stampa/`)
 
-- `kartica-prednja.pdf`, `kartica-zadnja.pdf`: vizit karta 85x55 mm + 3 mm prepust (91x61 mm). PNG verzije su oko 900 dpi.
-- `cjenovnik-zid.pdf`: cjenovnik za kancelariju, 70x100 cm. `cjenovnik-zid.png` je 7000x10000 px (oko 254 dpi).
-- `ig-*.png`: objave za Instagram (1080x1350), redom: uvod, praonica, detaljno, paketi, kontakt
-- `za-kasnije/`: kartica vjernosti (svako 6. pranje gratis), za kad akcija krene
+| Fajl | Za šta | Veličina |
+|---|---|---|
+| `kartica-prednja.pdf`, `kartica-zadnja.pdf` | vizit karta, za štampariju | 85x55 mm + 3 mm prepust (91x61 mm) |
+| `cjenovnik-zid.pdf` | poster za kancelariju | 70x100 cm (PNG 7000x10000) |
+| `naljepnica-qr.pdf` | QR naljepnica za vrata, kasu, čekaonicu | 10x10 cm + 2 mm prepust |
+| `instagram/ig-*.png` | 5 objava (karusel), redom | 2160x2700 (4:5) |
+| `instagram/story-*.png` | 2 storyja | 2160x3840 (9:16) |
+| `za-kasnije/` | kartica vjernosti (svako 6. pranje gratis) | 85x55 mm + 3 mm |
 
-Izvor dizajna je u `stampa/izvor/design.html`; nakon izmjene: `node stampa/izvor/render.cjs` (treba Playwright i Python sa Pillow).
+Izvor dizajna je `stampa/izvor/design.html` (cijene na vrhu skripte); nakon izmjene: `node stampa/izvor/render.cjs` (treba Playwright i Python sa Pillow).
 QR kod vodi na adresu iznad; ako se promijeni domena, napravite novi `qr.svg`.
 
 ## Pokretanje lokalno
