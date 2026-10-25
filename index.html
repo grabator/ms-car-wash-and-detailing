@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>M&amp;S Car Wash &amp; Detailing · Pranje i detailing</title>
-<meta name="description" content="M&amp;S Car Wash &amp; Detailing: ručno pranje, detaljno pranje eksterijera i enterijera i paketi njege. Cjenovnik i upit za termin na WhatsApp i Viber.">
-<meta name="theme-color" content="#0b0f15">
-<meta name="color-scheme" content="dark">
+<meta name="description" content="M&amp;S Car Wash &amp; Detailing: pranje od 10 KM, detaljno i dubinsko pranje, poliranje i keramička zaštita. Cjenovnik i upit za termin na WhatsApp i Viber.">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="M&amp;S Car Wash &amp; Detailing">
-<meta property="og:description" content="Ručno pranje, detailing i paketi njege. Cjenovnik i upit za termin.">
+<meta property="og:description" content="Pranje od 10 KM, detaljno pranje, poliranje i keramička zaštita. Cjenovnik i upit za termin.">
 <meta property="og:image" content="https://ms-car-wash-and-detailing.grabafaceit.workers.dev/assets/img/og.jpg">
-<link rel="preload" href="assets/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/montserrat-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/foto/hero.webp" as="image" media="(min-width: 601px)">
+<link rel="preload" href="assets/img/foto/hero-top.webp" as="image" media="(max-width: 600px)">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.className = "js";</script>
 <script type="application/ld+json">
@@ -25,8 +26,8 @@
 <body>
 <!--
   CIJENE: sve cijene su ispod u ovom fajlu (tražite "KM"). data-s je tekst usluge u poruci za upit.
-  Kontakt (telefon, Instagram) je na vrhu i na dnu stranice, i u js/app.js (PHONE).
-  Auti na stranici su nacrtani (js/car.js), nisu fotografije.
+  Kontakt (telefon, Instagram) je u ovom fajlu i u js/app.js (PHONE).
+  Fotografije su u assets/img/foto/ (iz odobrenog primjera dizajna); zamijeniti pravim slikama M&S kad stignu.
 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.5 3.5l3 3-2 2.5a12 12 0 0 0 7.5 7.5l2.5-2 3 3-2 2.5C11 20 4 13 4 5.5z"/></symbol>
@@ -55,163 +56,111 @@
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
 </svg>
 
-<header class="top">
-  <a class="brand" href="#" aria-label="M&amp;S Car Wash &amp; Detailing, na vrh">
-    <img src="assets/img/logo-dark.svg" alt="" width="34" height="37">
-    <span><b>M&amp;S Car Wash</b><small>&amp; Detailing</small></span>
-  </a>
-  <nav class="menu" aria-label="Glavni meni"><a href="#cijene">Cijene</a><a href="#usluge">Detailing</a><a href="#proces">Kako peremo</a><a href="#paketi">Paketi</a><a href="#upit">Upit</a></nav>
-  <a class="call" href="tel:+38762568565"><svg><use href="#i-tel"/></svg><span>Pozovi</span></a>
+<header class="nav">
+  <a class="logo" href="#" aria-label="M&amp;S Car Wash &amp; Detailing, na vrh"><img src="assets/img/logo-light.svg" alt="" width="36" height="39"><span><b>M&amp;S CAR WASH</b><small>&amp; Detailing</small></span></a>
+  <nav class="links" aria-label="Glavni meni"><a href="#usluge">Usluge</a><a href="#cijene">Cijene</a><a href="#paketi">Paketi</a><a href="#kontakt">Kontakt</a><a class="bk" href="#upit">Zakaži termin</a></nav>
+  <a class="callr" href="tel:+38762568565"><span>Pozovite nas</span>+387 62 568 565</a>
 </header>
 
-<main id="main">
+<main>
+  <p class="pill"><i aria-hidden="true"><svg><use href="#i-car"/></svg></i><span>Ručno pranje i detailing · cjenovnik i upit online</span></p>
   <section class="hero" aria-labelledby="hero-h">
-    <div class="hero-bg" aria-hidden="true"><canvas class="beads"></canvas><i class="wipe"></i></div>
-    <p class="pill"><span><svg><use href="#i-drop"/></svg></span>Ručno pranje · Detailing studio</p>
-    <h1 id="hero-h" class="mega"><span class="l1">Car Wash</span><span class="l2">&amp; Detailing</span></h1>
-    <ul class="tags" aria-hidden="true"><li class="t1">Pjena</li><li class="t2">Ručno pranje</li><li class="t3">Sjaj</li><li class="t4">Enterijer</li><li class="t5">Usisavanje</li></ul>
-    <div class="stage" aria-hidden="true">
-      <div class="stage-car" data-car="sedan" data-fx="hero"></div>
-      <canvas class="spray"></canvas>
-    </div>
-    <div class="hero-cards">
-      <div class="hc hc-1">
-        <p class="hc-t">Vaš auto, sjajan kao nov.</p>
-        <p class="hc-s">Pozovite ili pošaljite poruku, a termin dogovaramo odmah.</p>
-        <p class="hc-b"><a class="btn btn-p" href="tel:+38762568565"><svg><use href="#i-tel"/></svg>Pozovi</a><a class="btn btn-wa" href="https://wa.me/38762568565" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a></p>
-      </div>
-      <a class="hc hc-2" href="#cijene">
-        <span class="hc-k">Cjenovnik</span>
-        <span class="hc-row"><span>Malo auto</span><b>15<small>KM</small></b></span>
-        <span class="hc-row"><span>SUV</span><b>20<small>KM</small></b></span>
-        <span class="hc-row"><span>Kombi</span><b>25<small>KM</small></b></span>
-        <span class="hc-more">Sve cijene<svg><use href="#i-arrow"/></svg></span>
-      </a>
-    </div>
+    <h1 class="mega" id="hero-h"><span class="sr">M&amp;S </span>Car Wash<span class="sr"> &amp; Detailing</span></h1>
+    <i class="glow" aria-hidden="true"></i>
+    <ul class="tags" aria-hidden="true"><li style="left:4%;top:22%">Pjena</li><li style="left:30%;top:6%">Ručno pranje</li><li style="left:12%;top:68%">Sjaj</li><li class="dsk" style="left:47%;top:58%">Poliranje</li><li class="dsk" style="right:22%;top:4%">Enterijer</li><li class="dsk" style="right:3%;top:50%">Keramika</li></ul>
   </section>
-
-  <nav class="tabs" aria-label="Dijelovi stranice">
-    <a href="#cijene">Cijene</a><a href="#usluge">Detailing</a><a href="#efekat">Prije / poslije</a><a href="#proces">Kako peremo</a><a href="#paketi">Paketi</a><a href="#upit">Upit</a>
-  </nav>
-
-  <section class="sec rv" id="cijene" aria-labelledby="cijene-h">
-    <div class="head"><p class="k">Auto praonica</p><h2 id="cijene-h">Koliko košta pranje?</h2><p class="sub">Izaberite vozilo. Dodirnite uslugu da je dodate u upit.</p></div>
-    <div class="pick">
-      <div class="seg" role="tablist" aria-label="Vrsta vozila">
-        <button type="button" role="tab" aria-selected="true" data-v="sedan"><svg><use href="#i-car"/></svg>Malo auto</button>
-        <button type="button" role="tab" aria-selected="false" data-v="suv"><svg><use href="#i-suv"/></svg>SUV</button>
-        <button type="button" role="tab" aria-selected="false" data-v="van"><svg><use href="#i-van"/></svg>Kombi</button>
-        <i class="seg-i" aria-hidden="true"></i>
-      </div>
-      <div class="pick-car" aria-hidden="true"><div class="pc pc-sedan on" data-car="sedan" data-fx="beads"></div><div class="pc pc-suv" data-car="suv" data-fx="beads"></div><div class="pc pc-van" data-car="van" data-fx="beads"></div></div>
-      <p class="pick-p"><span class="pick-n" id="pick-n">Malo auto</span><span class="pick-v"><b id="pick-v">15</b><small>KM</small></span><span class="pick-d">Pranje, iznutra i spolja</span></p>
-    </div>
-    <ul class="list" role="list">
-      <li><button type="button" class="it v-sedan" data-s="Pranje, malo auto (15 KM)"><span class="ic"><svg><use href="#i-car"/></svg></span><span class="nm"><b>Malo auto</b><small>Pranje, iznutra i spolja</small></span><span class="pr">15<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it v-suv" data-s="Pranje, SUV (20 KM)"><span class="ic"><svg><use href="#i-suv"/></svg></span><span class="nm"><b>SUV</b><small>Veće putničko vozilo</small></span><span class="pr">20<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it v-van" data-s="Pranje, kombi (25 KM)"><span class="ic"><svg><use href="#i-van"/></svg></span><span class="nm"><b>Kombi</b><small>Pranje, iznutra i spolja</small></span><span class="pr">25<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it" data-s="Vanjsko pranje (10 KM)"><span class="ic"><svg><use href="#i-spray"/></svg></span><span class="nm"><b>Vanjsko pranje</b><small>Karoserija i felge</small></span><span class="pr">10<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it" data-s="Unutrašnje pranje (10 KM)"><span class="ic"><svg><use href="#i-vac"/></svg></span><span class="nm"><b>Unutrašnje pranje</b><small>Unutrašnjost vozila</small></span><span class="pr">10<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-    </ul>
-  </section>
+  <div class="photo">
+    <picture><source media="(max-width: 600px)" srcset="assets/img/foto/hero-top.webp"><img class="ph-bg" src="assets/img/foto/hero.webp" alt="Auto pod mlazom vode" width="1144" height="546" fetchpriority="high"></picture><i class="tint" aria-hidden="true"></i>
+    <div class="hc hc1"><div><p class="hc-t">Vaš auto zaslužuje pažnju. Mi se brinemo o svakom detalju.</p><a href="#cijene">Pogledaj cijene <svg><use href="#i-arrow"/></svg></a></div><img src="assets/img/foto/merc.webp" alt="" width="279" height="194" loading="lazy"></div>
+    <div class="hc hc2"><p>Ručno pranje, detaljno i dubinsko pranje, poliranje i keramička zaštita.</p>
+      <div class="big"><b>10<small>KM</small></b><span><strong>Cijene već od</strong>Malo auto 15 · SUV 20 · Kombi 25 KM</span></div></div>
+  </div>
 
   <section class="sec rv" id="usluge" aria-labelledby="usluge-h">
-    <div class="head"><p class="k">Detailing studio</p><h2 id="usluge-h">Detaljno pranje</h2><p class="sub">Kad obično pranje nije dovoljno: svaki detalj, iznutra i spolja.</p></div>
+    <h2 id="usluge-h">Ručno pranje i detailing: od malog auta do kombija</h2>
     <ul class="cards" role="list">
-      <li><button type="button" class="card c-ext" data-s="Vanjsko detaljno pranje (50 KM)">
-        <span class="card-art" aria-hidden="true"><span class="art-car" data-car="sedan" data-fx="beads"></span><i class="swirl"></i></span>
-        <span class="card-t"><span><b>Vanjsko detaljno</b><small>Karoserija, felge i stakla, ručno i detaljno</small></span><span class="pr">50<small>KM</small></span></span>
-        <span class="card-add"><svg><use href="#i-plus"/></svg><em>Dodaj u upit</em></span></button></li>
-      <li><button type="button" class="card c-int" data-s="Unutrašnje detaljno pranje bez sjedišta (50 KM)">
-        <span class="card-art" aria-hidden="true"><svg class="seat" viewBox="0 0 300 220"><defs><linearGradient id="st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34507f"/><stop offset="1" stop-color="#0f1a2e"/></linearGradient></defs><path d="M118 20 h70 a18 18 0 0 1 18 18 l-6 92 h-96 l-4 -92 a18 18 0 0 1 18 -18z" fill="url(#st)" stroke="#5f86c7" stroke-opacity=".5" stroke-width="2"/><path d="M120 40 v76 M153 36 v80 M186 40 v76" stroke="#0a1222" stroke-width="4" stroke-opacity=".6"/><path d="M84 132 h138 a14 14 0 0 1 14 14 l-8 26 h-150 l-8 -26 a14 14 0 0 1 14 -14z" fill="url(#st)" stroke="#5f86c7" stroke-opacity=".5" stroke-width="2"/><path d="M110 180 l-10 30 M200 180 l10 30" stroke="#5f86c7" stroke-opacity=".6" stroke-width="5" stroke-linecap="round"/><rect x="130" y="4" width="46" height="14" rx="7" fill="#26406c"/></svg><i class="vac-line"></i><i class="sparkle s1"></i><i class="sparkle s2"></i><i class="sparkle s3"></i></span>
-        <span class="card-t"><span><b>Unutrašnje detaljno</b><small>Bez sjedišta: tepisi, plastika i stakla iznutra</small></span><span class="pr">50<small>KM</small></span></span>
-        <span class="card-add"><svg><use href="#i-plus"/></svg><em>Dodaj u upit</em></span></button></li>
-      <li><button type="button" class="card c-deep" data-s="Dubinsko detaljno pranje auta (150/200 KM)">
-        <span class="card-art" aria-hidden="true"><span class="art-car" data-car="sedan" data-fx="foam"></span><i class="sparkle s1"></i><i class="sparkle s2"></i></span>
-        <span class="card-t"><span><b>Dubinsko detaljno</b><small>Dubinsko detaljno pranje cijelog auta</small></span><span class="pr">150/200<small>KM</small></span></span>
-        <span class="card-add"><svg><use href="#i-plus"/></svg><em>Dodaj u upit</em></span></button></li>
-    </ul>
-    <h3 class="sub-h">Dodatne usluge</h3>
-    <ul class="list list-x" role="list">
-      <li><button type="button" class="it" data-s="Skidanje blata (10 KM)"><span class="ic"><svg><use href="#i-mud"/></svg></span><span class="nm"><b>Skidanje blata</b><small>Skidanje blata sa vozila</small></span><span class="pr">10<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it" data-s="Uklanjanje dlaka ljubimaca (10 KM)"><span class="ic"><svg><use href="#i-paw"/></svg></span><span class="nm"><b>Dlake ljubimaca</b><small>Uklanjanje dlaka iz unutrašnjosti</small></span><span class="pr">10<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
-      <li><button type="button" class="it" data-s="Detaljno pranje felgi (40 KM)"><span class="ic"><svg><use href="#i-rim"/></svg></span><span class="nm"><b>Felge, detaljno</b><small>Detaljno pranje felgi</small></span><span class="pr">40<small>KM</small></span><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+      <li><a class="card" href="#cijene"><img src="assets/img/foto/c1.webp" alt="" loading="lazy"><span class="bn">Zakaži termin</span><span class="ct"><b>Pranje</b><span>od 10 KM</span></span></a></li>
+      <li><a class="card" href="#detaljno"><img class="hue1" src="assets/img/foto/c2.webp" alt="" loading="lazy"><span class="bn">Zakaži termin</span><span class="ct"><b>Detaljno pranje</b><span>od 50 KM</span></span></a></li>
+      <li><a class="card" href="#detaljno"><img class="hue2" src="assets/img/foto/c3.webp" alt="" loading="lazy"><span class="bn">Zakaži termin</span><span class="ct"><b>Dubinsko pranje</b><span>150/200 KM</span></span></a></li>
+      <li><a class="card" href="#paketi"><img src="assets/img/foto/c4.webp" alt="" loading="lazy"><span class="bn">Zakaži termin</span><span class="ct"><b>Paketi njege</b><span>od 250 KM</span></span></a></li>
     </ul>
   </section>
 
-  <section class="sec rv" id="efekat" aria-labelledby="efekat-h">
-    <div class="head"><p class="k">Prije / poslije</p><h2 id="efekat-h">Povucite i pogledajte razliku</h2></div>
-    <div class="ba" style="--x:50%">
-      <div class="ba-after" data-car="sedan" data-fx="clean"></div>
-      <div class="ba-before" data-car="sedan" data-fx="dirty"></div>
-      <span class="ba-lb ba-l">Prije</span><span class="ba-lb ba-r">Poslije</span>
-      <span class="ba-h" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
-      <input type="range" min="0" max="100" value="50" aria-label="Prije i poslije">
+  <section class="sec split rv" aria-labelledby="pro-h">
+    <div>
+      <h2 id="pro-h">Profesionalno pranje i čišćenje auta</h2>
+      <p class="lead">Ručno pranje, detaljno čišćenje unutrašnjosti, poliranje i keramička zaštita laka. Izaberite uslugu i pošaljite upit, termin dogovaramo porukom.</p>
+      <ul class="bul" role="list"><li>Ručno pranje, iznutra i spolja</li><li>Detaljno i dubinsko pranje</li><li>Poliranje, farovi i keramička zaštita</li><li>Upit na WhatsApp i Viber</li></ul>
+      <a class="cont" href="tel:+38762568565"><i aria-hidden="true"><svg><use href="#i-tel"/></svg></i><span><b>Termini i informacije</b><span>+387 62 568 565</span></span></a>
     </div>
-    <p class="ba-note">Ilustracija</p>
+    <div class="ph"><img src="assets/img/foto/wash.webp" alt="Ručno pranje auta pjenom" width="558" height="572" loading="lazy"></div>
   </section>
 
-  <section class="proc" id="proces" aria-labelledby="proces-h">
-    <div class="proc-in">
-      <div class="head"><p class="k">Kako peremo</p><h2 id="proces-h">Četiri koraka do sjaja</h2></div>
-      <div class="proc-car" data-car="sedan" data-fx="proc" aria-hidden="true"></div>
-      <ol class="steps">
-        <li class="on"><span><svg><use href="#i-foam"/></svg></span><b>Aktivna pjena</b><small>Pjena omekša prljavštinu da se ne trlja po laku.</small></li>
-        <li><span><svg><use href="#i-hand"/></svg></span><b>Ručno pranje</b><small>Mekanom rukavicom, dio po dio, pa ispiranje čistom vodom.</small></li>
-        <li><span><svg><use href="#i-wind"/></svg></span><b>Sušenje</b><small>Mikrofiber krpe, bez tragova vode i fleka.</small></li>
-        <li><span><svg><use href="#i-shine"/></svg></span><b>Sjaj</b><small>Završna njega, felge i stakla. Auto je spreman.</small></li>
-      </ol>
-      <div class="proc-bar" aria-hidden="true"><i></i></div>
+  <section class="sec rv" id="cijene" aria-labelledby="cijene-h">
+    <h2 id="cijene-h">Cijene</h2>
+    <p class="sub">Dodirnite uslugu da je dodate u upit. Cijene su u KM.</p>
+    <div class="grp">
+      <h3><span>Auto praonica</span></h3>
+      <div class="im"><img src="assets/img/foto/top.webp" alt="Pranje i čišćenje auta odozgo" width="1133" height="476" loading="lazy"><p>Pranje iznutra i spolja: malo auto 15 KM, SUV 20 KM, kombi 25 KM.</p></div>
+      <ul class="rows" role="list">
+        <li><button type="button" class="row" data-s="Pranje, malo auto (15 KM)"><span class="ic"><svg><use href="#i-car"/></svg></span><span class="nm"><b>Malo auto</b><small>Pranje, iznutra i spolja</small></span><em>15 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Pranje, SUV (20 KM)"><span class="ic"><svg><use href="#i-suv"/></svg></span><span class="nm"><b>SUV</b><small>Veće putničko vozilo</small></span><em>20 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Pranje, kombi (25 KM)"><span class="ic"><svg><use href="#i-van"/></svg></span><span class="nm"><b>Kombi</b><small>Pranje, iznutra i spolja</small></span><em>25 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Vanjsko pranje (10 KM)"><span class="ic"><svg><use href="#i-spray"/></svg></span><span class="nm"><b>Vanjsko pranje</b><small>Karoserija i felge</small></span><em>10 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Unutrašnje pranje (10 KM)"><span class="ic"><svg><use href="#i-vac"/></svg></span><span class="nm"><b>Unutrašnje pranje</b><small>Unutrašnjost vozila</small></span><em>10 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+      </ul>
+    </div>
+    <div class="strip"><div><b>15<small>KM</small></b><span>Malo auto</span></div><div><b>20<small>KM</small></b><span>SUV</span></div><div><b>25<small>KM</small></b><span>Kombi</span></div></div>
+    <div class="grp" id="detaljno">
+      <h3><span>Detaljno pranje</span></h3>
+      <ul class="rows" role="list">
+        <li><button type="button" class="row" data-s="Vanjsko detaljno pranje (50 KM)"><span class="ic"><svg><use href="#i-shine"/></svg></span><span class="nm"><b>Vanjsko detaljno pranje</b><small>Karoserija, felge i stakla</small></span><em>50 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Unutrašnje detaljno pranje bez sjedišta (50 KM)"><span class="ic"><svg><use href="#i-seat"/></svg></span><span class="nm"><b>Unutrašnje detaljno pranje</b><small>Bez sjedišta</small></span><em>50 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Dubinsko detaljno pranje auta (150/200 KM)"><span class="ic"><svg><use href="#i-foam"/></svg></span><span class="nm"><b>Dubinsko detaljno pranje</b><small>Cijeli auto</small></span><em>150/200 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+      </ul>
+    </div>
+    <div class="grp">
+      <h3><span>Dodatne usluge</span></h3>
+      <ul class="rows" role="list">
+        <li><button type="button" class="row" data-s="Skidanje blata (10 KM)"><span class="ic"><svg><use href="#i-mud"/></svg></span><span class="nm"><b>Skidanje blata</b><small>Skidanje blata sa vozila</small></span><em>10 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Uklanjanje dlaka ljubimaca (10 KM)"><span class="ic"><svg><use href="#i-paw"/></svg></span><span class="nm"><b>Uklanjanje dlaka ljubimaca</b><small>Iz unutrašnjosti vozila</small></span><em>10 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+        <li><button type="button" class="row" data-s="Detaljno pranje felgi (40 KM)"><span class="ic"><svg><use href="#i-rim"/></svg></span><span class="nm"><b>Pranje felgi, detaljno</b><small>Detaljno pranje felgi</small></span><em>40 KM</em><span class="add"><svg><use href="#i-plus"/></svg></span></button></li>
+      </ul>
     </div>
   </section>
 
   <section class="sec rv" id="paketi" aria-labelledby="paketi-h">
-    <div class="head c"><p class="k">Detailing studio</p><h2 id="paketi-h">Izaberite paket njege</h2><p class="sub">Za auto koji treba više od pranja.</p></div>
+    <div class="pk-h"><p>Detailing studio</p><h2 id="paketi-h">Izaberite paket njege</h2></div>
     <ul class="pk" role="list">
-      <li class="pkc bronze"><p class="pk-n">Bronze</p><p class="pk-d">Detaljno pranje</p><p class="pk-pr">250<small>KM</small></p>
-        <ul><li>Vanjsko i unutrašnje detaljno pranje</li></ul>
-        <button type="button" class="btn btn-o" data-s="Bronze paket (250 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
-      <li class="pkc gold"><span class="pk-badge">Najbolji izbor</span><p class="pk-n">Gold</p><p class="pk-d">Kompletna njega</p><p class="pk-pr">1.300<small>KM</small></p>
-        <ul><li>Vanjsko i unutrašnje pranje</li><li>Poliranje</li><li>Farovi</li><li>Keramička zaštita laka i stakla</li></ul>
-        <button type="button" class="btn btn-p" data-s="Gold paket (1.300 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
-      <li class="pkc silver"><p class="pk-n">Silver</p><p class="pk-d">Poliranje i zaštita</p><p class="pk-pr">700<small>KM</small></p>
-        <ul><li>Vanjsko i unutrašnje detaljno pranje</li><li>Poliranje</li><li>Keramička zaštita laka i stakla</li></ul>
-        <button type="button" class="btn btn-o" data-s="Silver paket (700 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
+      <li class="pkc"><h3>Bronze</h3><p class="pr">250<small>KM</small></p><p class="pd">Detaljno pranje</p><ul><li>Vanjsko i unutrašnje detaljno pranje</li></ul><button type="button" class="btn" data-s="Bronze paket (250 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
+      <li class="pkc mid"><span class="badge">Najbolji izbor</span><h3>Gold</h3><p class="pr">1.300<small>KM</small></p><p class="pd">Kompletna njega</p><ul><li>Vanjsko i unutrašnje pranje</li><li>Poliranje</li><li>Farovi</li><li>Keramička zaštita laka i stakla</li></ul><button type="button" class="btn" data-s="Gold paket (1.300 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
+      <li class="pkc"><h3>Silver</h3><p class="pr">700<small>KM</small></p><p class="pd">Poliranje i zaštita</p><ul><li>Vanjsko i unutrašnje detaljno pranje</li><li>Poliranje</li><li>Keramička zaštita laka i stakla</li></ul><button type="button" class="btn" data-s="Silver paket (700 KM)"><svg><use href="#i-plus"/></svg>Dodaj u upit</button></li>
     </ul>
   </section>
 
-  <section class="sec rv why" aria-labelledby="why-h">
-    <h2 id="why-h" class="sr">Zašto M&amp;S</h2>
-    <ul role="list">
-      <li><span><svg><use href="#i-hand"/></svg></span><b>Ručno, ne mašinom</b><small>Svaki auto pere čovjek, pažljivo.</small></li>
-      <li><span><svg><use href="#i-eye"/></svg></span><b>Pažnja na detalje</b><small>Felge, pragovi, stakla i kutovi koje drugi preskoče.</small></li>
-      <li><span><svg><use href="#i-clock"/></svg></span><b>Termin bez čekanja</b><small>Dogovorite termin porukom za par sekundi.</small></li>
-    </ul>
-  </section>
-
-  <section class="sec rv ask" id="upit" aria-labelledby="upit-h">
-    <div class="head"><p class="k">Termin u par sekundi</p><h2 id="upit-h">Pošaljite upit</h2></div>
-    <div class="picked" id="picked"></div>
+  <section class="sec ask rv" id="upit" aria-labelledby="upit-h">
+    <div class="ask-l">
+      <p class="k">Termin u par sekundi</p>
+      <h2 id="upit-h">Pošaljite upit</h2>
+      <div class="picked" id="picked"></div>
+      <p class="ask-btns"><a class="b-wa" id="send-wa" href="https://wa.me/38762568565" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Pošalji na WhatsApp</a><a class="b-vb" href="viber://chat?number=%2B38762568565"><svg><use href="#i-vb"/></svg>Otvori Viber</a></p>
+      <p class="note">Na Viberu poruka nije unaprijed upisana. <button type="button" class="copy" id="copy">Kopiraj poruku</button></p>
+    </div>
     <div class="phone-msg"><span class="pm-head"><img src="assets/img/logo-dark.svg" alt="" width="22" height="24">M&amp;S Car Wash</span><div class="bubble" id="msg" aria-live="polite">Zdravo! Zanima me termin za pranje.</div></div>
-    <p class="ask-btns">
-      <a class="btn btn-wa" id="send-wa" href="https://wa.me/38762568565" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Pošalji na WhatsApp</a>
-      <a class="btn btn-vb" href="viber://chat?number=%2B38762568565"><svg><use href="#i-vb"/></svg>Otvori Viber</a>
-    </p>
-    <p class="note">Na Viberu poruka nije unaprijed upisana. <button type="button" class="copy" id="copy">Kopiraj poruku</button></p>
+  </section>
+
+  <section class="cta rv" id="kontakt" aria-labelledby="cta-h">
+    <div><h2 id="cta-h">Zakažite termin u par sekundi</h2><p>Pozovite ili pošaljite poruku. Pratite nas na Instagramu @ms_wash_detailing.</p></div>
+    <p class="bt"><a class="tl" href="tel:+38762568565"><svg><use href="#i-tel"/></svg>+387 62 568 565</a><a class="wa" href="https://wa.me/38762568565" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a><a class="vb" href="viber://chat?number=%2B38762568565"><svg><use href="#i-vb"/></svg>Viber</a></p>
   </section>
 </main>
 
 <footer class="foot">
-  <div class="foot-in">
-    <div class="foot-b"><img src="assets/img/logo-dark.svg" alt="" width="44" height="48"><p><b>M&amp;S Car Wash</b><small>&amp; Detailing</small></p></div>
-    <ul class="foot-c" role="list">
-      <li><a href="tel:+38762568565"><svg><use href="#i-tel"/></svg>+387 62 568 565</a></li>
-      <li><a href="https://wa.me/38762568565" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a></li>
-      <li><a href="viber://chat?number=%2B38762568565"><svg><use href="#i-vb"/></svg>Viber</a></li>
-      <li><a href="https://www.instagram.com/ms_wash_detailing/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@ms_wash_detailing</a></li>
-    </ul>
-  </div>
-  <p class="small">Cijene su u konvertibilnim markama (KM).</p>
+  <div><a class="logo" href="#"><img src="assets/img/logo-light.svg" alt="" width="36" height="39"><span><b>M&amp;S CAR WASH</b><small>&amp; Detailing</small></span></a>
+    <p class="soc"><a href="https://www.instagram.com/ms_wash_detailing/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="https://wa.me/38762568565" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a><a href="viber://chat?number=%2B38762568565" aria-label="Viber"><svg><use href="#i-vb"/></svg></a></p></div>
+  <div><h4>Usluge</h4><p><a href="#cijene">Pranje</a><br><a href="#detaljno">Detaljno pranje</a><br><a href="#paketi">Paketi njege</a></p></div>
+  <div><h4>Kontakt</h4><p><a href="tel:+38762568565">+387 62 568 565</a><br>WhatsApp i Viber<br><a href="https://www.instagram.com/ms_wash_detailing/" target="_blank" rel="noopener">@ms_wash_detailing</a></p></div>
+  <div><h4>Cijene</h4><p>Pranje od 10 KM<br>Detaljno od 50 KM<br>Paketi od 250 KM</p></div>
 </footer>
 
 <nav class="dock" aria-label="Brzi kontakt">
@@ -221,7 +170,6 @@
 </nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/car.js" defer></script>
 <script src="js/app.js" defer></script>
 </body>
 </html>
