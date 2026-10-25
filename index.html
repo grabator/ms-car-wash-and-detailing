@@ -14,7 +14,8 @@
 <meta property="og:image" content="https://ms-car-wash-and-detailing.grabafaceit.workers.dev/assets/img/og.jpg">
 <link rel="preload" href="assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/foto/hero-top.webp" as="image">
+<link rel="preload" href="assets/img/foto/hero-top.webp" as="image" media="(min-width: 601px)">
+<link rel="preload" href="assets/img/foto/wash.webp" as="image" media="(max-width: 600px)">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.className = "js";</script>
 <script type="application/ld+json">
@@ -66,10 +67,10 @@
   <section class="hero" aria-labelledby="hero-h">
     <h1 class="mega" id="hero-h"><span class="sr">M&amp;S </span>Car Wash<span class="sr"> &amp; Detailing</span></h1>
     <i class="glow" aria-hidden="true"></i>
-    <ul class="tags" aria-hidden="true"><li style="left:4%;top:22%">Pjena</li><li style="left:30%;top:6%">Ručno pranje</li><li style="left:12%;top:68%">Sjaj</li><li class="dsk" style="left:47%;top:58%">Poliranje</li><li class="dsk" style="right:22%;top:4%">Enterijer</li><li class="dsk" style="right:3%;top:50%">Keramika</li></ul>
+    <ul class="tags" aria-hidden="true"><li class="t1">Pjena</li><li class="t2">Ručno pranje</li><li class="t3">Sjaj</li><li class="t4">Poliranje</li><li class="t5">Enterijer</li><li class="t6">Keramika</li></ul>
   </section>
   <div class="photo">
-    <img class="ph-bg" src="assets/img/foto/hero-top.webp" alt="Auto pod mlazom vode" width="1144" height="245" fetchpriority="high"><i class="tint" aria-hidden="true"></i>
+    <picture><source media="(max-width: 600px)" srcset="assets/img/foto/wash.webp"><img class="ph-bg" src="assets/img/foto/hero-top.webp" alt="Pranje auta" width="1144" height="245" fetchpriority="high"></picture><i class="tint" aria-hidden="true"></i>
     <div class="hc hc1"><div><p class="hc-t">Vaš auto zaslužuje pažnju. Mi se brinemo o svakom detalju.</p><a href="#cijene">Pogledaj cijene <svg><use href="#i-arrow"/></svg></a></div><img src="assets/img/foto/merc.webp" alt="" width="279" height="194" loading="lazy"></div>
     <div class="hc hc2"><p>Ručno pranje, detaljno i dubinsko pranje, poliranje i keramička zaštita.</p>
       <div class="big"><b>10<small>KM</small></b><span><strong>Cijene već od</strong>Malo auto 15 · SUV 20 · Kombi 25 KM</span></div></div>
@@ -92,7 +93,7 @@
       <ul class="bul" role="list"><li>Ručno pranje, iznutra i spolja</li><li>Detaljno i dubinsko pranje</li><li>Poliranje, farovi i keramička zaštita</li><li>Upit na WhatsApp i Viber</li></ul>
       <a class="cont" href="tel:+38762568565"><i aria-hidden="true"><svg><use href="#i-tel"/></svg></i><span><b>Termini i informacije</b><span>+387 62 568 565</span></span></a>
     </div>
-    <div class="ph"><img src="assets/img/foto/wash.webp" alt="Ručno pranje auta pjenom" width="558" height="572" loading="lazy"></div>
+    <div class="ph"><picture><source media="(max-width: 600px)" srcset="assets/img/foto/top.webp"><img src="assets/img/foto/wash.webp" alt="Ručno pranje auta pjenom" width="558" height="572" loading="lazy"></picture></div>
   </section>
 
   <section class="sec rv" id="cijene" aria-labelledby="cijene-h">
