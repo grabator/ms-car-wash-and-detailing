@@ -207,15 +207,10 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
   .mega { font-size: clamp(110px, 21vw, 262px); margin-top: 8px; }
   .glow { bottom: -30px; }
   .tags li { padding: 5px 12px; font-size: 11px; } .tags .dsk { display: block; }
-  .photo { height: 470px; margin-top: -26px; }
-  .ph-bg { height: 100%; object-position: 50% 0; }
-  .photo .tint { height: auto; bottom: 0; }
-  .photo::after { background: linear-gradient(180deg, rgba(11, 23, 48, .08), rgba(11, 23, 48, .3) 50%, rgba(11, 23, 48, .97) 54%); }
-  .hc { padding: 22px 24px; }
-  .hc1 { left: 16px; right: auto; bottom: 16px; width: calc(63% - 16px); grid-template-columns: 1fr 210px; gap: 18px; height: 205px; }
-  .hc-t { font-size: 22px; }
-  .hc2 { left: auto; right: 16px; bottom: 16px; width: calc(35% - 16px); height: 205px; }
-  .big b { font-size: 64px; }
+  .photo { height: 600px; margin-top: -26px; }
+  .ph-bg { height: 62%; object-position: 50% 35%; }
+  .photo .tint { height: 62%; }
+  .photo::after { background: linear-gradient(180deg, rgba(11, 23, 48, .08), rgba(11, 23, 48, .3) 46%, var(--navy) 62%); }
   .sec { margin-top: 90px; }
   h2 { font-size: 40px; }
   .cards { grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
@@ -236,6 +231,12 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
   .foot > div:first-child { grid-column: auto; }
 }
 @media (min-width: 900px) {
+  .photo { height: 470px; }
+  .hc { padding: 22px 24px; }
+  .hc1 { left: 16px; right: auto; bottom: 16px; width: calc(63% - 16px); grid-template-columns: 1fr 210px; gap: 18px; height: 205px; }
+  .hc-t { font-size: 22px; }
+  .hc2 { left: auto; right: 16px; bottom: 16px; width: calc(35% - 16px); height: 205px; }
+  .big b { font-size: 64px; }
   body { padding-bottom: 0; }
   .dock { display: none; }
   .toast { bottom: 28px; }
