@@ -6,13 +6,18 @@ Online cjenovnik za M&S Car Wash & Detailing. Otvara se skeniranjem QR koda sa v
 
 ## Šta je unutra
 
-- Cjenovnik: auto praonica, detaljno pranje i paketi njege (Bronze, Silver, Gold)
-- Pozovi, WhatsApp, Viber i Instagram jednim dodirom, donja traka na mobitelu
+- Vrh sa velikim naslovom, nacrtanim autom u studiju, mlazom vode i kapljicama
+- Cjenovnik sa izborom vozila (Malo auto / SUV), detaljno pranje, prije/poslije klizač
+- "Kako peremo": dok se lista, auto prolazi kroz pjenu, pranje, sušenje i sjaj
+- Paketi Bronze, Silver i Gold sa sadržajem (prijedlog, provjeriti sa M&S prije objave)
 - Upit: kupac dodirne usluge i pošalje gotovu poruku na WhatsApp (ili je kopira za Viber)
+- Pozovi, WhatsApp, Viber i Instagram jednim dodirom, donja traka na mobitelu
+
+Auti su nacrtani u `js/car.js` (SVG), nisu fotografije. Kad stignu prave slike, mogu ići u pločice i vrh.
 
 ## Izmjene
 
-- **Cijene:** u `index.html` (tražite "KM"). Usluga u upitu se uzima iz `data-s` atributa iste stavke.
+- **Cijene i sadržaj paketa:** u `index.html` (tražite "KM"). Usluga u upitu se uzima iz `data-s` atributa iste stavke.
 - **Telefon:** `index.html` i `PHONE` u `js/app.js`.
 
 ## Štampa (`stampa/`)
