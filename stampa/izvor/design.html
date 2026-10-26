@@ -257,6 +257,49 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .ban .mw { margin-top: 26px !important; }
 .ig .mw .m2w { width: 100%; }
 .st .mw .m2w { width: 86%; }
+
+/* vizit karta: logo bez kruga */
+.kf .klogo { width: 150px; height: auto; filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .55)); }
+
+/* ============ poster: jednostavan cjenovnik (1400x2000) ============ */
+.cz { width: 1400px; height: 2000px; padding: 80px 100px 70px; display: flex; flex-direction: column; }
+.cz > * { flex: none; }
+.cz-top { display: flex; align-items: center; justify-content: space-between; }
+.cz .brand { font-size: 32px; } .cz .brand small { font-size: 13px; }
+.cz-ph { display: inline-flex; align-items: center; gap: 12px; font: 400 46px/1 A, sans-serif; color: var(--navy); letter-spacing: .01em; }
+.cz-ph svg { width: 34px; height: 34px; color: var(--blue); }
+.cz-t { margin-top: 44px; text-align: center; }
+.cz-t .m2w { width: 660px; margin: 0 auto; }
+.cz-t p { margin-top: 26px; font-size: 24px; font-weight: 800; letter-spacing: .5em; padding-left: .5em; text-transform: uppercase; color: var(--mut); }
+.cz h2 { font-size: 26px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); padding-bottom: 14px; border-bottom: 3px solid var(--navy); }
+.cz h2.mt { margin-top: 44px; }
+.cz-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 50px; }
+.cz-rows p { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1.5px solid var(--line); }
+.cz-rows b { font-size: 29px; font-weight: 700; color: var(--navy); }
+.cz-rows small { display: block; margin-top: 2px; font-size: 17px; font-weight: 500; color: var(--mut); }
+.cz-rows i { flex: 1; }
+.cz-rows em { font-style: normal; font: 400 48px/1 A, sans-serif; color: var(--navy); white-space: nowrap; }
+.cz-rows em .km { font-size: 16px; }
+.cz-pk-h { margin-top: 48px; }
+.cz-pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 8px; margin-bottom: 44px; }
+.cz-pk > div { padding: 22px 34px 10px; }
+.cz-pk > div + div { border-left: 1.5px solid var(--line); }
+.cz-pk > div:first-child { padding-left: 0; }
+.cz-pk .n { display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+.cz-pk .n i { width: 20px; height: 20px; border-radius: 50%; background: var(--m); }
+.cz-pk .p { margin-top: 8px; font: 400 76px/1 A, sans-serif; color: var(--navy); }
+.cz-pk .gold .p { color: var(--blue); }
+.cz-pk .p .km { font-size: 20px; }
+.cz-pk ul { list-style: none; margin-top: 14px; display: grid; gap: 7px; }
+.cz-pk li { position: relative; padding-left: 20px; font-size: 19px; font-weight: 600; color: #2a3444; line-height: 1.35; }
+.cz-pk li::before { content: ''; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.cz-cta { margin-top: auto; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; padding: 26px 40px 26px 26px; border-radius: 30px; background: var(--navy); color: #fff; }
+.cz-cta .q { width: 190px; height: 190px; padding: 14px; border-radius: 20px; background: #fff; }
+.cz-cta .q img { width: 100%; height: 100%; }
+.cz-cta .k { font-size: 24px; font-weight: 700; color: var(--sky); }
+.cz-cta .tel { display: flex; align-items: center; gap: 16px; margin-top: 12px; font: 400 66px/1 A, sans-serif; letter-spacing: .01em; }
+.cz-cta .tel svg { width: 46px; height: 46px; }
+.cz-cta .sm { margin-top: 12px; font-size: 22px; font-weight: 600; color: #c9d6ea; }
 </style></head>
 <body>
 <div id="root"></div>
@@ -304,6 +347,7 @@ const brand = (dark) => '<div class="brand"><img src="' + (dark ? 'mono-dark.svg
 const tags = (list) => list.map(([t, l, tp]) => '<span class="tag" style="left:' + l + ';top:' + tp + '">' + t + '</span>').join('');
 const TAGS = [['Pjena', '1%', '12%'], ['Ručno pranje', '0%', '46%'], ['Sjaj', '3%', '80%'], ['Poliranje', '87%', '12%'], ['Enterijer', '87%', '46%'], ['Keramika', '86%', '80%']];
 const tile = ([i, n, d, p], cls) => '<div class="t ' + (cls || '') + '"><span class="ic">' + ic(i) + '</span><span class="nm"><b>' + n + '</b>' + (d ? '<small>' + d + '</small>' : '') + '</span><span class="pr">' + km(p) + '</span></div>';
+const row = (list) => '<div class="cz-rows">' + list.map(([, n, d, p]) => '<p><span><b>' + n + '</b>' + (d ? '<small>' + d + '</small>' : '') + '</span><i></i><em>' + km(p) + '</em></p>').join('') + '</div>';
 const pkg = ([k, n, d, p, xs]) => '<div class="pkc ' + k + '">' + (k === 'gold' ? '<span class="bd">Najbolji izbor</span>' : '') + '<p class="n"><i></i>' + n + '</p><p class="d">' + d + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>';
 const badge = (s) => '<div class="badge-logo" style="width:' + s + 'px;height:' + s + 'px;font-size:' + s + 'px"><img src="mono-dark.svg"></div>';
 const igHead = (lb) => '<div class="hd">' + brand() + '<span class="lb">' + lb + '</span></div><div class="mid">';
@@ -311,25 +355,24 @@ const igFoot = (l) => '</div><p class="ft"><span>' + l + '</span><b>' + ic('ig')
 const PK_ORDER = (a) => [a[1], a[2], a[0]]; // gold, silver, bronze
 
 const P = {
-  'kartica-prednja': () => `<div class="page card kf"><img class="bg" src="foto/hero-top-duo.jpg"><i class="ov"></i><div class="in">${badge(168)}${mega2(true)}<p class="tl">Pranje · Poliranje · Keramička zaštita</p></div><i class="bar"></i></div>`,
+  'kartica-prednja': () => `<div class="page card kf"><img class="bg" src="foto/hero-top-duo.jpg"><i class="ov"></i><div class="in"><img class="klogo" src="mono-dark.svg">${mega2(true)}<p class="tl">Pranje · Poliranje · Keramička zaštita</p></div><i class="bar"></i></div>`,
   'kartica-zadnja': () => `<div class="page card kb"><i class="wm"></i><div>${brand()}
     <p class="lbl">Termini i informacije</p><p class="tel">${K.tel}</p>
     <p class="chips"><span class="chip c-wa">${ic('wa')}WhatsApp</span><span class="chip c-vb">${ic('vb')}Viber</span></p>
     <p class="igh">${ic('ig')}${K.ig}</p></div>
     <div class="qr"><div class="q"><img src="qr.svg"></div><p>Skenirajte<span>cjenovnik i upit za termin</span></p></div><i class="bar"></i></div>`,
 
-  'cjenovnik-zid': () => `<div class="page ban">
-    <div class="top">${brand()}<span class="ph">${ic('tel')}${K.tel}</span></div>
-    <p class="pill"><i>${ic('car')}</i><span>Ručno pranje i detailing · cjenovnik usluga</span></p>
-    <div class="mw">${mega2()}<i class="glow"></i>${tags(TAGS)}</div>
-    <section class="bs"><h2>Auto <span>praonica</span></h2><div class="g3">${VOZILA.map((v) => tile(v)).join('')}</div><div class="g2">${PRAONICA.map((v) => tile(v)).join('')}</div></section>
-    <section class="bs"><h2>Detaljno <span>pranje</span></h2><div class="g3">${DETALJNO.map((v) => tile(v)).join('')}</div>
-      <div class="g3" style="margin-top:14px">${DODATNO.map((v) => tile(v, 'h x')).join('')}</div></section>
-    <section class="bs"><h2>Paketi <span>njege</span></h2><div class="pks">${PAKETI.map(pkg).join('')}</div></section>
-    <div class="cta" style="margin-top:34px"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte kamerom</p><p class="tt">Online cjenovnik i upit za termin</p>
-      <p class="tel">${ic('tel')}${K.tel}</p><p class="row"><span class="chip">${ic('wa')}WhatsApp</span><span class="chip">${ic('vb')}Viber</span><span class="chip">${ic('ig')}${K.ig}</span></p></div></div>
-    <p class="fine"><span>Cijene su u konvertibilnim markama (KM).</span><span>M&amp;S Car Wash &amp; Detailing</span></p></div>`,
-
+  'cjenovnik-zid': () => `<div class="page cz">
+    <div class="cz-top">${brand()}<span class="cz-ph">${ic('tel')}${K.tel}</span></div>
+    <div class="cz-t">${mega2()}<p>Cjenovnik usluga</p></div>
+    <div class="cz-cols">
+      <div><h2>Auto praonica</h2>${row(VOZILA.concat(PRAONICA))}</div>
+      <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
+    </div>
+    <h2 class="cz-pk-h">Paketi njege</h2>
+    <div class="cz-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n"><i></i>' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
+    <div class="cz-cta"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
+  </div>`,
   'ig-1-uvod': () => `<div class="page ig">${igHead('Pranje i detailing')}
     <div class="photo" style="height:470px;margin-top:30px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
     <div class="mw" style="margin-top:30px">${mega2()}<i class="glow"></i></div>
