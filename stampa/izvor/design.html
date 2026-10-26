@@ -174,10 +174,10 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .from span b { color: var(--blue); }
 /* kompaktni cjenovnik (story) */
 .ls { display: grid; gap: 0; margin-top: 10px; }
-.ls p { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 2px solid var(--line); font-size: 27px; font-weight: 700; color: var(--navy); }
+.ls p { display: flex; justify-content: space-between; align-items: baseline; padding: 9px 0; border-bottom: 2px solid var(--line); font-size: 27px; font-weight: 700; color: var(--navy); }
 .ls p em { font-style: normal; font: 400 40px/1 A, sans-serif; color: var(--blue); }
 .ls p em .km { font-size: 15px; }
-.st .sh { margin-top: 30px; font-size: 17px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--blue); }
+.st .sh { margin-top: 22px; font-size: 17px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--blue); }
 
 /* ============ naljepnica 10x10 cm + 2 mm prepust (1040x1040) ============ */
 .stk { width: 1040px; height: 1040px; padding: 70px; background: radial-gradient(80% 80% at 100% 0%, rgba(143, 211, 255, .5), transparent 60%), linear-gradient(135deg, var(--navy), var(--blue)); }
@@ -244,6 +244,19 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .ig .lead { font-size: 27px; }
 .ig .g3 .t.x { padding: 16px 18px; } .ig .g3 .t.x .nm b { font-size: 21px; white-space: nowrap; } .ig .g3 .t.x .pr { font-size: 56px; }
 .ig .rows .t { padding: 18px 26px; }
+
+/* dva reda naslova */
+.m2w { display: grid; gap: 0; }
+.m2w svg.mega + svg.mega { margin-top: 2.2%; }
+.kf .m2w { width: 470px; margin-top: 24px; }
+.kf .m2w svg.mega { width: 100%; margin-top: 0; }
+.kf .m2w svg.mega + svg.mega { margin-top: 10px; }
+.kf .tl { margin-top: 18px; }
+.ban .mw .m2w { width: 900px; margin: 0 auto; }
+.ban .pill { display: none; }
+.ban .mw { margin-top: 26px !important; }
+.ig .mw .m2w { width: 100%; }
+.st .mw .m2w { width: 86%; }
 </style></head>
 <body>
 <div id="root"></div>
@@ -281,13 +294,15 @@ const ic = (k) => '<svg class="i" viewBox="0 0 24 24">' + IC[k] + '</svg>';
 const km = (p) => p + '<span class="km">KM</span>';
 let gid = 0;
 // veliki naslov kao SVG (tačan i oštar i u PDF-u); veličinu namjesti fit() kad se učita font
-const mega = (txt, dark) => { const id = 'mg' + (++gid);
-  const st = dark ? '<stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#d6e9ff"/><stop offset="1" stop-color="#8fd3ff"/>'
+const mega = (txt, dark, det) => { const id = 'mg' + (++gid);
+  const st = det ? (dark ? '<stop offset="0" stop-color="#8fd3ff"/><stop offset="1" stop-color="#3b82f0"/>' : '<stop offset="0" stop-color="#3b82f0"/><stop offset="1" stop-color="#1d5ad6"/>') : dark ? '<stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#d6e9ff"/><stop offset="1" stop-color="#8fd3ff"/>'
     : '<stop offset="0" stop-color="#0b1730"/><stop offset=".45" stop-color="#12306e"/><stop offset=".72" stop-color="#1d5ad6"/><stop offset="1" stop-color="#6fb4ff"/>';
   return '<svg class="mega" data-t="' + txt + '"><defs><linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1">' + st + '</linearGradient></defs><text font-family="A" font-size="200" fill="url(#' + id + ')">' + txt + '</text></svg>'; };
+// CAR WASH i & DETAILING u dva reda iste širine (oba jednako važna)
+const mega2 = (dark) => '<div class="m2w">' + mega('CAR WASH', dark) + mega('&amp; DETAILING', dark, true) + '</div>';
 const brand = (dark) => '<div class="brand"><img src="' + (dark ? 'mono-dark.svg' : 'mono-light.svg') + '"><div><b>M&amp;S Car Wash</b><small>&amp; Detailing</small></div></div>';
 const tags = (list) => list.map(([t, l, tp]) => '<span class="tag" style="left:' + l + ';top:' + tp + '">' + t + '</span>').join('');
-const TAGS = [['Pjena', '1%', '16%'], ['Ručno pranje', '27%', '-4%'], ['Sjaj', '9%', '70%'], ['Poliranje', '43%', '64%'], ['Enterijer', '69%', '-2%'], ['Keramika', '86%', '52%']];
+const TAGS = [['Pjena', '1%', '12%'], ['Ručno pranje', '0%', '46%'], ['Sjaj', '3%', '80%'], ['Poliranje', '87%', '12%'], ['Enterijer', '87%', '46%'], ['Keramika', '86%', '80%']];
 const tile = ([i, n, d, p], cls) => '<div class="t ' + (cls || '') + '"><span class="ic">' + ic(i) + '</span><span class="nm"><b>' + n + '</b>' + (d ? '<small>' + d + '</small>' : '') + '</span><span class="pr">' + km(p) + '</span></div>';
 const pkg = ([k, n, d, p, xs]) => '<div class="pkc ' + k + '">' + (k === 'gold' ? '<span class="bd">Najbolji izbor</span>' : '') + '<p class="n"><i></i>' + n + '</p><p class="d">' + d + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>';
 const badge = (s) => '<div class="badge-logo" style="width:' + s + 'px;height:' + s + 'px;font-size:' + s + 'px"><img src="mono-dark.svg"></div>';
@@ -296,7 +311,7 @@ const igFoot = (l) => '</div><p class="ft"><span>' + l + '</span><b>' + ic('ig')
 const PK_ORDER = (a) => [a[1], a[2], a[0]]; // gold, silver, bronze
 
 const P = {
-  'kartica-prednja': () => `<div class="page card kf"><img class="bg" src="foto/hero-top-duo.jpg"><i class="ov"></i><div class="in">${badge(168)}${mega('CAR WASH', true)}<p class="det">&amp; Detailing</p><p class="tl">Pranje · Detailing · Poliranje</p></div><i class="bar"></i></div>`,
+  'kartica-prednja': () => `<div class="page card kf"><img class="bg" src="foto/hero-top-duo.jpg"><i class="ov"></i><div class="in">${badge(168)}${mega2(true)}<p class="tl">Pranje · Poliranje · Keramička zaštita</p></div><i class="bar"></i></div>`,
   'kartica-zadnja': () => `<div class="page card kb"><i class="wm"></i><div>${brand()}
     <p class="lbl">Termini i informacije</p><p class="tel">${K.tel}</p>
     <p class="chips"><span class="chip c-wa">${ic('wa')}WhatsApp</span><span class="chip c-vb">${ic('vb')}Viber</span></p>
@@ -306,7 +321,7 @@ const P = {
   'cjenovnik-zid': () => `<div class="page ban">
     <div class="top">${brand()}<span class="ph">${ic('tel')}${K.tel}</span></div>
     <p class="pill"><i>${ic('car')}</i><span>Ručno pranje i detailing · cjenovnik usluga</span></p>
-    <div class="mw">${mega('CAR WASH')}<i class="glow"></i>${tags(TAGS)}</div>
+    <div class="mw">${mega2()}<i class="glow"></i>${tags(TAGS)}</div>
     <section class="bs"><h2>Auto <span>praonica</span></h2><div class="g3">${VOZILA.map((v) => tile(v)).join('')}</div><div class="g2">${PRAONICA.map((v) => tile(v)).join('')}</div></section>
     <section class="bs"><h2>Detaljno <span>pranje</span></h2><div class="g3">${DETALJNO.map((v) => tile(v)).join('')}</div>
       <div class="g3" style="margin-top:14px">${DODATNO.map((v) => tile(v, 'h x')).join('')}</div></section>
@@ -315,9 +330,9 @@ const P = {
       <p class="tel">${ic('tel')}${K.tel}</p><p class="row"><span class="chip">${ic('wa')}WhatsApp</span><span class="chip">${ic('vb')}Viber</span><span class="chip">${ic('ig')}${K.ig}</span></p></div></div>
     <p class="fine"><span>Cijene su u konvertibilnim markama (KM).</span><span>M&amp;S Car Wash &amp; Detailing</span></p></div>`,
 
-  'ig-1-uvod': () => `<div class="page ig">${igHead('Ručno pranje')}
-    <div class="photo" style="height:560px;margin-top:34px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
-    <div class="mw" style="margin-top:34px">${mega('CAR WASH')}<i class="glow"></i>${tags([['Pjena', '0%', '-8%'], ['Detailing', '38%', '-12%'], ['Sjaj', '84%', '-6%'], ['Poliranje', '12%', '74%'], ['Keramika', '66%', '72%']])}</div>
+  'ig-1-uvod': () => `<div class="page ig">${igHead('Pranje i detailing')}
+    <div class="photo" style="height:470px;margin-top:30px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
+    <div class="mw" style="margin-top:30px">${mega2()}<i class="glow"></i></div>
     <p class="from"><span>Pranje od <b>10 KM</b></span><span>Detaljno od <b>50 KM</b></span><span>Paketi od <b>250 KM</b></span></p>
     ${igFoot('Vaš auto, sjajan kao nov.')}</div>`,
   'ig-2-praonica': () => `<div class="page ig">${igHead('Cjenovnik')}
@@ -343,7 +358,7 @@ const P = {
     ${igFoot('M&amp;S Car Wash &amp; Detailing')}</div>`,
 
   'story-1-cjenovnik': () => `<div class="page st">${igHead('Cjenovnik')}
-    <div class="mw" style="margin-top:40px">${mega('CAR WASH')}<i class="glow"></i></div>
+    <div class="mw" style="margin-top:40px">${mega2()}<i class="glow"></i></div>
     <p class="sh">Auto praonica</p><div class="ls">${VOZILA.concat(PRAONICA).map(([, n, , p]) => '<p>' + n + '<em>' + km(p) + '</em></p>').join('')}</div>
     <p class="sh">Detaljno pranje</p><div class="ls">${DETALJNO.map(([, n, , p]) => '<p>' + n + '<em>' + km(p) + '</em></p>').join('')}</div>
     <p class="sh">Dodatne usluge</p><div class="ls">${DODATNO.map(([, n, , p]) => '<p>' + n + '<em>' + km(p) + '</em></p>').join('')}</div>
