@@ -300,6 +300,25 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .cz-cta .tel { display: flex; align-items: center; gap: 16px; margin-top: 12px; font: 400 66px/1 A, sans-serif; letter-spacing: .01em; }
 .cz-cta .tel svg { width: 46px; height: 46px; }
 .cz-cta .sm { margin-top: 12px; font-size: 22px; font-weight: 600; color: #c9d6ea; }
+
+/* vizit karta v4: prednja bez fotografije, zadnja punija */
+.kf2 { background: radial-gradient(70% 90% at 50% 0%, #1f4fae 0%, #12306e 38%, #0b1730 78%); }
+.kf2 .ov { background: radial-gradient(60% 60% at 50% 110%, rgba(59, 130, 240, .35), transparent 70%); }
+.kf2 .in { padding-bottom: 20px; }
+.kf2 .klogo { width: 170px; }
+.kf2 .m2w { width: 520px; margin-top: 34px; }
+.kb { padding: 62px 70px 88px 76px; grid-template-columns: 1fr 268px; gap: 0 36px; background: linear-gradient(160deg, #f6f9fe 0%, #e7effa 100%); }
+.kb .wm { right: -90px; top: -110px; width: 460px; height: 460px; background: radial-gradient(closest-side, rgba(59, 130, 240, .22), rgba(59, 130, 240, 0)); }
+.kb .brand { font-size: 31px; } .kb .brand small { font-size: 14px; }
+.kb .lbl { margin-top: 34px; font-size: 15px; }
+.kb .tel { margin-top: 10px; font-size: 66px; }
+.kb .chips { margin-top: 18px; font-size: 18px; } .kb .chips .chip { background: #fff; box-shadow: 0 6px 14px -10px rgba(11, 23, 48, .5); }
+.kb .chips svg { width: 20px; height: 20px; }
+.kb .igh { margin-top: 20px; padding-top: 18px; font-size: 23px; border-top-color: #cfdbec; }
+.kb .igh svg { width: 25px; height: 25px; }
+.kb .qr .q { width: 268px; height: 268px; border: 0; box-shadow: 0 18px 34px -18px rgba(11, 23, 48, .6); }
+.kb .qr p { margin-top: 14px; font-size: 28px; }
+.kb .qr p span { font-size: 15px; }
 </style></head>
 <body>
 <div id="root"></div>
@@ -355,7 +374,7 @@ const igFoot = (l) => '</div><p class="ft"><span>' + l + '</span><b>' + ic('ig')
 const PK_ORDER = (a) => [a[1], a[2], a[0]]; // gold, silver, bronze
 
 const P = {
-  'kartica-prednja': () => `<div class="page card kf"><img class="bg" src="foto/hero-top-duo.jpg"><i class="ov"></i><div class="in"><img class="klogo" src="mono-dark.svg">${mega2(true)}<p class="tl">Pranje · Poliranje · Keramička zaštita</p></div><i class="bar"></i></div>`,
+  'kartica-prednja': () => `<div class="page card kf kf2"><i class="ov"></i><div class="in"><img class="klogo" src="mono-dark.svg">${mega2(true)}</div><i class="bar"></i></div>`,
   'kartica-zadnja': () => `<div class="page card kb"><i class="wm"></i><div>${brand()}
     <p class="lbl">Termini i informacije</p><p class="tel">${K.tel}</p>
     <p class="chips"><span class="chip c-wa">${ic('wa')}WhatsApp</span><span class="chip c-vb">${ic('vb')}Viber</span></p>
