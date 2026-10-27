@@ -398,6 +398,27 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .pb-foot .tel { display: flex; align-items: center; gap: 16px; margin-top: 8px; font: 400 66px/1 A, sans-serif; letter-spacing: .01em; }
 .pb-foot .tel svg { width: 50px; height: 50px; color: var(--blue); }
 .pb-foot .sm { margin-top: 10px; font-size: 22px; font-weight: 600; color: var(--mut); }
+
+/* otvorenje 1.11.2026: objava 1080 x 1350 i story 1080 x 1920 */
+.op { width: 1080px; height: 1350px; padding: 70px 80px 64px; display: flex; flex-direction: column; align-items: center; text-align: center; color: #fff;
+  background: radial-gradient(80% 60% at 50% 0%, #2563d9 0%, #12306e 42%, #0b1730 82%); }
+.op.sty { height: 1920px; padding: 200px 80px 220px; }
+.op > * { position: relative; flex: none; }
+.op .oglow { position: absolute; left: 50%; bottom: -320px; width: 1300px; height: 700px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(59, 130, 240, .35), transparent); }
+.op .brand { font-size: 26px; } .op .brand b { color: #fff; } .op .brand small { color: var(--sky); font-size: 11px; }
+.op .ol { margin-top: 64px; padding: 12px 26px; border-radius: 99px; border: 2px solid rgba(143, 211, 255, .55); color: var(--sky); font-size: 22px; font-weight: 800; letter-spacing: .32em; text-transform: uppercase; }
+.op .ow { width: 840px; margin-top: 36px; }
+.op .od { width: 620px; margin-top: 26px; }
+.op .oday { margin-top: 26px; font-size: 32px; font-weight: 700; color: #d6e6ff; }
+.op .osv { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 44px; }
+.op .osv span { padding: 12px 22px; border-radius: 99px; background: rgba(255, 255, 255, .1); border: 1.5px solid rgba(255, 255, 255, .16); font-size: 22px; font-weight: 700; }
+.op .ofrom { margin-top: 34px; font-size: 26px; font-weight: 600; color: #c9d6ea; } .op .ofrom b { color: #fff; font: 400 46px/1 A, sans-serif; margin: 0 .1em; }
+.op .oft { margin-top: auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding-top: 26px; border-top: 2px solid rgba(255, 255, 255, .16); font-size: 22px; font-weight: 700; color: #c9d6ea; }
+.op .oft b { display: inline-flex; align-items: center; gap: 10px; color: #fff; } .op .oft svg { width: 24px; height: 24px; color: var(--sky); }
+.op.sty .ol { margin-top: 90px; } .op.sty .ow { margin-top: 50px; } .op.sty .osv { margin-top: 70px; } .op.sty .ofrom { margin-top: 50px; }
+.op .obadge { margin-top: 64px; }
+.op .osee { margin-top: 26px; margin-bottom: 40px; font: 400 64px/1 A, sans-serif; letter-spacing: .01em; color: #fff; }
+.op.sty .brand { font-size: 32px; } .op.sty .osv span { font-size: 25px; } .op.sty .oday { font-size: 30px; }
 </style></head>
 <body>
 <div id="root"></div>
@@ -493,6 +514,27 @@ const P = {
     <h2 class="mt">Paketi njege</h2>
     <div class="pb-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n">' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
     <div class="pb-foot"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
+  </div>`,
+  'ig-0-otvorenje': () => `<div class="page op"><i class="oglow"></i>
+    ${brand(true)}
+    <p class="ol">Svečano otvorenje</p>
+    <div class="ow">${mega('OTVARAMO', true)}</div>
+    <div class="od">${mega('01.11.', true, true)}</div>
+    <p class="oday">Nedjelja, 1. novembar 2026. · Travnik, Kalibunar bb</p>
+    <p class="osv"><span>Ručno pranje</span><span>Detaljno pranje</span><span>Poliranje</span><span>Keramička zaštita</span></p>
+    <p class="ofrom">Pranje od<b>10 KM</b> · detaljno od<b>50 KM</b></p>
+    <p class="oft"><span>${ic('tel')} ${K.tel}</span><b>${ic('ig')}${K.ig}</b></p>
+  </div>`,
+  'story-0-otvorenje': () => `<div class="page op sty"><i class="oglow"></i>
+    ${brand(true)}
+    <p class="ol">Svečano otvorenje</p>
+    <div class="ow">${mega('OTVARAMO', true)}</div>
+    <div class="od">${mega('01.11.', true, true)}</div>
+    <p class="oday">Nedjelja, 1. novembar 2026. · Travnik, Kalibunar bb</p>
+    <p class="osv"><span>Ručno pranje</span><span>Detaljno pranje</span><span>Poliranje</span><span>Keramička zaštita</span></p>
+    <p class="ofrom">Pranje od<b>10 KM</b> · detaljno od<b>50 KM</b></p>
+    <div class="obadge">${badge(230)}</div><p class="osee">Vidimo se u nedjelju!</p>
+    <p class="oft"><span>${ic('tel')} ${K.tel}</span><b>${ic('ig')}${K.ig}</b></p>
   </div>`,
   'ig-1-uvod': () => `<div class="page ig">${igHead('Pranje i detailing')}
     <div class="photo" style="height:470px;margin-top:30px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
