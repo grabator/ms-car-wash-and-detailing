@@ -164,7 +164,7 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
 .chip svg { width: 14px; height: 14px; stroke-width: 2.4; transform: rotate(45deg); color: var(--blue); }
 .ask-btns { display: grid; gap: 10px; margin-top: 18px; }
 .ask-btns a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; border-radius: 14px; font-weight: 700; }
-.b-wa { background: #25d366; color: #04220f; } .b-vb { background: #7360f2; color: #fff; }
+.b-wa { background: #25d366; color: #04220f; } .b-vb { background: #6a55e0; color: #fff; }
 .note { margin-top: 12px; color: var(--mut); font-size: 13px; }
 .copy { color: var(--blue); font-weight: 700; font-size: 14px; padding: 6px 0; }
 .phone-msg { padding: 14px; border-radius: 20px; background: #0d1a14; align-self: start; }
@@ -179,10 +179,10 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
 .cta .bt { display: flex; flex-wrap: wrap; gap: 10px; }
 .cta .bt a { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border-radius: 14px; font-weight: 700; font-size: 14px; transition: transform .2s var(--ease); }
 .cta .bt a:hover { transform: translateY(-2px); }
-.cta .tl { background: #fff; color: var(--navy); } .cta .wa { background: #25d366; color: #04220f; } .cta .vb { background: #7360f2; }
+.cta .tl { background: #fff; color: var(--navy); } .cta .wa { background: #25d366; color: #04220f; } .cta .vb { background: #6a55e0; color: #fff; }
 .foot { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 40px; margin-bottom: 24px; padding: 26px; border-radius: 26px; background: var(--soft); font-size: 13px; }
 .foot > div:first-child { grid-column: 1 / -1; }
-.foot h4 { font-size: 13px; margin-bottom: 8px; } .foot p { color: var(--mut); line-height: 1.9; }
+.foot .fh { font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; margin-bottom: 8px; } .foot p { color: var(--mut); line-height: 1.9; }
 .foot p a:hover { color: var(--blue); }
 .soc { display: flex; gap: 8px; margin-top: 14px; }
 .soc a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: #fff; }

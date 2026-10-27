@@ -2,7 +2,7 @@
 
 Online cjenovnik za M&S Car Wash & Detailing. Otvara se skeniranjem QR koda sa vizit karte i cjenovnika na zidu, pa je napravljen prvo za mobitel.
 
-**Live:** https://ms-car-wash-and-detailing.grabafaceit.workers.dev
+**Live:** https://mscarwashdetailing.com (stara adresa https://ms-car-wash-and-detailing.grabafaceit.workers.dev i dalje radi; `canonical` u `index.html` kaže Googleu da je glavna nova domena)
 
 ## Šta je unutra
 
@@ -25,13 +25,14 @@ Fotografije su u `assets/img/foto/` (iz odobrenog primjera dizajna). Kad stignu 
 |---|---|---|
 | `kartica-prednja.pdf`, `kartica-zadnja.pdf` | vizit karta, za štampariju | 85x55 mm + 3 mm prepust (91x61 mm) |
 | `cjenovnik-zid.pdf` | poster za kancelariju | 70x100 cm (PNG 7000x10000) |
+| `pano/pano-svijetli.pdf`, `pano/pano-tamni.pdf` | pano za kancelariju, dvije verzije | 72x80 cm (PNG 8504x9449, 300 dpi) |
 | `naljepnica-qr.pdf` | QR naljepnica za vrata, kasu, čekaonicu | 10x10 cm + 2 mm prepust |
 | `instagram/ig-*.png` | 5 objava (karusel), redom | 2160x2700 (4:5) |
 | `instagram/story-*.png` | 2 storyja | 2160x3840 (9:16) |
 | `za-kasnije/` | kartica vjernosti (svako 6. pranje gratis) | 85x55 mm + 3 mm |
 
 Izvor dizajna je `stampa/izvor/design.html` (cijene na vrhu skripte); nakon izmjene: `node stampa/izvor/render.cjs` (treba Playwright i Python sa Pillow).
-QR kod vodi na adresu iznad; ako se promijeni domena, napravite novi `qr.svg`.
+QR kod (`qr.svg`) vodi na https://mscarwashdetailing.com; ako se promijeni domena, napravite novi `qr.svg`.
 
 ## Pokretanje lokalno
 

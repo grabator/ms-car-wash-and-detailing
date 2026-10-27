@@ -1,6 +1,6 @@
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 const fs = require('fs');
-const OUT = __dirname + '/..'; fs.mkdirSync(OUT + '/za-kasnije', { recursive: true }); fs.mkdirSync(OUT + '/instagram', { recursive: true });
+const OUT = __dirname + '/..'; fs.mkdirSync(OUT + '/za-kasnije', { recursive: true }); fs.mkdirSync(OUT + '/instagram', { recursive: true }); fs.mkdirSync(OUT + '/pano', { recursive: true });
 // [ime, širina px, visina px, PDF širina mm, PDF visina mm, faktor za PNG]
 // kartica: 3.543 = oko 900 dpi (3224x2161 px); zid: 5 = 7000x10000 px (oko 254 dpi na 70x100 cm)
 // instagram: 2 = 2160x2700 (objava) i 2160x3840 (story), Instagram ih sam smanji bez gubitka oštrine; naljepnica 10x10 cm + 2 mm prepust
@@ -10,6 +10,8 @@ const JOBS = [
   ['instagram/ig-1-uvod', 1080, 1350, 0, 0, 2], ['instagram/ig-2-praonica', 1080, 1350, 0, 0, 2], ['instagram/ig-3-detaljno', 1080, 1350, 0, 0, 2], ['instagram/ig-4-paketi', 1080, 1350, 0, 0, 2], ['instagram/ig-5-kontakt', 1080, 1350, 0, 0, 2],
   ['instagram/story-1-cjenovnik', 1080, 1920, 0, 0, 2], ['instagram/story-2-kontakt', 1080, 1920, 0, 0, 2],
   ['naljepnica-qr', 1040, 1040, 104, 104, 4.5],
+  // pano za kancelariju 72 x 80 cm; 5.906 = 8504 x 9449 px (300 dpi)
+  ['pano/pano-svijetli', 1440, 1600, 720, 800, 5.906], ['pano/pano-tamni', 1440, 1600, 720, 800, 5.906],
   ['za-kasnije/vjernost-prednja', 910, 610, 91, 61, 3.543], ['za-kasnije/vjernost-zadnja', 910, 610, 91, 61, 3.543]
 ];
 const only = process.argv[2];
@@ -20,7 +22,7 @@ const only = process.argv[2];
     const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: k });
     const p = await ctx.newPage(); const errs = [];
     p.on('pageerror', (e) => errs.push(e.message)); p.on('requestfailed', (r) => errs.push('fail ' + r.url()));
-    await p.goto('file://' + __dirname + '/design.html?p=' + n.replace(/^(za-kasnije|instagram)\//, ''));
+    await p.goto('file://' + __dirname + '/design.html?p=' + n.replace(/^(za-kasnije|instagram|pano)\//, ''));
     await p.waitForFunction(() => document.documentElement.dataset.ready === '1'); await p.waitForTimeout(300);
     if (k > 4) {
       // velika slika: crta se u trakama pa se spoji (Chromium ne iscrta sve odjednom)

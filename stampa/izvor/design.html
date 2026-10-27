@@ -319,20 +319,99 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .kb .qr .q { width: 268px; height: 268px; border: 0; box-shadow: 0 18px 34px -18px rgba(11, 23, 48, .6); }
 .kb .qr p { margin-top: 14px; font-size: 28px; }
 .kb .qr p span { font-size: 15px; }
+
+/* pano za kancelariju 72 x 80 cm: stranica 1440 x 1600 px (20 px = 1 cm) */
+.pn { width: 1440px; height: 1600px; padding: 70px 90px 60px; display: flex; flex-direction: column; }
+.pn > * { flex: none; }
+.pn-top { display: flex; align-items: center; justify-content: space-between; }
+.pn .brand { font-size: 34px; } .pn .brand small { font-size: 14px; }
+.pn-ph { display: inline-flex; align-items: center; gap: 14px; font: 400 54px/1 A, sans-serif; letter-spacing: .01em; color: var(--navy); }
+.pn-ph svg { width: 40px; height: 40px; color: var(--blue); }
+.pn h2 { font-size: 25px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); padding-bottom: 14px; border-bottom: 3px solid var(--navy); }
+.pn h2.mt { margin-top: 40px; }
+.pn .cz-rows p { padding: 14px 0; }
+.pa .cz-rows p { padding: 19px 0; }
+.pa .cz-rows b { font-size: 30px; } .pa .cz-rows small { font-size: 18px; } .pa .cz-rows em { font-size: 52px; }
+.pa .pa-pk .p { font-size: 58px; } .pa .pa-pk li { font-size: 18px; } .pa .pa-pk > div { padding: 20px 24px; }
+.pa .pa-pk { gap: 20px; }
+.pn .cz-rows b { font-size: 28px; }
+.pn .cz-rows small { font-size: 17px; }
+.pn .cz-rows em { font-size: 48px; }
+.pn .cz-rows b { white-space: nowrap; }
+.pn .cz-rows em .km { font-size: 16px; }
+/* A: svijetli */
+.pa-hero { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: center; margin-top: 36px; }
+.pa-hero .m2w { width: 640px; }
+.pa-hero .lead { margin-top: 24px; font-size: 24px; font-weight: 800; letter-spacing: .5em; text-transform: uppercase; color: var(--mut); }
+.pa-qr { display: grid; justify-items: center; gap: 16px; padding: 26px; border-radius: 30px; background: var(--soft); text-align: center; }
+.pa-qr .q { width: 200px; height: 200px; padding: 14px; border-radius: 18px; background: #fff; box-shadow: 0 14px 30px -18px rgba(11, 23, 48, .45); }
+.pa-qr .q img { width: 100%; height: 100%; }
+.pa-qr p { font-size: 21px; font-weight: 700; line-height: 1.3; color: var(--navy); }
+.pa-qr p span { display: block; margin-top: 4px; font-size: 16px; font-weight: 600; color: var(--mut); }
+.pa-cols { display: grid; grid-template-columns: 1fr 1.18fr 1fr; gap: 46px; margin-top: 44px; margin-bottom: 34px; }
+.pa-pk { display: grid; gap: 16px; margin-top: 18px; }
+.pa-pk > div { padding: 18px 22px 18px; border-radius: 20px; background: var(--soft); border-left: 6px solid var(--c); }
+.pa-pk .n { display: flex; align-items: center; justify-content: space-between; font-size: 24px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); }
+.pa-pk .p { font: 400 54px/1 A, sans-serif; color: var(--navy); letter-spacing: 0; }
+.pa-pk .gold .p { color: var(--blue); }
+.pa-pk .p .km { font-size: 16px; }
+.pa-pk ul { list-style: none; margin-top: 10px; display: grid; gap: 4px; }
+.pa-pk li { position: relative; padding-left: 18px; font-size: 17px; font-weight: 600; color: #2a3444; line-height: 1.3; }
+.pa-pk li::before { content: ''; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.pn .gold { --c: var(--gold); } .pn .silver { --c: var(--silver); } .pn .bronze { --c: var(--bronze); }
+.pa-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 24px 40px; border-radius: 30px; background: var(--navy); color: #fff; }
+.pa-foot .k { font-size: 22px; font-weight: 700; color: var(--sky); }
+.pa-foot .tel { display: flex; align-items: center; gap: 16px; margin-top: 8px; font: 400 70px/1 A, sans-serif; letter-spacing: .01em; }
+.pa-foot .tel svg { width: 48px; height: 48px; }
+.pa-foot .chs { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; max-width: 560px; }
+.pa-foot .chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 99px; background: rgba(255, 255, 255, .1); font-size: 22px; font-weight: 700; }
+.pa-foot .chip svg { width: 26px; height: 26px; color: var(--sky); }
+/* B: tamni */
+.pb { background: radial-gradient(80% 55% at 50% 0%, #1f4fae 0%, #12306e 40%, #0b1730 80%); color: #fff; }
+.pb .glow { position: absolute; left: 50%; bottom: -380px; width: 1500px; height: 760px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(59, 130, 240, .28), transparent); pointer-events: none; }
+.pb > *:not(.glow) { position: relative; }
+.pb .brand b { color: #fff; } .pb .brand small { color: var(--sky); }
+.pb .pn-ph { color: #fff; } .pb .pn-ph svg { color: var(--sky); }
+.pb-t { margin-top: 26px; text-align: center; }
+.pb-t .m2w { width: 520px; margin: 0 auto; }
+.pb-lb { font-size: 22px; font-weight: 800; letter-spacing: .42em; text-transform: uppercase; color: #9fb3d3; }
+.pb-t p { margin-top: 22px; font-size: 24px; font-weight: 800; letter-spacing: .5em; padding-left: .5em; text-transform: uppercase; color: #9fb3d3; }
+.pb h2 { color: var(--sky); border-bottom-color: rgba(255, 255, 255, .55); }
+.pb .cz-rows p { border-bottom-color: rgba(255, 255, 255, .14); }
+.pb .cz-rows b, .pb .cz-rows em { color: #fff; }
+.pb .cz-rows small, .pb .cz-rows em .km { color: #a9b8cf; }
+.pb-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; margin-top: 30px; }
+.pb .cz-rows p { padding: 8px 0; }
+.pb h2.mt { margin-top: 26px; }
+.pb-pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 16px; margin-bottom: 24px; }
+.pb-pk > div { padding: 18px 24px; border-radius: 22px; background: rgba(255, 255, 255, .07); border: 1.5px solid rgba(255, 255, 255, .12); border-top: 6px solid var(--c); }
+.pb-pk .n { font-size: 25px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.pb-pk .p { margin-top: 2px; font: 400 56px/1 A, sans-serif; color: #fff; }
+.pb-pk .p .km { font-size: 18px; color: #a9b8cf; }
+.pb-pk ul { list-style: none; margin-top: 10px; display: grid; gap: 5px; }
+.pb-pk li { position: relative; padding-left: 18px; font-size: 18px; font-weight: 600; color: #d3deee; line-height: 1.3; }
+.pb-pk li::before { content: ''; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--sky); }
+.pb-foot { margin-top: auto; display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; padding: 18px 36px 18px 18px; border-radius: 30px; background: #fff; color: var(--navy); }
+.pb-foot .q { width: 150px; height: 150px; padding: 6px; }
+.pb-foot .q img { width: 100%; height: 100%; }
+.pb-foot .k { font-size: 23px; font-weight: 700; color: var(--blue); }
+.pb-foot .tel { display: flex; align-items: center; gap: 16px; margin-top: 8px; font: 400 66px/1 A, sans-serif; letter-spacing: .01em; }
+.pb-foot .tel svg { width: 50px; height: 50px; color: var(--blue); }
+.pb-foot .sm { margin-top: 10px; font-size: 22px; font-weight: 600; color: var(--mut); }
 </style></head>
 <body>
 <div id="root"></div>
 <script>
 // ---- podaci: cijene od M&S (10/2026) ----
 const K = { tel: '+387 62 568 565', ig: '@ms_wash_detailing' };
-const VOZILA = [['car', 'Malo auto', 'Pranje, iznutra i spolja', '15'], ['suv', 'SUV', 'Veće putničko vozilo', '20'], ['van', 'Kombi', 'Pranje, iznutra i spolja', '25']];
-const PRAONICA = [['spray', 'Vanjsko pranje', 'Karoserija i felge', '10'], ['vac', 'Unutrašnje pranje', 'Unutrašnjost vozila', '10']];
-const DETALJNO = [['spark', 'Vanjsko detaljno', 'Karoserija, felge i stakla', '50'], ['seat', 'Unutrašnje detaljno', 'Bez sjedišta', '50'], ['foam', 'Dubinsko detaljno', 'Cijeli auto', '150/200']];
+const VOZILA = [['car', 'Malo auto', 'Pranje eksterijera i enterijera', '15'], ['suv', 'SUV', 'Veće putničko vozilo', '20'], ['van', 'Kombi', 'Pranje eksterijera i enterijera', '25']];
+const PRAONICA = [['spray', 'Vanjsko pranje', 'Pranje eksterijera', '10'], ['vac', 'Unutrašnje pranje', 'Pranje enterijera', '10']];
+const DETALJNO = [['spark', 'Vanjsko detaljno', 'Eksterijer: karoserija, felge i stakla', '50'], ['seat', 'Unutrašnje detaljno', 'Enterijer, bez sjedišta', '50'], ['foam', 'Dubinsko detaljno', 'Cijeli enterijer', '150/200']];
 const DODATNO = [['mud', 'Skidanje blata', '', '10'], ['paw', 'Dlake ljubimaca', '', '10'], ['rim', 'Felge detaljno', '', '40']];
 const PAKETI = [
-  ['bronze', 'Bronze', 'Detaljno pranje', '250', ['Vanjsko i unutrašnje detaljno pranje']],
-  ['gold', 'Gold', 'Kompletna njega', '1.300', ['Vanjsko i unutrašnje pranje', 'Poliranje', 'Farovi', 'Keramička zaštita laka i stakla']],
-  ['silver', 'Silver', 'Poliranje i zaštita', '700', ['Vanjsko i unutrašnje detaljno pranje', 'Poliranje', 'Keramička zaštita laka i stakla']]
+  ['bronze', 'Bronze', 'Detaljno pranje', '250', ['Detaljno pranje eksterijera i enterijera']],
+  ['gold', 'Gold', 'Kompletna njega', '1.300', ['Pranje eksterijera i enterijera', 'Poliranje', 'Farovi', 'Keramička zaštita laka i stakla']],
+  ['silver', 'Silver', 'Poliranje i zaštita', '700', ['Detaljno pranje eksterijera i enterijera', 'Poliranje', 'Keramička zaštita laka i stakla']]
 ];
 const IC = {
   tel: '<path d="M6.5 3.5l3 3-2 2.5a12 12 0 0 0 7.5 7.5l2.5-2 3 3-2 2.5C11 20 4 13 4 5.5z"/>',
@@ -392,13 +471,36 @@ const P = {
     <div class="cz-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n"><i></i>' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
     <div class="cz-cta"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
   </div>`,
+  'pano-svijetli': () => `<div class="page pn pa">
+    <div class="pn-top">${brand()}<span class="pn-ph">${ic('tel')}${K.tel}</span></div>
+    <div class="pa-hero"><div>${mega2()}<p class="lead">Cjenovnik usluga</p></div>
+      <div class="pa-qr"><div class="q"><img src="qr.svg"></div><p>Skenirajte za online cjenovnik<span>i upit za termin</span></p></div></div>
+    <div class="pa-cols">
+      <div><h2>Auto praonica</h2>${row(VOZILA.concat(PRAONICA))}</div>
+      <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
+      <div><h2>Paketi njege</h2><div class="pa-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n">' + n + '<span class="p">' + km(p) + '</span></p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div></div>
+    </div>
+    <div class="pa-foot"><div><p class="k">Termini i informacije</p><p class="tel">${ic('tel')}${K.tel}</p></div>
+      <div class="chs"><span class="chip">${ic('wa')}WhatsApp</span><span class="chip">${ic('vb')}Viber</span><span class="chip">${ic('ig')}${K.ig}</span></div></div>
+  </div>`,
+  'pano-tamni': () => `<div class="page pn pb"><i class="glow"></i>
+    <div class="pn-top">${brand(true)}<span class="pb-lb">Cjenovnik usluga</span></div>
+    <div class="pb-t">${mega2(true)}</div>
+    <div class="pb-cols">
+      <div><h2>Auto praonica</h2>${row(VOZILA.concat(PRAONICA))}</div>
+      <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
+    </div>
+    <h2 class="mt">Paketi njege</h2>
+    <div class="pb-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n">' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
+    <div class="pb-foot"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
+  </div>`,
   'ig-1-uvod': () => `<div class="page ig">${igHead('Pranje i detailing')}
     <div class="photo" style="height:470px;margin-top:30px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
     <div class="mw" style="margin-top:30px">${mega2()}<i class="glow"></i></div>
     <p class="from"><span>Pranje od <b>10 KM</b></span><span>Detaljno od <b>50 KM</b></span><span>Paketi od <b>250 KM</b></span></p>
     ${igFoot('Vaš auto, sjajan kao nov.')}</div>`,
   'ig-2-praonica': () => `<div class="page ig">${igHead('Cjenovnik')}
-    <h1 class="ttl">Auto<span>praonica</span></h1><p class="lead">Ručno pranje iznutra i spolja, za svako vozilo.</p>
+    <h1 class="ttl">Auto<span>praonica</span></h1><p class="lead">Ručno pranje eksterijera i enterijera, za svako vozilo.</p>
     <div class="g3">${VOZILA.map((v) => tile(v)).join('')}</div>
     <div class="rows">${PRAONICA.map((v) => tile(v, 'h')).join('')}</div>
     ${igFoot('Cijene u KM')}</div>`,
