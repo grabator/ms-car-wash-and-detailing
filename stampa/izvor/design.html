@@ -419,6 +419,12 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .op .obadge { margin-top: 64px; }
 .op .osee { margin-top: 26px; margin-bottom: 40px; font: 400 64px/1 A, sans-serif; letter-spacing: .01em; color: #fff; }
 .op.sty .brand { font-size: 32px; } .op.sty .osv span { font-size: 25px; } .op.sty .oday { font-size: 30px; }
+
+/* naslovne slike za Instagram Highlights: 1080 x 1920, Instagram uzme krug na sredini */
+.hl { width: 1080px; height: 1920px; display: grid; place-items: center; background: radial-gradient(60% 40% at 50% 45%, #2563d9 0%, #12306e 45%, #0b1730 85%); }
+.hl .c { width: 860px; height: 860px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 50% 30%, #1f4fae, #0b1730 78%); border: 6px solid rgba(143, 211, 255, .55); box-shadow: 0 0 0 26px rgba(143, 211, 255, .1); }
+.hl .c svg { width: 460px; height: 460px; color: #fff; stroke-width: 1.5; }
+.hl .c svg .acc { color: var(--sky); }
 </style></head>
 <body>
 <div id="root"></div>
@@ -450,6 +456,7 @@ const IC = {
   mud: '<path d="M3 18c2-1 3.5-1 5 0s3 1 5 0 3.5-1 5 0 2.5.6 3 .3"/><path d="M6 14c.5-2 2-3.5 4-3.5s3 1 4 1 2-.8 2.8-2.5"/><circle cx="17" cy="5.5" r="1.4"/>',
   paw: '<circle cx="7" cy="9" r="1.8"/><circle cx="11" cy="6" r="1.8"/><circle cx="15.5" cy="7" r="1.8"/><circle cx="18" cy="11" r="1.6"/><path d="M8 16c0-2.5 2-4.5 4.5-4.5S17 13.5 17 16c0 1.5-1.2 2.5-2.6 2.2-1.3-.3-2.5-.3-3.8 0C9.2 18.5 8 17.5 8 16z"/>',
   rim: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3.5V10M12 14v6.5M3.5 12H10M14 12h6.5M6 6l4.6 4.6M13.4 13.4L18 18M18 6l-4.6 4.6M10.6 13.4L6 18"/>',
+  list: '<rect x="4.5" y="3.5" width="15" height="17" rx="2.5"/><path d="M8 8h5M8 12h5M8 16h5M16 8h.01M16 12h.01M16 16h.01"/>',
   link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>'
 };
 const ic = (k) => '<svg class="i" viewBox="0 0 24 24">' + IC[k] + '</svg>';
@@ -536,6 +543,9 @@ const P = {
     <div class="obadge">${badge(230)}</div><p class="osee">Vidimo se u nedjelju!</p>
     <p class="oft"><span>${ic('tel')} ${K.tel}</span><b>${ic('ig')}${K.ig}</b></p>
   </div>`,
+  'hl-otvorenje': () => `<div class="page hl"><div class="c">${ic('spark')}</div></div>`,
+  'hl-cjenovnik': () => `<div class="page hl"><div class="c">${ic('list')}</div></div>`,
+  'hl-kontakt': () => `<div class="page hl"><div class="c">${ic('tel')}</div></div>`,
   'ig-1-uvod': () => `<div class="page ig">${igHead('Pranje i detailing')}
     <div class="photo" style="height:470px;margin-top:30px"><img src="foto/wash.jpg" style="object-position:50% 30%">${badge(210)}</div>
     <div class="mw" style="margin-top:30px">${mega2()}<i class="glow"></i></div>
