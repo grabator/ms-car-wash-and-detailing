@@ -10,7 +10,7 @@ const JOBS = [
   ['instagram/ig-0-otvorenje', 1080, 1350, 0, 0, 2], ['instagram/story-0-otvorenje', 1080, 1920, 0, 0, 2],
   ['instagram/highlights/hl-otvorenje', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-cjenovnik', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-kontakt', 1080, 1920, 0, 0, 1],
   ['instagram/ig-1-uvod', 1080, 1350, 0, 0, 2], ['instagram/ig-2-praonica', 1080, 1350, 0, 0, 2], ['instagram/ig-3-detaljno', 1080, 1350, 0, 0, 2], ['instagram/ig-4-paketi', 1080, 1350, 0, 0, 2], ['instagram/ig-5-kontakt', 1080, 1350, 0, 0, 2],
-  ['instagram/story-1-cjenovnik', 1080, 1920, 0, 0, 2], ['instagram/story-2-kontakt', 1080, 1920, 0, 0, 2],
+  ['instagram/story-1-cjenovnik', 1080, 1920, 0, 0, 2], ['instagram/ig-6-radno-vrijeme', 1080, 1350, 0, 0, 2], ['instagram/story-3-radno-vrijeme', 1080, 1920, 0, 0, 2], ['instagram/story-2-kontakt', 1080, 1920, 0, 0, 2],
   ['naljepnica-qr', 1040, 1040, 104, 104, 4.5],
   // pano za kancelariju 72 x 80 cm; 5.906 = 8504 x 9449 px (300 dpi)
   ['pano/pano-svijetli', 1440, 1600, 720, 800, 5.906], ['pano/pano-tamni', 1440, 1600, 720, 800, 5.906],
