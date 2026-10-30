@@ -8,7 +8,7 @@ const JOBS = [
   ['kartica-prednja', 910, 610, 91, 61, 3.543], ['kartica-zadnja', 910, 610, 91, 61, 3.543],
   ['cjenovnik-zid', 1400, 2000, 700, 1000, 5],
   ['instagram/ig-0-otvorenje', 1080, 1350, 0, 0, 2], ['instagram/story-0-otvorenje', 1080, 1920, 0, 0, 2],
-  ['instagram/highlights/hl-otvorenje', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-cjenovnik', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-kontakt', 1080, 1920, 0, 0, 1],
+  ['instagram/highlights/hl-otvorenje', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-cjenovnik', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-kontakt', 1080, 1920, 0, 0, 1], ['instagram/highlights/hl-paketi', 1080, 1920, 0, 0, 1],
   ['instagram/ig-1-uvod', 1080, 1350, 0, 0, 2], ['instagram/ig-2-praonica', 1080, 1350, 0, 0, 2], ['instagram/ig-3-detaljno', 1080, 1350, 0, 0, 2], ['instagram/ig-4-paketi', 1080, 1350, 0, 0, 2], ['instagram/ig-5-kontakt', 1080, 1350, 0, 0, 2],
   ['instagram/story-1-cjenovnik', 1080, 1920, 0, 0, 2],
   ...['bronze', 'silver', 'gold', 'platinum'].flatMap((k) => [['instagram/paketi/ig-paket-' + k, 1080, 1350, 0, 0, 2], ['instagram/paketi/story-paket-' + k, 1080, 1920, 0, 0, 2]]), ['instagram/ig-6-radno-vrijeme', 1080, 1350, 0, 0, 2], ['instagram/story-3-radno-vrijeme', 1080, 1920, 0, 0, 2], ['instagram/story-2-kontakt', 1080, 1920, 0, 0, 2],
