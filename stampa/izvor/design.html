@@ -12,7 +12,7 @@
 @font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-800-normal.woff2); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
 @font-face { font-family: M; font-weight: 800; src: url(f/montserrat-latin-ext-800-normal.woff2); unicode-range: U+0100-024F; }
 :root { --navy: #0b1730; --navy2: #12306e; --ink: #0f1622; --blue: #1d5ad6; --blue2: #3b82f0; --sky: #8fd3ff; --mut: #5d6878; --line: #e3e8ef; --soft: #f2f5f9; --soft2: #e8eef7;
-  --gold: #d9a93a; --silver: #9aa6b6; --bronze: #c07a46; }
+  --gold: #d9a93a; --silver: #9aa6b6; --bronze: #c07a46; --platinum: #7fa6dc; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 @page { margin: 0; }
 html, body { background: transparent; }
@@ -112,12 +112,12 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .pkc ul { list-style: none; display: grid; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 2px solid #dfe6f0; }
 .pkc li { display: flex; gap: 10px; font-size: 18px; font-weight: 600; line-height: 1.3; color: #2a3444; }
 .pkc li::before { content: ''; flex: none; width: 20px; height: 20px; margin-top: 1px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 13px no-repeat; }
-.pkc.gold { background: radial-gradient(90% 70% at 100% 0%, rgba(59, 130, 240, .45), transparent 60%), var(--navy); color: #fff; box-shadow: 0 24px 50px -26px rgba(11, 23, 48, .9); }
-.pkc.gold .n, .pkc.gold .p { color: #fff; } .pkc.gold .d { color: #b8c7de; } .pkc.gold li { color: #e3ebf7; }
-.pkc.gold ul { border-color: rgba(255, 255, 255, .14); }
-.pkc.gold li::before { background-color: var(--blue2); }
+.pkc.best { background: radial-gradient(90% 70% at 100% 0%, rgba(59, 130, 240, .45), transparent 60%), var(--navy); color: #fff; box-shadow: 0 24px 50px -26px rgba(11, 23, 48, .9); }
+.pkc.best .n, .pkc.best .p { color: #fff; } .pkc.best .d { color: #b8c7de; } .pkc.best li { color: #e3ebf7; }
+.pkc.best ul { border-color: rgba(255, 255, 255, .14); }
+.pkc.best li::before { background-color: var(--blue2); }
 .pkc .bd { position: absolute; top: 0; right: 0; padding: 9px 18px 9px 20px; border-radius: 0 28px 0 18px; background: linear-gradient(115deg, #b8862a, #f6dc8d 45%, #c99a2e); color: #2b1d02; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-.gold { --m: linear-gradient(135deg, #f6dc8d, #c99a2e); } .silver { --m: linear-gradient(135deg, #f1f5fa, #8d99a9); } .bronze { --m: linear-gradient(135deg, #f0bb90, #9c5f36); }
+.gold { --m: linear-gradient(135deg, #f6dc8d, #c99a2e); } .silver { --m: linear-gradient(135deg, #f1f5fa, #8d99a9); } .bronze { --m: linear-gradient(135deg, #f0bb90, #9c5f36); } .platinum { --m: linear-gradient(135deg, #ffffff, #9fb8de); }
 .cta { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; padding: 28px 40px 28px 28px; border-radius: 34px; color: #fff; background: radial-gradient(90% 140% at 100% 0%, rgba(143, 211, 255, .5), transparent 60%), linear-gradient(120deg, var(--navy), var(--blue)); }
 .cta .q { width: 220px; height: 220px; padding: 16px; border-radius: 24px; background: #fff; }
 .cta .q img { width: 100%; height: 100%; }
@@ -232,7 +232,7 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .ig .mid, .st .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0 24px; }
 .ig .mid > *, .st .mid > * { flex: none; }
 .ig .mid > .ttl:first-child, .st .mid > .ttl:first-child { margin-top: 0; }
-.ig .pkc.gold { padding-top: 46px; }
+.ig .pkc.best { padding-top: 46px; }
 .ig .t { padding: 26px 28px 24px; }
 .ig .g3 .t { grid-template-columns: 1fr; grid-template-areas: "i" "n" "p"; gap: 12px; }
 .ig .g3 .t .nm b { font-size: 32px; } .ig .g3 .t .nm small { font-size: 18px; }
@@ -281,14 +281,14 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .cz-rows em { font-style: normal; font: 400 48px/1 A, sans-serif; color: var(--navy); white-space: nowrap; }
 .cz-rows em .km { font-size: 16px; }
 .cz-pk-h { margin-top: 48px; }
-.cz-pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 8px; margin-bottom: 44px; }
+.cz-pk { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 8px; margin-bottom: 44px; }
 .cz-pk > div { padding: 22px 34px 10px; }
 .cz-pk > div + div { border-left: 1.5px solid var(--line); }
 .cz-pk > div:first-child { padding-left: 0; }
 .cz-pk .n { display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
 .cz-pk .n i { width: 20px; height: 20px; border-radius: 50%; background: var(--m); }
 .cz-pk .p { margin-top: 8px; font: 400 76px/1 A, sans-serif; color: var(--navy); }
-.cz-pk .gold .p { color: var(--blue); }
+.cz-pk .best .p { color: var(--blue); }
 .cz-pk .p .km { font-size: 20px; }
 .cz-pk ul { list-style: none; margin-top: 14px; display: grid; gap: 7px; }
 .cz-pk li { position: relative; padding-left: 20px; font-size: 19px; font-weight: 600; color: #2a3444; line-height: 1.35; }
@@ -353,12 +353,12 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .pa-pk > div { padding: 18px 22px 18px; border-radius: 20px; background: var(--soft); border-left: 6px solid var(--c); }
 .pa-pk .n { display: flex; align-items: center; justify-content: space-between; font-size: 24px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); }
 .pa-pk .p { font: 400 54px/1 A, sans-serif; color: var(--navy); letter-spacing: 0; }
-.pa-pk .gold .p { color: var(--blue); }
+.pa-pk .best .p { color: var(--blue); }
 .pa-pk .p .km { font-size: 16px; }
 .pa-pk ul { list-style: none; margin-top: 10px; display: grid; gap: 4px; }
 .pa-pk li { position: relative; padding-left: 18px; font-size: 17px; font-weight: 600; color: #2a3444; line-height: 1.3; }
 .pa-pk li::before { content: ''; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
-.pn .gold { --c: var(--gold); } .pn .silver { --c: var(--silver); } .pn .bronze { --c: var(--bronze); }
+.pn .gold { --c: var(--gold); } .pn .silver { --c: var(--silver); } .pn .bronze { --c: var(--bronze); } .pn .platinum { --c: var(--platinum); }
 .pa-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 24px 40px; border-radius: 30px; background: var(--navy); color: #fff; }
 .pa-foot .k { font-size: 22px; font-weight: 700; color: var(--sky); }
 .pa-foot .tel { display: flex; align-items: center; gap: 16px; margin-top: 8px; font: 400 70px/1 A, sans-serif; letter-spacing: .01em; }
@@ -383,7 +383,7 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .pb-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; margin-top: 30px; }
 .pb .cz-rows p { padding: 8px 0; }
 .pb h2.mt { margin-top: 26px; }
-.pb-pk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 16px; margin-bottom: 24px; }
+.pb-pk { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 16px; margin-bottom: 24px; }
 .pb-pk > div { padding: 18px 24px; border-radius: 22px; background: rgba(255, 255, 255, .07); border: 1.5px solid rgba(255, 255, 255, .12); border-top: 6px solid var(--c); }
 .pb-pk .n { font-size: 25px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
 .pb-pk .p { margin-top: 2px; font: 400 56px/1 A, sans-serif; color: #fff; }
@@ -463,6 +463,55 @@ svg.mega { display: block; width: 100%; height: auto; overflow: visible; }
 .rw .rbox li { position: relative; padding-left: 22px; margin-top: 7px; font-size: 22px; font-weight: 700; color: #e6eefb; }
 .rw .rbox li::before { content: ''; position: absolute; left: 0; top: .5em; width: 9px; height: 9px; border-radius: 50%; background: var(--sky); }
 .rw.sty .rtwo { margin-top: 24px; }
+
+/* objava i story za svaki paket: tamna pozadina, naziv u boji paketa, cijena, sve stavke sa napomenama */
+.pq { width: 1080px; height: 1350px; padding: 64px 76px 58px; display: flex; flex-direction: column; align-items: center; text-align: center; color: #fff; overflow: hidden;
+  background: radial-gradient(80% 55% at 50% 0%, var(--tg, #2563d9) 0%, #12306e 46%, #0b1730 84%); }
+.pq > * { position: relative; flex: none; }
+.pq.sty { height: 1920px; padding: 180px 80px 200px; }
+.pq.bronze { --tg: #8a4d2a; --tc: #f0bb90; } .pq.silver { --tg: #5c6f8c; --tc: #e6edf6; } .pq.gold { --tg: #8a6512; --tc: #f6dc8d; } .pq.platinum { --tg: #3d6fb8; --tc: #cfe6ff; }
+.pq .qglow { position: absolute; left: 50%; bottom: -320px; width: 1300px; height: 700px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(59, 130, 240, .3), transparent); }
+.pq .brand { font-size: 26px; } .pq .brand b { color: #fff; } .pq .brand small { color: var(--sky); font-size: 11px; }
+.pq .ql { margin-top: 34px; padding: 11px 24px; border-radius: 99px; border: 2px solid color-mix(in srgb, var(--tc) 60%, transparent); color: var(--tc); font-size: 20px; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; }
+.pq .ql.best { border: 0; background: linear-gradient(115deg, #b8862a, #f6dc8d 45%, #c99a2e); color: #2b1d02; }
+.pq .qn { width: 620px; margin-top: 22px; }
+.pq .qd { margin-top: 14px; font-size: 26px; font-weight: 700; color: #d6e6ff; }
+.pq .qp { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-top: 10px; font: 400 150px/1 A, sans-serif; color: #fff; }
+.pq .qp small { font: 800 34px/1 M, sans-serif; color: var(--tc); letter-spacing: .08em; }
+.pq .qlist { width: 100%; margin-top: 26px; padding: 14px 30px; border-radius: 30px; background: rgba(255, 255, 255, .08); border: 1.5px solid rgba(255, 255, 255, .14); text-align: left; }
+.pq .qlist p { display: grid; grid-template-columns: 34px 1fr; gap: 16px; padding: 13px 0; font-size: 26px; font-weight: 700; line-height: 1.25; }
+.pq .qlist p + p { border-top: 1.5px solid rgba(255, 255, 255, .12); }
+.pq .qlist p::before { content: ''; width: 32px; height: 32px; margin-top: 0; border-radius: 50%; background: var(--tc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%230b1730' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px no-repeat; }
+.pq .qlist small { display: block; margin-top: 4px; font-size: 19px; font-weight: 600; color: #b8c7de; }
+.pq.many .qlist p { padding: 9px 0; font-size: 23px; } .pq.many .qlist small { font-size: 17px; margin-top: 2px; } .pq.many .qlist p::before { width: 28px; height: 28px; background-size: 17px; }
+.pq.many .qp { font-size: 128px; } .pq.many .qn { width: 560px; }
+.pq .qbook { margin-top: auto; padding-top: 22px; font-size: 22px; font-weight: 700; color: #c9d6ea; }
+.pq .qbook b { color: #fff; }
+.pq .oft { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 18px; padding-top: 22px; border-top: 2px solid rgba(255, 255, 255, .16); font-size: 22px; font-weight: 700; color: #c9d6ea; }
+.pq .oft b { display: inline-flex; align-items: center; gap: 10px; color: #fff; } .pq .oft svg { width: 24px; height: 24px; color: var(--sky); }
+.pq.sty .brand { font-size: 32px; } .pq.sty .ql { margin-top: 60px; font-size: 22px; } .pq.sty .qn { width: 700px; margin-top: 34px; } .pq.sty .qd { font-size: 30px; }
+.pq.sty .qp { font-size: 190px; margin-top: 18px; } .pq.sty .qlist { margin-top: 44px; padding: 20px 34px; } .pq.sty .qlist p { padding: 18px 0; font-size: 30px; } .pq.sty .qlist small { font-size: 22px; }
+.pq.sty.many .qlist p { padding: 12px 0; font-size: 27px; } .pq.sty.many .qlist small { font-size: 20px; } .pq.sty.many .qp { font-size: 160px; }
+.pq .qqr { display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: center; width: 100%; margin-top: auto; padding: 22px 28px; border-radius: 26px; background: rgba(255, 255, 255, .08); border: 1.5px solid rgba(255, 255, 255, .14); text-align: left; }
+.pq .qqr .q { width: 150px; height: 150px; padding: 12px; border-radius: 16px; background: #fff; } .pq .qqr .q img { width: 100%; height: 100%; }
+.pq .qqr .k { font-size: 28px; font-weight: 800; } .pq .qqr .s { margin-top: 6px; font-size: 22px; font-weight: 600; color: #c9d6ea; }
+.pq.sty .qbook { margin-top: 30px; }
+.pq .qph { width: 100%; margin-top: 26px; border-radius: 30px; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, .14); }
+.pq .qph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 4 paketa: zbijeniji rasporedi da sve stane na stranicu */
+.cz-t { margin-top: 30px; } .cz-cols { margin-top: 34px; } .cz-rows p { padding: 10px 0; } .cz h2.mt { margin-top: 32px; }
+.cz-pk-h { margin-top: 34px; } .cz-pk { margin-bottom: 26px; } .cz-pk > div { padding: 16px 24px 6px; }
+.cz-pk .p { font-size: 66px; } .cz-pk ul { gap: 5px; margin-top: 10px; } .cz-pk li { font-size: 17.5px; line-height: 1.3; }
+.pa .cz-rows p { padding: 14px 0; } .pa-cols { margin-top: 34px; margin-bottom: 24px; gap: 40px; }
+.pa .pa-pk { gap: 12px; margin-top: 14px; } .pa .pa-pk > div { padding: 13px 18px; } .pa .pa-pk .p { font-size: 44px; } .pa .pa-pk .n { font-size: 21px; }
+.pa .pa-pk ul { margin-top: 6px; gap: 2px; } .pa .pa-pk li { font-size: 16px; line-height: 1.28; }
+.pb .cz-rows p { padding: 6px 0; } .pb-pk { gap: 16px; margin-bottom: 18px; } .pb-pk > div { padding: 14px 18px; } .pb-pk .p { font-size: 48px; } .pb-pk li { font-size: 16.5px; } .pb-pk ul { gap: 3px; margin-top: 8px; }
+.ig .pks { gap: 10px; margin-top: 20px; } .ig .pkc { padding: 16px 26px 14px; } .ig .pkc .p { font-size: 72px; } .ig .pkc .n { font-size: 26px; } .ig .pkc .d { font-size: 16px; }
+.ig .pkc ul { margin-top: 8px; padding-top: 8px; gap: 4px 16px; } .ig .pkc li { font-size: 16.5px; } .ig .pkc li::before { width: 17px; height: 17px; }
+.ig .pkc.best { padding-top: 34px; }
+.pq.sty .ql { margin-top: 44px; } .pq.sty.many .qlist p { padding: 10px 0; font-size: 26px; } .pq.sty.many .qp { font-size: 140px; } .pq.sty.many .qn { width: 600px; } .pq.sty.many .qlist { margin-top: 30px; }
+.pq.sty.few { padding-top: 150px; } .pq.sty.few .qn { width: 640px; } .pq.sty.few .qp { font-size: 170px; } .pq.sty.few .qbook { margin-top: 20px; }
 </style></head>
 <body>
 <div id="root"></div>
@@ -473,10 +522,14 @@ const VOZILA = [['car', 'Malo auto', 'Pranje eksterijera i enterijera', '15'], [
 const PRAONICA = [['spray', 'Pranje eksterijera', 'Karoserija i felge', '10'], ['vac', 'Pranje enterijera', 'Unutrašnjost vozila', '10']];
 const DETALJNO = [['spark', 'Detaljno pranje eksterijera', 'Karoserija, felge i stakla', '50'], ['seat', 'Detaljno pranje enterijera', 'Bez sjedišta', '50'], ['foam', 'Dubinsko detaljno', 'Cijeli enterijer', '150/200']];
 const DODATNO = [['mud', 'Skidanje blata', '', '10'], ['paw', 'Dlake ljubimaca', '', '10'], ['rim', 'Felge detaljno', '', '40']];
+// [ključ, naziv, opis, cijena, kratke stavke (cjenovnik, pano, pregled), pune stavke [tekst, napomena] (objava paketa), najbolji izbor]
+const KOR = 'Korekcija ogrebotina i vraćanje sjaja u skladu sa stanjem laka';
+const BRONZE_FULL = [['Detaljno pranje eksterijera', 'Pre-wash, wash, dekontaminacija laka, stakla i felgi'], ['Detaljno dubinsko čišćenje enterijera', 'Sjedišta, instrument tabla, otvori za ventilaciju, teže dostupna mjesta']];
 const PAKETI = [
-  ['bronze', 'Bronze', 'Detaljno pranje', '250', ['Detaljno pranje eksterijera i enterijera']],
-  ['gold', 'Gold', 'Kompletna njega', '1.300', ['Pranje eksterijera i enterijera', 'Poliranje', 'Farovi', 'Keramička zaštita laka i stakla']],
-  ['silver', 'Silver', 'Poliranje i zaštita', '700', ['Detaljno pranje eksterijera i enterijera', 'Poliranje', 'Keramička zaštita laka i stakla']]
+  ['bronze', 'Bronze', 'Detaljno pranje', '250', ['Detaljno pranje eksterijera', 'Dubinsko čišćenje enterijera'], BRONZE_FULL, false],
+  ['silver', 'Silver', 'Poliranje i zaštita laka', '500', ['Višeslojno poliranje i korekcija ogrebotina', 'Keramička zaštita laka'], [['Višeslojno poliranje', KOR], ['Keramička zaštita laka', '']], true],
+  ['gold', 'Gold', 'Eksterijer, enterijer i zaštita', '700', ['Detaljno pranje eksterijera i enterijera', 'Višeslojno poliranje i korekcija ogrebotina', 'Keramička zaštita laka i stakla', 'Poliranje farova'], [...BRONZE_FULL, ['Višeslojno poliranje', KOR], ['Keramička zaštita laka', ''], ['Keramička zaštita stakla', ''], ['Poliranje farova', '']], false],
+  ['platinum', 'Platinum', 'Kompletna njega', '1.300', ['Detaljno pranje eksterijera i enterijera', 'Višeslojno poliranje i korekcija ogrebotina', 'Poliranje i zaštita farova', 'Keramička zaštita laka i stakla', 'Keramička zaštita sjedišta'], [...BRONZE_FULL, ['Višeslojno poliranje laka', KOR], ['Poliranje farova', ''], ['Zaštita farova', ''], ['Keramička zaštita laka i stakla', ''], ['Keramička zaštita za sjedišta', 'Kožna ili tekstilna sjedišta']], false]
 ];
 const IC = {
   tel: '<path d="M6.5 3.5l3 3-2 2.5a12 12 0 0 0 7.5 7.5l2.5-2 3 3-2 2.5C11 20 4 13 4 5.5z"/>',
@@ -512,11 +565,11 @@ const tags = (list) => list.map(([t, l, tp]) => '<span class="tag" style="left:'
 const TAGS = [['Pjena', '1%', '12%'], ['Ručno pranje', '0%', '46%'], ['Sjaj', '3%', '80%'], ['Poliranje', '87%', '12%'], ['Enterijer', '87%', '46%'], ['Keramika', '86%', '80%']];
 const tile = ([i, n, d, p], cls) => '<div class="t ' + (cls || '') + '"><span class="ic">' + ic(i) + '</span><span class="nm"><b>' + n + '</b>' + (d ? '<small>' + d + '</small>' : '') + '</span><span class="pr">' + km(p) + '</span></div>';
 const row = (list) => '<div class="cz-rows">' + list.map(([, n, d, p]) => '<p><span><b>' + n + '</b>' + (d ? '<small>' + d + '</small>' : '') + '</span><i></i><em>' + km(p) + '</em></p>').join('') + '</div>';
-const pkg = ([k, n, d, p, xs]) => '<div class="pkc ' + k + '">' + (k === 'gold' ? '<span class="bd">Najbolji izbor</span>' : '') + '<p class="n"><i></i>' + n + '</p><p class="d">' + d + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>';
+const pkg = ([k, n, d, p, xs, , best]) => '<div class="pkc ' + k + (best ? ' best' : '') + '">' + (best ? '<span class="bd">Najbolji izbor</span>' : '') + '<p class="n"><i></i>' + n + '</p><p class="d">' + d + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>';
 const badge = (s) => '<div class="badge-logo" style="width:' + s + 'px;height:' + s + 'px;font-size:' + s + 'px"><img src="mono-dark.svg"></div>';
 const igHead = (lb) => '<div class="hd">' + brand() + '<span class="lb">' + lb + '</span></div><div class="mid">';
 const igFoot = (l) => '</div><p class="ft"><span>' + l + '</span><b>' + ic('ig') + K.ig + '</b></p>';
-const PK_ORDER = (a) => [a[1], a[2], a[0]]; // gold, silver, bronze
+const PK_ORDER = (a) => a; // Bronze, Silver, Gold, Platinum
 
 // radno vrijeme: obično pranje bez termina, detailing i paketi uz termin
 const rwPage = (story) => `<div class="page op rw${story ? ' sty' : ''}"><i class="oglow"></i>
@@ -535,6 +588,24 @@ const rwPage = (story) => `<div class="page op rw${story ? ' sty' : ''}"><i clas
     ${story ? '<div class="rqr"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte i rezervišite</p><p class="s">mscarwashdetailing.com</p></div></div>' : ''}
     <p class="oft"><span>Kalibunar bb, Travnik</span><b>mscarwashdetailing.com</b></p>
   </div>`;
+
+// objava (1080x1350) i story (1080x1920) za jedan paket
+const TIER = { bronze: ['#ffe2c8', '#e2965e', '#9c5f36'], silver: ['#ffffff', '#d5dde8', '#8d99a9'], gold: ['#fff2c6', '#f0c95a', '#b8862a'], platinum: ['#ffffff', '#d7ebff', '#86aee6'] };
+const tierMega = (txt, k) => { const id = 'tm' + (++gid), [a, b, c] = TIER[k];
+  return '<svg class="mega" data-t="' + txt + '"><defs><linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + a + '"/><stop offset=".55" stop-color="' + b + '"/><stop offset="1" stop-color="' + c + '"/></linearGradient></defs><text font-family="A" font-size="200" fill="url(#' + id + ')">' + txt + '</text></svg>'; };
+const pkPage = (k, story) => { const [, n, d, p, , full, best] = PAKETI.find((x) => x[0] === k);
+  return `<div class="page pq ${k}${story ? ' sty' : ''}${full.length > 4 ? ' many' : full.length <= 2 ? ' few' : ''}"><i class="qglow"></i>
+    ${brand(true)}
+    <p class="ql${best ? ' best' : ''}">${best ? 'Najbolji izbor' : 'Paket njege'}</p>
+    <div class="qn">${tierMega(n.toUpperCase(), k)}</div>
+    <p class="qd">${d}</p>
+    <p class="qp">${p}<small>KM</small></p>
+    <div class="qlist">${full.map(([t, nt]) => '<p><span>' + t + (nt ? '<small>' + nt + '</small>' : '') + '</span></p>').join('')}</div>
+    ${full.length <= 2 ? '<div class="qph" style="height:' + (story ? 270 : 230) + 'px"><img src="foto/' + (k === 'bronze' ? 'wash.jpg' : 'top.jpg') + '" style="object-position:50% ' + (k === 'bronze' ? '35%' : '55%') + '"></div>' : ''}
+    ${story ? '<p class="qbook">Uz dogovoren termin · <b>' + K.tel + '</b> · WhatsApp · Viber</p><div class="qqr"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte i rezervišite termin</p><p class="s">mscarwashdetailing.com · link je i u opisu profila</p></div></div>'
+      : '<p class="qbook">Uz dogovoren termin · rezervacija preko <b>linka u opisu profila</b></p>'}
+    <p class="oft"><span>${ic('tel')} ${K.tel}</span><b>${ic('ig')}${K.ig}</b></p>
+  </div>`; };
 const P = {
   'kartica-prednja': () => `<div class="page card kf kf2"><i class="ov"></i><div class="in"><img class="klogo" src="mono-dark.svg">${mega2(true)}</div><i class="bar"></i></div>`,
   'kartica-zadnja': () => `<div class="page card kb"><i class="wm"></i><div>${brand()}
@@ -551,7 +622,7 @@ const P = {
       <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
     </div>
     <h2 class="cz-pk-h">Paketi njege</h2>
-    <div class="cz-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n"><i></i>' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
+    <div class="cz-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs, , best]) => '<div class="' + k + (best ? ' best' : '') + '"><p class="n"><i></i>' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
     <div class="cz-cta"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
   </div>`,
   'pano-svijetli': () => `<div class="page pn pa">
@@ -561,7 +632,7 @@ const P = {
     <div class="pa-cols">
       <div><h2>Auto praonica</h2>${row(VOZILA.concat(PRAONICA))}</div>
       <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
-      <div><h2>Paketi njege</h2><div class="pa-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n">' + n + '<span class="p">' + km(p) + '</span></p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div></div>
+      <div><h2>Paketi njege</h2><div class="pa-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs, , best]) => '<div class="' + k + (best ? ' best' : '') + '"><p class="n">' + n + '<span class="p">' + km(p) + '</span></p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div></div>
     </div>
     <div class="pa-foot"><div><p class="k">Termini i informacije</p><p class="tel">${ic('tel')}${K.tel}</p></div>
       <div class="chs"><span class="chip">${ic('wa')}WhatsApp</span><span class="chip">${ic('vb')}Viber</span><span class="chip">${ic('ig')}${K.ig}</span></div></div>
@@ -574,7 +645,7 @@ const P = {
       <div><h2>Detaljno pranje</h2>${row(DETALJNO)}<h2 class="mt">Dodatne usluge</h2>${row(DODATNO)}</div>
     </div>
     <h2 class="mt">Paketi njege</h2>
-    <div class="pb-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs]) => '<div class="' + k + '"><p class="n">' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
+    <div class="pb-pk">${PK_ORDER(PAKETI).map(([k, n, d, p, xs, , best]) => '<div class="' + k + (best ? ' best' : '') + '"><p class="n">' + n + '</p><p class="p">' + km(p) + '</p><ul>' + xs.map((x) => '<li>' + x + '</li>').join('') + '</ul></div>').join('')}</div>
     <div class="pb-foot"><div class="q"><img src="qr.svg"></div><div><p class="k">Skenirajte za online cjenovnik i upit</p><p class="tel">${ic('tel')}${K.tel}</p><p class="sm">WhatsApp · Viber · ${K.ig}</p></div></div>
   </div>`,
   'ig-0-otvorenje': () => `<div class="page op"><i class="oglow"></i>
@@ -598,6 +669,14 @@ const P = {
     <div class="obadge">${badge(230)}</div><p class="osee">Vidimo se u nedjelju!</p>
     <p class="oft"><span>${ic('tel')} ${K.tel}</span><b>${ic('ig')}${K.ig}</b></p>
   </div>`,
+  'ig-paket-bronze': () => pkPage('bronze', false),
+  'story-paket-bronze': () => pkPage('bronze', true),
+  'ig-paket-silver': () => pkPage('silver', false),
+  'story-paket-silver': () => pkPage('silver', true),
+  'ig-paket-gold': () => pkPage('gold', false),
+  'story-paket-gold': () => pkPage('gold', true),
+  'ig-paket-platinum': () => pkPage('platinum', false),
+  'story-paket-platinum': () => pkPage('platinum', true),
   'ig-6-radno-vrijeme': () => rwPage(false),
   'story-3-radno-vrijeme': () => rwPage(true),
   'hl-otvorenje': () => `<div class="page hl"><div class="c">${ic('spark')}</div></div>`,

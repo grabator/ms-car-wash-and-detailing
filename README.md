@@ -28,7 +28,8 @@ Fotografije su u `assets/img/foto/` (iz odobrenog primjera dizajna). Kad stignu 
 | `pano/pano-svijetli.pdf`, `pano/pano-tamni.pdf` | pano za kancelariju, dvije verzije | 72x80 cm (PNG 8504x9449, 300 dpi) |
 | `naljepnica-qr.pdf` | QR naljepnica za vrata, kasu, čekaonicu | 10x10 cm + 2 mm prepust |
 | `instagram/ig-*.png` | 5 objava (karusel), redom | 2160x2700 (4:5) |
-| `instagram/story-*.png` | 2 storyja | 2160x3840 (9:16) |
+| `instagram/story-*.png` | storyji (otvorenje, cjenovnik, kontakt, radno vrijeme) | 2160x3840 (9:16) |
+| `instagram/paketi/ig-paket-*.png`, `story-paket-*.png` | objava i story za svaki paket (Bronze, Silver, Gold, Platinum) | 2160x2700 i 2160x3840 |
 | `za-kasnije/` | kartica vjernosti (svako 6. pranje gratis) | 85x55 mm + 3 mm |
 
 Izvor dizajna je `stampa/izvor/design.html` (cijene na vrhu skripte); nakon izmjene: `node stampa/izvor/render.cjs` (treba Playwright i Python sa Pillow).
