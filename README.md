@@ -8,7 +8,7 @@ Online cjenovnik za M&S Car Wash & Detailing. Otvara se skeniranjem QR koda sa v
 
 - Svijetli izgled: veliki naslov CAR WASH, fotografija sa karticama, usluge sa slikama
 - Cijene: praonica (malo auto, SUV, kombi, vanjsko, unutrašnje), detaljno i dubinsko pranje, dodatne usluge
-- Paketi Bronze, Silver i Gold sa sadržajem
+- Paketi Bronze (250), Silver (500), Gold (700) i Platinum (1.300 KM) sa sadržajem; obična pranja i dodatne usluge su samo cjenovnik, a detaljno pranje i paketi idu u upit (uz termin)
 - Upit: kupac dodirne usluge i pošalje gotovu poruku na WhatsApp (ili je kopira za Viber)
 - Pozovi, WhatsApp, Viber i Instagram jednim dodirom, donja traka na mobitelu
 

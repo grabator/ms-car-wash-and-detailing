@@ -228,7 +228,7 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
   .row { padding: 16px 6px; }
   .row b { font-size: 16px; } .row em { font-size: 17px; }
   .strip b { font-size: 32px; } .strip b small { font-size: 14px; } .strip span { font-size: 13px; }
-  .pk { grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 34px; }
+  .pk { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 34px; }
   .pkc { border-color: transparent; } .pkc.mid { order: 0; }
   .ask { grid-template-columns: 1.1fr 1fr; gap: 36px; padding: 36px; }
   .ask-btns { grid-template-columns: 1fr 1fr; }
@@ -276,3 +276,13 @@ h2 { font: 700 27px/1.18 M, sans-serif; letter-spacing: -.02em; max-width: 19ch;
 @keyframes logo-ring { 0% { box-shadow: 0 0 0 0 rgba(143, 211, 255, .55), 0 20px 40px -14px rgba(0, 0, 0, .6); } 100% { box-shadow: 0 0 0 22px rgba(143, 211, 255, 0), 0 20px 40px -14px rgba(0, 0, 0, .6); } }
 @keyframes logo-spin { to { transform: rotate(360deg); } }
 @keyframes logo-shine { 0% { background-position: 100% 0; } 55%, 100% { background-position: 0 0; } }
+
+/* obična pranja i dodatne usluge: samo cjenovnik, bez dodavanja u upit */
+.row.st { cursor: default; }
+@media (hover: hover) { .row.st:hover { background: none; } }
+/* naslov za usluge uz termin */
+.rez { margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--line); }
+/* paketi: napomena ispod stavke (npr. korekcija ogrebotina ispod poliranja) */
+.pkc .tx { flex: 1; min-width: 0; }
+.pkc .nt { display: block; margin-top: 3px; color: var(--mut); font-size: 12.5px; line-height: 1.4; }
+@media (min-width: 1100px) { .pk { grid-template-columns: repeat(4, 1fr); gap: 18px; } .pkc { padding: 28px 18px 24px; } }
